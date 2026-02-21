@@ -147,7 +147,7 @@ function Pricing() {
                                             <div className="mt-3">
                                                 <span className="inline-flex items-center gap-1.5 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200">
                                                     <Zap className="h-3 w-3 fill-current" />
-                                                    Oferta por tiempo limitado
+                                                    {t('pricing.limitedOffer')}
                                                 </span>
                                             </div>
                                         )}
@@ -231,7 +231,7 @@ function Pricing() {
                                             <div className="pt-2">
                                                 <span className="inline-flex items-center gap-1.5 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200">
                                                     <Zap className="h-3 w-3 fill-current" />
-                                                    ¡Ahorrás {currency === "ARS" ? `$${(selectedPlan.originalPrice.ARS - selectedPlan.price.ARS).toLocaleString("es-AR")}` : `$${(selectedPlan.originalPrice.USD - selectedPlan.price.USD).toLocaleString("en-US")}`}!
+                                                     {t('pricing.saved')} {currency === "ARS" ? `$${(selectedPlan.originalPrice.ARS - selectedPlan.price.ARS).toLocaleString("es-AR")}` : `$${(selectedPlan.originalPrice.USD - selectedPlan.price.USD).toLocaleString("en-US")}`}!
                                                 </span>
                                             </div>
                                         </div>

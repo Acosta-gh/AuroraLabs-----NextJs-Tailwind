@@ -6,8 +6,7 @@ import Footer from "@/components/Footer";
 import InDevelopment from "@/components/InDevelopment";
 
 const MAINTENANCE_MODE = false;
-const constructionProgress = 60;
-
+const constructionProgress = 70;
 export const metadata = {
   title: "AuroraLabs",
   description: "Desarrollo web profesional para empresas y pymes.",

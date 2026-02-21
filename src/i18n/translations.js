@@ -150,6 +150,8 @@ export const translations = {
             notFound: '¿No encontraste lo que buscabas?',
             notFoundText: 'Charlemos sobre tu proyecto y diseñamos una solución a medida.',
             contactNow: 'Contactar ahora',
+            saved: '¡Ahorrás',
+            limitedOffer: "¡Oferta por tiempo limitado!",
             plans: {
                 presencia: {
                     name: 'Landing',
@@ -634,6 +636,8 @@ export const translations = {
             notFound: 'Didn’t find what you’re looking for?',
             notFoundText: 'Let’s chat about your project and design a custom solution.',
             contactNow: 'Contact now',
+            saved: 'Save',
+            limitedOffer: "Limited-time offer!",
             plans: {
                 presencia: {
                     name: 'Essential',

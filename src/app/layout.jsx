@@ -8,6 +8,11 @@ import InDevelopment from "@/components/InDevelopment";
 const MAINTENANCE_MODE = false;
 const constructionProgress = 60;
 
+export const metadata = {
+  title: "AuroraLabs",
+  description: "Desarrollo web profesional para empresas y pymes.",
+};
+
 export default function RootLayout({ children }) {
   if (MAINTENANCE_MODE) {
     return (

@@ -9,7 +9,7 @@ function Projects() {
     const { t } = useTranslation();
 
     const projects = [
-        { title: t('projects.items.project1.title'), category: t('projects.items.project1.category'), description: t('projects.items.project1.description'), image: "https://placehold.co/600x400/e2e8f0/64748b?text=Proyecto+1", metrics: t('projects.items.project1.metrics') },
+        { title: t('projects.items.project0.title'), category: t('projects.items.project0.category'), description: t('projects.items.project0.description'), image: "https://placehold.co/600x400/e2e8f0/64748b?text=Proyecto+1", metrics: t('projects.items.project0.metrics') },
         { title: t('projects.items.project2.title'), category: t('projects.items.project2.category'), description: t('projects.items.project2.description'), image: "https://placehold.co/600x400/e2e8f0/64748b?text=Proyecto+2", metrics: t('projects.items.project2.metrics') },
         { title: t('projects.items.project3.title'), category: t('projects.items.project3.category'), description: t('projects.items.project3.description'), image: "https://placehold.co/600x400/e2e8f0/64748b?text=Proyecto+3", metrics: t('projects.items.project3.metrics') },
     ];

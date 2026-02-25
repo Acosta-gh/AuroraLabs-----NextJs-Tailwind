@@ -54,7 +54,7 @@ function MoreTiers() {
                 .map(i => t(`pricing.plans.${key}.features.${i}`))
                 .filter(val => !val.includes(`features.`)), // Si no existe la traducción, no la muestra
 
-            notIncluded: [0, 1]
+            notIncluded: [0, 1, 2, 3, 4, 5,6]
                 .map(i => t(`pricing.plans.${key}.notIncluded.${i}`))
                 .filter(val => !val.includes(`notIncluded.`)),
 

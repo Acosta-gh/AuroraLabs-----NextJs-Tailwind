@@ -112,6 +112,12 @@ export const translations = {
             subtitle: 'Webs reales, para negocios reales',
             cta: 'Ver más proyectos',
             items: {
+                project0: {
+                    title: 'Landing para Masajes Terapéuticos',
+                    description: 'Sitio One-Page con presentación de servicios, credenciales del terapeuta, precios y contacto directo para reservar turnos.',
+                    metrics: '+70% más solicitudes de turnos en el primer mes',
+                    category: 'Lite'
+                },
                 project1: {
                     title: 'E-commerce de indumentaria',
                     description: 'Catálogo completo con integración a WhatsApp para ventas directas.',
@@ -235,37 +241,28 @@ export const translations = {
                     }
                 },
                 lite: {
-                    name: "Plan Lite",
+                    name: "Lite",
                     tagline: "Ideal para: Emprendedores que quieren dar el primer paso.",
-                    price: {
-                        ARS: 90000,
-                        USD: 450,
-                    },
-                    monthly: {
-                        ARS: 8000,
-                        USD: 40,
-                    },
                     category: "Inicial",
                     cta: "Empezar ahora",
                     whatsappMessage:
                         "¡Hola! Estoy interesado en el Plan Lite. ¿Podrías darme más información?",
 
                     features: [
-                        "Hosting Cloud Profesional incluido",
+                        "Hosting y SSL (Sitio seguro)",
                         "Dominio .com.ar (Gestión anual)",
                         "Diseño One-Page simplificado",
                         "Certificado SSL de sitio seguro",
                         "Botón de WhatsApp directo",
-                        "Formulario de contacto básico",
+                      //  "Formulario de contacto básico",
                         "1 Ajuste de contenido mensual",
                     ],
 
                     notIncluded: [
                         "Correos corporativos",
-                        "SEO avanzado",
-                        "Alta en Google Maps",
+                        "SEO",
                         "Blog o secciones extra",
-                        "Panel autogestionable (CMS)",
+                        "Panel de autogestión (CMS)",
                     ],
 
                     details: {
@@ -598,23 +595,29 @@ export const translations = {
             subtitle: 'Real websites for real businesses',
             cta: 'View More Projects',
             items: {
+                project0: {
+                    title: 'Therapeutic Massage Page',
+                    description: 'Professional presence with services and contact sections.',
+                    metrics: 'Ranked on the first page of Google',
+                    category: 'Lite'
+                },
                 project1: {
                     title: 'Clothing E-commerce',
                     description: 'Complete catalog with WhatsApp integration for direct sales.',
                     metrics: '+40% inquiries in the first month',
-                    category: 'Online Store'
+                    category: 'E-Commerce'
                 },
                 project2: {
                     title: 'Service Landing Page',
                     description: 'Conversion-focused page with an optimized contact form.',
                     metrics: '12% conversion rate',
-                    category: 'Landing Page'
+                    category: 'Essential'
                 },
                 project3: {
                     title: 'Corporate Website',
                     description: 'Professional presence with services and contact sections.',
                     metrics: 'Ranked on the first page of Google',
-                    category: 'Corporate Website'
+                    category: 'Business'
                 }
             }
         },
@@ -721,7 +724,7 @@ export const translations = {
                     }
                 },
                 lite: {
-                    name: "Lite Plan",
+                    name: "Lite",
                     tagline: "Ideal for: Entrepreneurs taking their first step online.",
                     price: {
                         ARS: 90000,
@@ -742,7 +745,7 @@ export const translations = {
                         "Simplified One-Page Design",
                         "SSL Security Certificate",
                         "Direct WhatsApp Button",
-                        "Basic Contact Form",
+          //              "Basic Contact Form",
                         "1 Monthly Content Update",
                     ],
 

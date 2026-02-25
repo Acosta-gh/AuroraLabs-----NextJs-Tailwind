@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InDevelopment from "@/components/InDevelopment";
 
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 const constructionProgress = 70;
 export const metadata = {
   title: "AuroraLabs",

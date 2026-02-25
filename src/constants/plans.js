@@ -17,7 +17,7 @@ export const PLAN_PRICES = {
         originalPrice: { ARS: 280000, USD: 1500 },
         onSale: false,
         popular: true,
-        disabled: true,
+        disabled: false,
     },
     ecommerce: {
         price: { ARS: 450000, USD: 2200 },

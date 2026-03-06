@@ -37,7 +37,7 @@ function Hero() {
 
                     <div className="flex items-center gap-6 text-sm text-muted-foreground">
                         <div>
-                            <span className="block text-2xl font-bold text-foreground">+15</span>
+                            <span className="block text-2xl font-bold text-foreground">+10</span>
                             <span>{t("hero.projects")}</span>
                         </div>
                         <div className="h-8 w-px bg-border"></div>

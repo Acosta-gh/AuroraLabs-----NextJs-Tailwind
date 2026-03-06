@@ -1,23 +1,24 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "@/hooks/useTranslation";
+
+import Link from "next/link";
 
 function Projects() {
     const { t } = useTranslation();
 
     const projects = [
-        { title: t('projects.items.project0.title'), category: t('projects.items.project0.category'), description: t('projects.items.project0.description'), image: "https://placehold.co/600x400/e2e8f0/64748b?text=Proyecto+1", metrics: t('projects.items.project0.metrics') },
-        { title: t('projects.items.project2.title'), category: t('projects.items.project2.category'), description: t('projects.items.project2.description'), image: "https://placehold.co/600x400/e2e8f0/64748b?text=Proyecto+2", metrics: t('projects.items.project2.metrics') },
-        { title: t('projects.items.project3.title'), category: t('projects.items.project3.category'), description: t('projects.items.project3.description'), image: "https://placehold.co/600x400/e2e8f0/64748b?text=Proyecto+3", metrics: t('projects.items.project3.metrics') },
+        { title: t('projects.items.project0.title'), category: t('projects.items.project0.category'), description: t('projects.items.project0.description'), image: t('projects.items.project0.image'), metrics: t('projects.items.project0.metrics'), link: t('projects.items.project0.link') },
+        { title: t('projects.items.project1.title'), category: t('projects.items.project1.category'), description: t('projects.items.project1.description'), image: t('projects.items.project1.image'), metrics: t('projects.items.project1.metrics'), link: t('projects.items.project1.link') },
+        { title: t('projects.items.project2.title'), category: t('projects.items.project2.category'), description: t('projects.items.project2.description'), image: t('projects.items.project2.image'), metrics: t('projects.items.project2.metrics'), link: t('projects.items.project2.link') },
     ];
 
     return (
         <section id='projects' className="container mx-auto px-6 py-20 lg:py-28">
             <div className="max-w-6xl mx-auto">
-
                 <Fade triggerOnce direction="up" cascade damping={0.1}>
                     <div className="text-center space-y-4 mb-16">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">{t('projects.title')}</h2>
@@ -28,7 +29,7 @@ function Projects() {
                 <Fade triggerOnce cascade damping={0.15} delay={200}>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                         {projects.map((project, index) => (
-                            <div key={index} className="group relative">
+                            <Link key={index} className="group relative" href={project.link} target="_blank">
                                 <div className="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
                                 <div className="relative bg-background rounded-xl overflow-hidden border border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg">
                                     <div className="relative h-48 overflow-hidden bg-muted">
@@ -47,17 +48,19 @@ function Projects() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </Fade>
 
                 <Fade triggerOnce delay={400}>
                     <div className="text-center">
-                        <Button size="lg" variant="outline" className="group">
-                            {t('projects.cta')}
-                            <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </Button>
+                        <a href='#contact'>
+                            <Button size="lg" variant="outline" className="group">
+                                {t('projects.cta')}
+                                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </a>
                     </div>
                 </Fade>
 

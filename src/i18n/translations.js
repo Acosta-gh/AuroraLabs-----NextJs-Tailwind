@@ -79,7 +79,7 @@ export const translations = {
             },
             item3: {
                 title: 'Entrega en semanas, no meses',
-                description: 'Landing pages en 1 semana. Webs institucionales en 2-3 semanas. E-commerce en 3-4 semanas. Sin demoras ni excusas.',
+                description: 'Landing pages en 1 semana. Webs institucionales en 2-3 semanas. E-commerce en 3-4 semanas.',
             },
         },
 
@@ -108,199 +108,163 @@ export const translations = {
 
         // Proyectos
         projects: {
-            title: 'Proyectos que generan resultados',
-            subtitle: 'Webs reales, para negocios reales',
-            cta: 'Ver más proyectos',
+            title: 'Soluciones que impulsan negocios',
+            subtitle: 'Ejemplos de proyectos activos y arquitecturas diseñadas para resultados reales',
+            cta: 'Consultar por mi proyecto',
             items: {
                 project0: {
-                    title: 'Landing para Masajes Terapéuticos',
-                    description: 'Sitio One-Page con presentación de servicios, credenciales del terapeuta, precios y contacto directo para reservar turnos.',
-                    metrics: '+70% más solicitudes de turnos en el primer mes',
-                    category: 'Lite'
+                    title: 'The Flare Initiative',
+                    description: 'Landing page de alto impacto para servicios profesionales, optimizada para la captura de leads y conversión directa.',
+                    metrics: 'Arquitectura nativa de carga instantánea',
+                    category: 'Landing',
+                    link: 'https://landing-page.auroralabs.com.ar/',
+                    image: '/projects/flare-initiative.webp',
                 },
                 project1: {
-                    title: 'E-commerce de indumentaria',
-                    description: 'Catálogo completo con integración a WhatsApp para ventas directas.',
-                    metrics: '+40% consultas en el primer mes',
-                    category: 'Tienda Online',
+                    title: 'Burger Punk',
+                    description: 'Concepto de catálogo digital autogestionable con pedidos por WhatsApp. Ideal para locales gastronómicos y showrooms.',
+                    metrics: 'Interfaz optimizada para móviles',
+                    category: 'Catálogo',
+                    link: 'https://online-catalog.auroralabs.com.ar/',
+                    image: '/projects/burger-punk.webp',
                 },
                 project2: {
-                    title: 'Landing page para servicios',
-                    description: 'Página enfocada en conversión con formulario optimizado.',
-                    metrics: 'Tasa de conversión del 12%',
-                    category: 'Landing Page'
+                    title: 'Nexo Contadores',
+                    description: 'Modelo de web corporativa multisección para estudios profesionales, enfocada en la autoridad y la confianza del cliente.',
+                    metrics: 'Estructura SEO Friendly y Blog CMS',
+                    category: 'Empresa',
+                    link: 'https://pagina-corporativa.auroralabs.com.ar/',
+                    image: '/projects/nexo-contadores.webp',
                 },
-                project3: {
-                    title: 'Web corporativa',
-                    description: 'Presencia profesional con secciones de servicios y contacto.',
-                    metrics: 'Posicionado en primera página de Google',
-                    category: 'Web corporativa'
-                }
-            }
+            },
         },
 
-        // Pricing
         pricing: {
             title: 'Planes y mantenimiento',
-            subtitle: 'Elegí cómo querés trabajar después de entregar tu web',
+            subtitle: 'Elegí cómo querés trabajar una vez que tu sitio esté online',
             mostPopular: 'Más elegido',
-            comingSoon: 'No Disponible',
-            viewDetails: 'Ver Detalles',
+            comingSoon: 'No disponible',
+            viewDetails: 'Ver detalles',
             viewMorePlans: 'Ver más planes',
             perMonth: '/mes',
             deliveryTime: 'Tiempo de entrega',
             whatIncludes: '¿Qué incluye en detalle?',
             idealFor: 'Ideal para:',
             importantNote: 'Importante:',
-            noteText: 'Para poder mantener, actualizar y modificar el sitio según tus necesidades, el hosting es gestionado por mí. Esto permite resolver cambios, ajustes y mejoras de forma rápida y sin complicaciones técnicas. El dominio puede estar a tu nombre o puedo gestionarlo yo. Si en algún momento decidís dejar de pagar la mensualidad, se entregan todos los archivos y el sitio queda en tu poder.',
+            noteText: 'Para que tu sitio esté actualizado, seguro y funcione sin problemas, el hosting lo gestiono yo. Esto me permite resolver arreglos, actualizaciones y mejoras rápido, sin que tengas que lidiar con complicaciones técnicas. El dominio puede estar a tu nombre o lo puedo manejar yo. Si en algún momento decidís cancelar el plan mensual, te entrego todos los archivos y el sitio queda en tu poder.',
             notFound: '¿No encontraste lo que buscabas?',
-            notFoundText: 'Charlemos sobre tu proyecto y diseñamos una solución a medida.',
+            notFoundText: 'Charlemos sobre tu proyecto y armamos una solución a medida.',
             contactNow: 'Contactar ahora',
-            saved: '¡Ahorrás',
+            saved: 'Ahorrás',
             limitedOffer: "¡Oferta por tiempo limitado!",
+            // Pricing
             plans: {
                 presencia: {
                     name: 'Landing',
                     tagline: 'Ideal para: Profesionales y servicios de cercanía.',
                     cta: 'Empezar ahora',
-                    whatsappMessage:
-                        "Hola! Me interesa el plan Landing. ¿Podrías darme más información?",
+                    whatsappMessage: "¡Hola! Me interesa el plan Landing. ¿Podrías darme más información?",
                     features: [
                         'Diseño One-Page (Todo en una sección)',
                         'Hosting y SSL (Sitio seguro)',
                         'Dominio incluido (Gestión anual)',
                         'Botón de WhatsApp directo',
-                        'Formulario de contacto',
                         'SEO Básico (Optimización inicial)',
                         '3 Ajustes de contenido mensuales',
                     ],
-                    notIncluded: ['Correos corporativos', 'Panel de autogestión (CMS)'],
+                    // Agregamos "Autogestión" para que no queden dudas
+                    notIncluded: ['Correos corporativos', 'Panel de autogestión (CMS)', 'Formulario de contacto por email'],
                     details: {
                         description: 'La opción ideal para tener presencia en Google rápido y sin vueltas. Una landing page efectiva para que te encuentren y te contacten.',
                         deliveryTime: '5-7 días hábiles',
                         includes: [
                             { title: 'Hosting y SSL Profesional', description: 'Servidor optimizado y certificado de seguridad para que tu web sea confiable.' },
                             { title: 'Diseño One-Page', description: 'Una sola página moderna, responsive y con secciones claras para convertir visitas en clientes.' },
-                            { title: 'Rendimiento Nativo (Sin CMS)', description: 'Desarrollo en código puro para una carga instantánea y máxima seguridad. Yo me encargo de que tu web vuele.' },
-                            { title: 'Dominio incluido', description: 'Gestión anual del nombre de tu marca (.com o .com.ar).' }
+                            { title: 'Rendimiento Nativo', description: 'Desarrollo en código puro para una carga instantánea. Yo me encargo de que tu web vuele.' },
+                            { title: 'Dominio incluido', description: 'Gestión anual del nombre de tu marca (.com.ar).' }
                         ],
-                        idealFor: ['Médicos, abogados, contadores', 'Oficios y servicios locales', 'Lanzamiento de productos']
+                        idealFor: ['Oficios y servicios locales', 'Lanzamiento de productos', 'Páginas de captura']
                     }
                 },
                 empresa: {
                     name: 'Empresa',
-                    tagline: 'Ideal para: Negocios que necesitan autoridad y gestión.',
+                    tagline: 'Ideal para: Negocios que necesitan autoridad y contenido.',
                     cta: 'Elegir Plan Empresa',
-                    whatsappMessage:
-                        "Hola! Me interesa el plan Empresa. Quisiera más detalles por favor.",
+                    whatsappMessage: "¡Hola! Me interesa el plan Empresa. Quisiera más detalles por favor.",
                     features: [
                         'Todo lo del Plan Landing +',
-                        'Panel de autogestión básico (CMS)',
-                        'Capacitación de uso del panel',
+                        'Panel de autogestión (Blog/Noticias)',
+                        'Web multisección (Hasta 5 páginas)',
                         'Correo Corporativo profesional',
-                        '8 Ajustes de estructura y diseño',
+                        'Formulario de contacto por email',
+                        '8 Ajustes de diseño mensuales',
                         'Optimización SEO avanzada',
-                        'Web multisección (Hasta 5 páginas)'
+                        'Capacitación de uso del panel'
                     ],
-                    notIncluded: ['Carrito de compras'],
+                    notIncluded: ['Catálogo de productos', 'Carrito de compras'],
                     details: {
-                        description: 'Diseñado para empresas que necesitan proyectar profesionalismo y quieren poder cargar sus propios contenidos básicos.',
+                        description: 'Diseñado para empresas que proyectan profesionalismo y quieren comunicar novedades o servicios de forma dinámica.',
                         deliveryTime: '12-15 días hábiles',
                         includes: [
-                            { title: 'Panel de Autogestión', description: 'Cargá tus propios blogs, servicios o novedades de forma simple y autónoma.' },
-                            { title: 'Soporte Estructural Pro', description: 'Incluye 8 cambios mensuales para lo que el panel no permite (nuevas secciones, grids o retoques visuales).' },
+                            { title: 'Panel de Autogestión', description: 'Cargá tus propios blogs, servicios o novedades de forma autónoma con PocketBase.' },
+                            { title: 'Soporte Estructural Pro', description: 'Incluye 8 cambios mensuales para lo que el panel no permite (nuevas secciones o retoques visuales).' },
                             { title: 'Capacitación Personalizada', description: 'Te enseño a usar tu panel para que gestiones tu información diaria sin depender de nadie.' }
                         ],
-                        idealFor: ['PYMES', 'Consultoras', 'Estudios jurídicos o contables']
+                        idealFor: ['Estudios jurídicos y contables', 'Consultoras', 'Clínicas y centros de salud']
+                    }
+                },
+                eCatalog: {
+                    name: 'Catálogo',
+                    tagline: 'Ideal para: Mostrar productos y recibir pedidos por WhatsApp.',
+                    cta: 'Armar mi Catálogo',
+                    whatsappMessage: "¡Hola! Me interesa el plan Catálogo. Tengo productos para mostrar.",
+                    features: [
+                        'Todo lo del Plan Empresa +',
+                        'Catálogo autogestionable (Productos/Precios)',
+                        'Carrito de pedidos directo a WhatsApp',
+                        'Buscador y filtros por categoría',
+                        'Botón de consulta rápida por artículo',
+                        'Capacitación para carga de stock'
+                    ],
+                    notIncluded: ['Pasarela de pagos (Tarjetas/Mercado Pago)'],
+                    details: {
+                        description: 'La vidriera digital perfecta. Mostrá tus productos con fotos y precios, permitiendo que tus clientes armen su pedido y te lo envíen por WhatsApp.',
+                        deliveryTime: '12-15 días hábiles',
+                        includes: [
+                            { title: 'Gestión de Productos', description: 'Subí, editá y eliminá productos o servicios con un par de clics desde tu panel.' },
+                            { title: 'Carrito de Pedidos', description: 'Tus clientes eligen qué quieren y te llega el detalle listo para cerrar la venta por chat.' },
+                            { title: 'Filtros y Categorías', description: 'Organizá tu oferta para que encuentren todo al toque.' }
+                        ],
+                        idealFor: ['Gastronómicos (Heladerías/Rotiserías)', 'Showrooms', 'Repuesteras y Corralones']
                     }
                 },
                 ecommerce: {
                     name: 'E-commerce',
                     tagline: 'Ideal para: Negocios que venden 24/7.',
                     cta: 'Lanzar mi Tienda',
-                    whatsappMessage:
-                        "Hola! Me interesa el plan Ecommerce. ¿Podemos hablar?",
+                    whatsappMessage: "¡Hola! Me interesa el plan Ecommerce. ¿Podemos hablar?",
                     features: [
                         'Todo lo del Plan Empresa +',
-                        'Tienda Online con Carrito',
-                        'Cobro con Mercado Pago o WhatsApp',
-                        'Gestión de Stock y productos',
-                        '15 Ajustes de estructura y diseño',
-                        'Capacitación de uso (Ventas)',
-                        'Soporte prioritario'
+                        'Carrito de compras con pago online',
+                        'Pasarela de pagos (Mercado Pago)',
+                        'Gestión de stock e inventario automático',
+                        'Panel de control de pedidos y ventas',
+                        'Cuentas de clientes (Registro/Login)',
+                        '15 Ajustes de diseño mensuales',
+                        'Soporte y capacitación prioritaria'
                     ],
                     details: {
-                        description: 'La solución definitiva para vender tus productos online con pagos integrados y gestión de inventario.',
-                        deliveryTime: '20-25 días hábiles',
+                        description: 'La solución definitiva para vender online con pagos integrados, control total de stock y base de datos de clientes.',
+                        deliveryTime: 'A convenir',
                         includes: [
-                            { title: 'Pasarela de Pagos', description: 'Integración con Mercado Pago para cobrar con tarjeta, débito o efectivo.' },
-                            { title: 'Evolución de Tienda', description: '15 ajustes mensuales para optimizar tu proceso de venta, banners o nuevas funcionalidades.' },
-                            { title: 'Gestión de Productos', description: 'Subí fotos, precios y controlá el stock de tus productos vos mismo desde el panel.' }
+                            { title: 'Pasarela de Pagos', description: 'Integración con Mercado Pago para cobrar con cualquier medio de pago de forma automática.' },
+                            { title: 'Sistema de Usuarios', description: 'Tus clientes pueden registrarse, ver sus pedidos anteriores y guardar favoritos.' },
+                            { title: 'Control Total', description: 'Panel administrativo completo para gestionar ventas, envíos y niveles de stock.' }
                         ],
-                        idealFor: ['Tiendas de ropa', 'Emprendimientos gourmet', 'Venta de artículos']
+                        idealFor: ['Tiendas de ropa', 'Mueblerías', 'Tiendas de electrónica']
                     }
                 },
-                lite: {
-                    name: "Lite",
-                    tagline: "Ideal para: Emprendedores que quieren dar el primer paso.",
-                    category: "Inicial",
-                    cta: "Empezar ahora",
-                    whatsappMessage:
-                        "¡Hola! Estoy interesado en el Plan Lite. ¿Podrías darme más información?",
-
-                    features: [
-                        "Hosting y SSL (Sitio seguro)",
-                        "Dominio .com.ar (Gestión anual)",
-                        "Diseño One-Page simplificado",
-                        "Certificado SSL de sitio seguro",
-                        "Botón de WhatsApp directo",
-                      //  "Formulario de contacto básico",
-                        "1 Ajuste de contenido mensual",
-                    ],
-
-                    notIncluded: [
-                        "Correos corporativos",
-                        "SEO",
-                        "Blog o secciones extra",
-                        "Panel de autogestión (CMS)",
-                    ],
-
-                    details: {
-                        description:
-                            "La forma más accesible de tener presencia online. Un sitio simple, rápido y profesional para quienes están dando sus primeros pasos en el mundo digital.",
-                        deliveryTime: "3-5 días hábiles",
-                        includes: [
-                            {
-                                title: "Hosting Cloud Profesional",
-                                description:
-                                    "Servidor optimizado con alta disponibilidad, backups automáticos diarios y certificado SSL incluido.",
-                            },
-                            {
-                                title: "Diseño One-Page simplificado",
-                                description:
-                                    "Una página limpia y responsive con las secciones esenciales: inicio, servicios y contacto.",
-                            },
-                            {
-                                title: "1 Ajuste mensual",
-                                description:
-                                    "Podés solicitar un cambio de texto, imagen o dato de contacto por mes sin costo adicional.",
-                            },
-                            {
-                                title: "Dominio .com.ar",
-                                description:
-                                    "Gestión anual del dominio argentino. El nombre queda a tu elección.",
-                            },
-                        ],
-                        idealFor: [
-                            "Emprendedores que recién arrancan",
-                            "Vendedores por redes que quieren más credibilidad",
-                            "Portfolios simples",
-                            "Negocios con presupuesto ajustado",
-                        ],
-                    },
-                }
-
-            }
+            },
         },
 
         // FAQ
@@ -317,7 +281,7 @@ export const translations = {
             },
             q3: {
                 question: '¿Podré gestionar el contenido yo mismo?',
-                answer: '¡Totalmente! En E-commerce tenés autonomía total. En el resto, yo te ayudo para que el código siga siendo "puro" y rápido.',
+                answer: '¡Obvio! Según el plan, tenés autonomía para manejar lo tuyo. Por ejemplo: en webs corporativas podés subir tus propios blogs; en catálogos, gestionás productos; y en E-commerce, tenés control total de clientes, ventas y productos. Vos te encargás del contenido y yo de que el código siga siendo puro y vuele.',
             },
             q4: {
                 question: '¿Qué incluye el servicio de mantenimiento?',
@@ -591,35 +555,35 @@ export const translations = {
 
         // Projects
         projects: {
-            title: 'Projects That Drive Results',
-            subtitle: 'Real websites for real businesses',
-            cta: 'View More Projects',
+            title: 'Business-Driven Solutions',
+            subtitle: 'Examples of live projects and architectures designed for real-world results',
+            cta: 'Inquire about my project',
             items: {
                 project0: {
-                    title: 'Therapeutic Massage Page',
-                    description: 'Professional presence with services and contact sections.',
-                    metrics: 'Ranked on the first page of Google',
-                    category: 'Lite'
+                    title: 'The Flare Initiative',
+                    description: 'High-impact landing page for professional services, optimized for lead generation and direct conversion.',
+                    metrics: 'Native architecture for instant loading',
+                    category: 'Landing',
+                    link: 'https://landing-page.auroralabs.com.ar/',
+                    image: '/projects/flare-initiative.webp',
                 },
                 project1: {
-                    title: 'Clothing E-commerce',
-                    description: 'Complete catalog with WhatsApp integration for direct sales.',
-                    metrics: '+40% inquiries in the first month',
-                    category: 'E-Commerce'
+                    title: 'Burger Punk',
+                    description: 'Self-managed digital catalog concept with WhatsApp ordering. Ideal for food services and showrooms.',
+                    metrics: 'Mobile-optimized interface',
+                    category: 'Catalog',
+                    link: 'https://online-catalog.auroralabs.com.ar/',
+                    image: '/projects/burger-punk.webp',
                 },
                 project2: {
-                    title: 'Service Landing Page',
-                    description: 'Conversion-focused page with an optimized contact form.',
-                    metrics: '12% conversion rate',
-                    category: 'Essential'
+                    title: 'Nexo Contadores',
+                    description: 'Multi-section corporate website model for professional firms, focused on authority and client trust.',
+                    metrics: 'SEO Friendly & CMS Blog structure',
+                    category: 'Business',
+                    link: 'https://pagina-corporativa.auroralabs.com.ar/',
+                    image: '/projects/nexo-contadores.webp',
                 },
-                project3: {
-                    title: 'Corporate Website',
-                    description: 'Professional presence with services and contact sections.',
-                    metrics: 'Ranked on the first page of Google',
-                    category: 'Business'
-                }
-            }
+            },
         },
 
         // Pricing English Version
@@ -641,158 +605,113 @@ export const translations = {
             contactNow: 'Contact now',
             saved: 'Save',
             limitedOffer: "Limited-time offer!",
+
             plans: {
                 presencia: {
-                    name: 'Essential',
+                    name: 'Landing',
                     tagline: 'Ideal for: Professionals and local services.',
-                    cta: 'Get Started',
-                    whatsappMessage:
-                        "Hi! I'm interested in the Essential Plan. Could you give me more info?",
+                    cta: 'Get started',
+                    whatsappMessage: "Hi! I'm interested in the Landing plan. Could you provide more information?",
                     features: [
-                        'One-Page Design',
-                        'Cloud Hosting & SSL included',
-                        'Custom Domain (.com / .net)',
-                        'WhatsApp Direct Button',
-                        'Contact Form',
-                        'Basic SEO Setup',
-                        '3 Monthly Content Updates',
+                        'One-Page Design (Everything in one section)',
+                        'Hosting & SSL (Secure Site)',
+                        'Domain Included (Annual management)',
+                        'Direct WhatsApp button',
+                        'Basic SEO (Initial optimization)',
+                        '3 Monthly content updates',
                     ],
-                    notIncluded: ['Corporate Emails', 'CMS / Self-management'],
+                    notIncluded: ['Professional Emails', 'Self-management Panel (CMS)', 'Email Contact Form'],
                     details: {
-                        description: 'The fastest way to get your business online. A high-converting landing page designed to turn visitors into leads.',
+                        description: 'The ideal option to establish a fast Google presence without the hassle. An effective landing page designed to get you found and contacted.',
                         deliveryTime: '5-7 business days',
                         includes: [
-                            { title: 'Hosting & SSL', description: 'Secure, high-speed professional server with an SSL certificate for safe browsing.' },
-                            { title: 'One-Page Layout', description: 'A modern, responsive single-page design with all your key info in one place.' },
-                            { title: 'No CMS (Faster Speed)', description: 'Since there’s no heavy dashboard, your site loads lightning fast. I handle the updates for you.' },
-                            { title: 'Domain Management', description: 'Annual management of your professional web address.' }
+                            { title: 'Professional Hosting & SSL', description: 'Optimized server and security certificate to ensure your site is trustworthy.' },
+                            { title: 'One-Page Design', description: 'A modern, responsive single page with clear sections built to convert visitors into customers.' },
+                            { title: 'Native Performance', description: 'Developed with pure code for instant loading. I make sure your website flies.' },
+                            { title: 'Domain Management', description: 'Annual management of your brand name (.com).' }
                         ],
-                        idealFor: ['Doctors, lawyers, accountants', 'Local shops and services', 'Personal brands']
+                        idealFor: ['Local trades and services', 'Product launches', 'Lead generation pages']
                     }
                 },
                 empresa: {
                     name: 'Business',
-                    tagline: 'Ideal for: Growing companies needing authority.',
+                    tagline: 'Ideal for: Businesses needing authority and content.',
                     cta: 'Choose Business Plan',
-                    whatsappMessage:
-                        "Hi! I'm interested in the Business Plan. I'd like more details, please.",
+                    whatsappMessage: "Hi! I'm interested in the Business plan. I would like more details, please.",
                     features: [
-                        'Everything in Essential +',
-                        'Basic CMS (Self-management)',
-                        'User Training Session',
+                        'Everything in the Landing Plan +',
+                        'Self-management Panel (Blog/News)',
+                        'Multi-section Website (Up to 5 pages)',
                         'Professional Corporate Email',
-                        '8 Monthly Content Updates',
+                        'Email Contact Form',
+                        '8 Monthly design adjustments',
                         'Advanced SEO Optimization',
-                        'Multi-page Web (Up to 5 pages)'
+                        'Panel usage training'
                     ],
-                    notIncluded: ['E-commerce / Shopping Cart'],
+                    notIncluded: ['Product Catalog', 'Shopping Cart'],
                     details: {
-                        description: 'Designed for businesses that need a professional edge and the ability to manage their own basic content.',
+                        description: 'Designed for companies that project professionalism and want to communicate news or services dynamically.',
                         deliveryTime: '12-15 business days',
                         includes: [
-                            { title: 'Self-Management Panel', description: 'Easily update your own blog posts, services, or news without coding.' },
-                            { title: 'Corporate Email', description: 'Professional email accounts (e.g., info@yourcompany.com) to build trust.' },
-                            { title: 'Personalized Training', description: 'A walkthrough session to teach you how to use your dashboard effectively.' }
+                            { title: 'Self-management Panel', description: 'Upload your own blogs, services, or news autonomously using PocketBase.' },
+                            { title: 'Pro Structural Support', description: 'Includes 8 monthly changes for elements outside the panel (new sections or visual tweaks).' },
+                            { title: 'Personalized Training', description: "I'll teach you how to use your panel so you can manage your daily info independently." }
                         ],
-                        idealFor: ['SMEs', 'Consultancies', 'Service-based companies']
+                        idealFor: ['Law and accounting firms', 'Consultancies', 'Clinics and health centers']
+                    }
+                },
+                eCatalog: {
+                    name: 'Catalog',
+                    tagline: 'Ideal for: Showcasing products and receiving orders via WhatsApp.',
+                    cta: 'Build my Catalog',
+                    whatsappMessage: "Hi! I'm interested in the Catalog plan. I have products to showcase.",
+                    features: [
+                        'Everything in the Business Plan +',
+                        'Self-managed Catalog (Products/Prices)',
+                        'WhatsApp Order Cart',
+                        'Category Search & Filters',
+                        'Quick Item Inquiry Button',
+                        'Stock upload training'
+                    ],
+                    notIncluded: ['Payment Gateway (Credit Cards/Online Payments)'],
+                    details: {
+                        description: 'The perfect digital storefront. Showcase your products with photos and prices, allowing customers to build their order and send it to you via WhatsApp.',
+                        deliveryTime: '12-15 business days',
+                        includes: [
+                            { title: 'Product Management', description: 'Add, edit, and delete products or services with just a few clicks from your panel.' },
+                            { title: 'Order Cart', description: 'Your customers choose what they want, and you receive the details ready to close the sale via chat.' },
+                            { title: 'Filters & Categories', description: 'Organize your offer so customers find exactly what they need instantly.' }
+                        ],
+                        idealFor: ['Food services (Takeout/Delivery)', 'Showrooms', 'Parts and hardware stores']
                     }
                 },
                 ecommerce: {
                     name: 'E-commerce',
                     tagline: 'Ideal for: Businesses selling 24/7.',
-                    cta: 'Launch My Store',
-                    whatsappMessage:
-                        "Hi! I'm interested in the E-commerce Plan. Can we talk?",
+                    cta: 'Launch my Store',
+                    whatsappMessage: "Hi! I'm interested in the E-commerce plan. Can we talk?",
                     features: [
-                        'Everything in Business +',
-                        'Online Store with Shopping Cart',
-                        'Mercado Pago or WhatsApp Checkout',
-                        'Inventory & Product Management',
-                        '15 Monthly Content Updates',
-                        'Sales & Dashboard Training',
-                        'Priority Support'
+                        'Everything in the Business Plan +',
+                        'Shopping cart with online payment',
+                        'Payment Gateway Integration',
+                        'Automatic Stock & Inventory management',
+                        'Order & Sales Control Panel',
+                        'Customer Accounts (Register/Login)',
+                        '15 Monthly design adjustments',
+                        'Priority support and training'
                     ],
                     details: {
-                        description: 'The complete solution to sell your products online with integrated payments and inventory tracking.',
-                        deliveryTime: '20-25 business days',
+                        description: 'The ultimate solution for selling online with integrated payments, full stock control, and a complete customer database.',
+                        deliveryTime: 'To be discussed',
                         includes: [
-                            { title: 'Payment Gateway', description: 'Integration with Mercado Pago or credit/debit card processing.' },
-                            { title: 'WhatsApp Orders', description: 'Option to receive orders directly in your chat to close sales personally.' },
-                            { title: 'Product Catalog', description: 'Manage photos, prices, and stock levels yourself at any time.' }
+                            { title: 'Payment Gateway', description: 'Full integration to accept all credit cards and payment methods automatically.' },
+                            { title: 'User System', description: 'Customers can register, view previous orders, and save favorites.' },
+                            { title: 'Full Control', description: 'Complete administrative panel to manage sales, shipping, and real-time stock levels.' }
                         ],
-                        idealFor: ['Clothing brands', 'Gourmet shops', 'Retail businesses']
+                        idealFor: ['Clothing stores', 'Furniture stores', 'Electronics and tech stores']
                     }
                 },
-                lite: {
-                    name: "Lite",
-                    tagline: "Ideal for: Entrepreneurs taking their first step online.",
-                    price: {
-                        ARS: 90000,
-                        USD: 450,
-                    },
-                    monthly: {
-                        ARS: 8000,
-                        USD: 40,
-                    },
-                    category: "Starter",
-                    cta: "Start Now",
-                    whatsappMessage:
-                        "Hi! I'm interested in the Lite Plan. Could you give me more information?",
-
-                    features: [
-                        "Professional Cloud Hosting included",
-                        ".com.ar Domain (Annual Management)",
-                        "Simplified One-Page Design",
-                        "SSL Security Certificate",
-                        "Direct WhatsApp Button",
-          //              "Basic Contact Form",
-                        "1 Monthly Content Update",
-                    ],
-
-                    notIncluded: [
-                        "Corporate Emails",
-                        "Advanced SEO",
-                        "Google Maps Registration",
-                        "Blog or Extra Sections",
-                        "Self-management Panel (CMS)",
-                    ],
-
-                    details: {
-                        description:
-                            "The most accessible way to build your online presence. A clean, fast, and professional website for entrepreneurs just starting out.",
-                        deliveryTime: "3-5 business days",
-                        includes: [
-                            {
-                                title: "Professional Cloud Hosting",
-                                description:
-                                    "Optimized server with high availability, daily automatic backups, and SSL certificate included.",
-                            },
-                            {
-                                title: "Simplified One-Page Design",
-                                description:
-                                    "A clean, responsive single-page layout with essential sections: home, services, and contact.",
-                            },
-                            {
-                                title: "1 Monthly Update",
-                                description:
-                                    "You can request one content change per month (text, image, or contact info) at no additional cost.",
-                            },
-                            {
-                                title: ".com.ar Domain Management",
-                                description:
-                                    "Annual management of your Argentine domain. The name is fully chosen by you.",
-                            },
-                        ],
-                        idealFor: [
-                            "New entrepreneurs",
-                            "Social media sellers wanting more credibility",
-                            "Simple portfolios",
-                            "Budget-conscious small businesses",
-                        ],
-                    },
-                }
-
-            }
+            },
         },
 
         faq: {
@@ -808,7 +727,7 @@ export const translations = {
             },
             q3: {
                 question: 'Will I be able to manage the content myself?',
-                answer: 'Absolutely! With E-commerce you have full autonomy. For the other plans, I assist you to keep the code clean and fast.',
+                answer: 'Of course! Depending on the plan, you have the autonomy to manage your own content. For example, on corporate websites, you can upload your own blogs; in catalogs, you manage the products; and in e-commerce, you have complete control over customers, sales, and products. You handle the content, and I ensure that the code remains clean and performs optimally.',
             },
             q4: {
                 question: 'What does the maintenance service include?',

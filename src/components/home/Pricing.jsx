@@ -19,7 +19,7 @@ function Pricing() {
     const { t } = useTranslation();
 
     const phone = "5492926501348";
-    const VISIBLE_PLANS = ["presencia", "empresa", "ecommerce"];
+    const VISIBLE_PLANS = ["presencia", "empresa", "eCatalog"];
 
     const plans = VISIBLE_PLANS.map(key => {
         const config = PLAN_PRICES[key];
@@ -231,7 +231,7 @@ function Pricing() {
                                             <div className="pt-2">
                                                 <span className="inline-flex items-center gap-1.5 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200">
                                                     <Zap className="h-3 w-3 fill-current" />
-                                                     {t('pricing.saved')} {currency === "ARS" ? `$${(selectedPlan.originalPrice.ARS - selectedPlan.price.ARS).toLocaleString("es-AR")}` : `$${(selectedPlan.originalPrice.USD - selectedPlan.price.USD).toLocaleString("en-US")}`}!
+                                                    {t('pricing.saved')} {currency === "ARS" ? `$${(selectedPlan.originalPrice.ARS - selectedPlan.price.ARS).toLocaleString("es-AR")}` : `$${(selectedPlan.originalPrice.USD - selectedPlan.price.USD).toLocaleString("en-US")}`}!
                                                 </span>
                                             </div>
                                         </div>

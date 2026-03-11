@@ -54,7 +54,7 @@ function MoreTiers() {
                 .map(i => t(`pricing.plans.${key}.features.${i}`))
                 .filter(val => !val.includes(`features.`)), // Si no existe la traducción, no la muestra
 
-            notIncluded: [0, 1, 2, 3, 4, 5,6]
+            notIncluded: [0, 1, 2, 3, 4, 5, 6]
                 .map(i => t(`pricing.plans.${key}.notIncluded.${i}`))
                 .filter(val => !val.includes(`notIncluded.`)),
 
@@ -90,7 +90,13 @@ function MoreTiers() {
             <div className="container mx-auto px-6 relative">
                 <div className="max-w-6xl mx-auto">
 
-
+                    <Link
+                        href="/"
+                        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group mb-8"
+                    >
+                        <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                        {t('backToHome')}
+                    </Link>
                     <div className="container mx-auto px-6 relative">
                         <div className="max-w-6xl mx-auto">
 

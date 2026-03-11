@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { Menu, X, ChevronDown, Languages, CircleDollarSign } from 'lucide-react';
+import { ChevronDown, Languages, CircleDollarSign } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -9,6 +10,56 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { useCurrency } from "@/hooks/useCurrency";
 import { useTranslation } from "@/hooks/useTranslation";
 import logo from "@/assets/logo.png";
+
+// Burger animado con 3 líneas SVG
+function BurgerIcon({ isOpen }) {
+    return (
+        <motion.svg
+            width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2"
+            strokeLinecap="round" className="text-gray-700"
+        >
+            {/* Línea superior */}
+            <motion.line
+                x1="3" y1="6" x2="21" y2="6"
+                animate={isOpen ? { x1: 5, y1: 5, x2: 19, y2: 19 } : { x1: 3, y1: 6, x2: 21, y2: 6 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+            {/* Línea del medio */}
+            <motion.line
+                x1="3" y1="12" x2="21" y2="12"
+                animate={isOpen ? { opacity: 0, x1: 12, x2: 12 } : { opacity: 1, x1: 3, x2: 21 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+            />
+            {/* Línea inferior */}
+            <motion.line
+                x1="3" y1="18" x2="21" y2="18"
+                animate={isOpen ? { x1: 5, y1: 19, x2: 19, y2: 5 } : { x1: 3, y1: 18, x2: 21, y2: 18 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+        </motion.svg>
+    );
+}
+
+const menuVariants = {
+    hidden: { opacity: 0, y: -8 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.05, delayChildren: 0.05 }
+    },
+    exit: {
+        opacity: 0,
+        y: -8,
+        transition: { duration: 0.2, ease: "easeIn", staggerChildren: 0.03, staggerDirection: -1 }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, x: -8 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
+    exit: { opacity: 0, x: -8, transition: { duration: 0.15 } }
+};
 
 function Header() {
     const pathname = usePathname();
@@ -92,53 +143,112 @@ function Header() {
                         </div>
                     </div>
 
-                    {/* Mobile menu button */}
-                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors">
-                        {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    {/* Mobile burger button */}
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        <BurgerIcon isOpen={isMenuOpen} />
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Navigation */}
-            <div className={`md:hidden border-t border-gray-200 bg-white overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="px-4 py-4 space-y-1">
-                    <Link href="/" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">{t('home')}</Link>
-                    <a onClick={() => setIsMenuOpen(false)} href="#services" className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">{t('services')}</a>
-                    <a onClick={() => setIsMenuOpen(false)} href="#contact" className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">{t('contact')}</a>
+            {/* Mobile Navigation con AnimatePresence */}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.div
+                        key="mobile-menu"
+                        variants={menuVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        className="md:hidden absolute top-full left-0 right-0 border-t border-gray-200 bg-white shadow-lg z-50 overflow-hidden"
+                    >
+                        <div className="px-4 py-4 space-y-1">
 
-                    {/* Mobile Currency */}
-                    <div>
-                        <button onClick={() => setIsCurrencyMobileOpen(!isCurrencyMobileOpen)} className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">
-                            <span className="flex items-center gap-2"><CircleDollarSign className="h-4 w-4" />{t('selectCurrency')}</span>
-                            <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isCurrencyMobileOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isCurrencyMobileOpen ? 'max-h-40 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
-                            <div className="ml-3 space-y-1 border-l-2 border-gray-200 pl-3">
-                                <a onClick={() => { changeCurrency("ARS"); setIsCurrencyMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${currency === "ARS" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>{t('currencies.ARS')}</a>
-                                <a onClick={() => { changeCurrency("USD"); setIsCurrencyMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${currency === "USD" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>{t('currencies.USD')}</a>
-                            </div>
+                            {/* Nav links */}
+                            {[
+                                { href: "/", label: t('home'), isLink: true },
+                                { href: "#services", label: t('services') },
+                                { href: "#contact", label: t('contact') },
+                            ].map((item) => (
+                                <motion.div key={item.href} variants={itemVariants}>
+                                    {item.isLink ? (
+                                        <Link href={item.href} onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">
+                                            {item.label}
+                                        </Link>
+                                    ) : (
+                                        <a href={item.href} onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">
+                                            {item.label}
+                                        </a>
+                                    )}
+                                </motion.div>
+                            ))}
+
+                            {/* Mobile Currency */}
+                            <motion.div variants={itemVariants}>
+                                <button onClick={() => setIsCurrencyMobileOpen(!isCurrencyMobileOpen)} className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">
+                                    <span className="flex items-center gap-2"><CircleDollarSign className="h-4 w-4" />{t('selectCurrency')}</span>
+                                    <motion.div animate={{ rotate: isCurrencyMobileOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                                        <ChevronDown className="w-4 h-4" />
+                                    </motion.div>
+                                </button>
+                                <AnimatePresence>
+                                    {isCurrencyMobileOpen && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.2, ease: "easeInOut" }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="ml-3 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
+                                                <a onClick={() => { changeCurrency("ARS"); setIsCurrencyMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${currency === "ARS" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>{t('currencies.ARS')}</a>
+                                                <a onClick={() => { changeCurrency("USD"); setIsCurrencyMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${currency === "USD" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>{t('currencies.USD')}</a>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+
+                            {/* Mobile Language */}
+                            <motion.div variants={itemVariants}>
+                                <button onClick={() => setIsLanguageMobileOpen(!isLanguageMobileOpen)} className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">
+                                    <span className="flex items-center gap-2"><Languages className="h-4 w-4" />{t('selectLanguage')}</span>
+                                    <motion.div animate={{ rotate: isLanguageMobileOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                                        <ChevronDown className="w-4 h-4" />
+                                    </motion.div>
+                                </button>
+                                <AnimatePresence>
+                                    {isLanguageMobileOpen && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.2, ease: "easeInOut" }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="ml-3 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
+                                                <a onClick={() => { changeLanguage("es"); setIsLanguageMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${language === "es" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>Español</a>
+                                                <a onClick={() => { changeLanguage("en"); setIsLanguageMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${language === "en" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>English</a>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+
+                            {/* CTA */}
+                            <motion.div variants={itemVariants} className="pt-2">
+                                <button className="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-md hover:bg-gray-800 transition-colors shadow-sm">
+                                    {t('getStarted')}
+                                </button>
+                            </motion.div>
+
                         </div>
-                    </div>
-
-                    {/* Mobile Language */}
-                    <div>
-                        <button onClick={() => setIsLanguageMobileOpen(!isLanguageMobileOpen)} className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">
-                            <span className="flex items-center gap-2"><Languages className="h-4 w-4" />{t('selectLanguage')}</span>
-                            <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isLanguageMobileOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isLanguageMobileOpen ? 'max-h-40 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}>
-                            <div className="ml-3 space-y-1 border-l-2 border-gray-200 pl-3">
-                                <a onClick={() => { changeLanguage("es"); setIsLanguageMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${language === "es" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>Español</a>
-                                <a onClick={() => { changeLanguage("en"); setIsLanguageMobileOpen(false); }} className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${language === "en" ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}>English</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button className="w-full mt-4 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-md hover:bg-gray-800 transition-colors shadow-sm">
-                        {t('getStarted')}
-                    </button>
-                </div>
-            </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 }

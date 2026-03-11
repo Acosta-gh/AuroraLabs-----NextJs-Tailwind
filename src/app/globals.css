@@ -132,7 +132,7 @@
 
   @media (max-width: 768px) {
     html {
-      scroll-padding-top: 325px;
+      scroll-padding-top: 10px;
     }
   }
 }

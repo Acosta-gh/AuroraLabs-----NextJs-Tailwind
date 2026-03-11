@@ -79,7 +79,7 @@ export const translations = {
             },
             item3: {
                 title: 'Entrega en semanas, no meses',
-                description: 'Landing pages en 1 semana. Webs institucionales en 2-3 semanas. E-commerce en 3-4 semanas.',
+                description: 'Landing pages en 1 semana. Webs institucionales en 2-3 semanas. E-commerce en ~4 semanas.',
             },
         },
 
@@ -151,7 +151,7 @@ export const translations = {
             whatIncludes: '¿Qué incluye en detalle?',
             idealFor: 'Ideal para:',
             importantNote: 'Importante:',
-            noteText: 'Para que tu sitio esté actualizado, seguro y funcione sin problemas, el hosting lo gestiono yo. Esto me permite resolver arreglos, actualizaciones y mejoras rápido, sin que tengas que lidiar con complicaciones técnicas. El dominio puede estar a tu nombre o lo puedo manejar yo. Si en algún momento decidís cancelar el plan mensual, te entrego todos los archivos y el sitio queda en tu poder.',
+            noteText: 'Para que tu sitio esté actualizado, seguro y funcione sin problemas, el hosting lo gestionamos nosotros. Esto nos permite resolver arreglos, actualizaciones y mejoras rápidamente, sin que tengas que lidiar con complicaciones técnicas. El dominio puede estar a tu nombre o lo puedo manejamos nosotros. Si en algún momento decidís cancelar el plan mensual, se te entrega la titularidad del dominio y un respaldo completo de la base de datos para que conserves toda tu información.',
             notFound: '¿No encontraste lo que buscabas?',
             notFoundText: 'Charlemos sobre tu proyecto y armamos una solución a medida.',
             contactNow: 'Contactar ahora',
@@ -226,7 +226,7 @@ export const translations = {
                         'Botón de consulta rápida por artículo',
                         'Capacitación para carga de stock'
                     ],
-                    notIncluded: ['Pasarela de pagos (Tarjetas/Mercado Pago)'],
+                    notIncluded: ['Pasarela de pagos (Mercado Pago)'],
                     details: {
                         description: 'La vidriera digital perfecta. Mostrá tus productos con fotos y precios, permitiendo que tus clientes armen su pedido y te lo envíen por WhatsApp.',
                         deliveryTime: '12-15 días hábiles',
@@ -527,7 +527,7 @@ export const translations = {
             },
             item3: {
                 title: 'Delivery in weeks, not months',
-                description: 'Landing pages in 1 week. Corporate websites in 2-3 weeks. E-commerce in 3-4 weeks. No delays or excuses.',
+                description: 'Landing pages in 1 week. Corporate websites in 2-3 weeks. E-commerce in ~4 weeks. No delays or excuses.',
             },
         },
 
@@ -599,7 +599,7 @@ export const translations = {
             whatIncludes: 'What’s included in detail?',
             idealFor: 'Ideal for:',
             importantNote: 'Important:',
-            noteText: 'To keep your site updated, secure, and running smoothly, hosting is managed by me. This allows for quick fixes, updates, and improvements without technical headaches for you. The domain can be in your name or managed by me. If you decide to cancel the monthly plan, all site files will be handed over to you.',
+            noteText: 'To ensure your site remains updated, secure, and functions smoothly, we manage the hosting. This allows us to handle fixes, updates, and improvements quickly, without you having to deal with technical complications. The domain can be under your name or managed by us. If you ever decide to cancel the monthly plan, I will hand over domain ownership and a full backup of the database so you can keep all your information.',
             notFound: 'Didn’t find what you’re looking for?',
             notFoundText: 'Let’s chat about your project and design a custom solution.',
             contactNow: 'Contact now',
@@ -673,7 +673,7 @@ export const translations = {
                         'Quick Item Inquiry Button',
                         'Stock upload training'
                     ],
-                    notIncluded: ['Payment Gateway (Credit Cards/Online Payments)'],
+                    notIncluded: ['Payment Gateway (PayPal/Stripe)'],
                     details: {
                         description: 'The perfect digital storefront. Showcase your products with photos and prices, allowing customers to build their order and send it to you via WhatsApp.',
                         deliveryTime: '12-15 business days',

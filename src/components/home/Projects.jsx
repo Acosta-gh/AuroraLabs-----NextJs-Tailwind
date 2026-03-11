@@ -11,9 +11,9 @@ function Projects() {
     const { t } = useTranslation();
 
     const projects = [
-        { title: t('projects.items.project0.title'), category: t('projects.items.project0.category'), description: t('projects.items.project0.description'), image: t('projects.items.project0.image'), metrics: t('projects.items.project0.metrics'), link: t('projects.items.project0.link') },
         { title: t('projects.items.project1.title'), category: t('projects.items.project1.category'), description: t('projects.items.project1.description'), image: t('projects.items.project1.image'), metrics: t('projects.items.project1.metrics'), link: t('projects.items.project1.link') },
         { title: t('projects.items.project2.title'), category: t('projects.items.project2.category'), description: t('projects.items.project2.description'), image: t('projects.items.project2.image'), metrics: t('projects.items.project2.metrics'), link: t('projects.items.project2.link') },
+        { title: t('projects.items.project0.title'), category: t('projects.items.project0.category'), description: t('projects.items.project0.description'), image: t('projects.items.project0.image'), metrics: t('projects.items.project0.metrics'), link: t('projects.items.project0.link') },
     ];
 
     return (

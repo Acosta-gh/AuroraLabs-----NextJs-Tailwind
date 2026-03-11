@@ -5,6 +5,7 @@ export const translations = {
         services: 'Servicios',
         about: 'Nosotros',
         contact: 'Contacto',
+        examples: 'Ejemplos',
         products: 'Productos',
         getStarted: 'Comenzar',
         backToHome: 'Volver al inicio',
@@ -454,6 +455,7 @@ export const translations = {
         about: 'About',
         contact: 'Contact',
         products: 'Products',
+        examples: 'Examples',
         getStarted: 'Get Started',
         backToHome: 'Back to home',
 

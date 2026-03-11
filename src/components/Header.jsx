@@ -112,6 +112,7 @@ function Header() {
                         <nav className="hidden md:flex items-center space-x-1">
                             <a href="#home" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors">{t('home')}</a>
                             <a href="#services" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors">{t('services')}</a>
+                            <a href="#projects" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors">{t('examples')}</a>
                             <a href="#contact" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors">{t('contact')}</a>
                         </nav>
                     )}

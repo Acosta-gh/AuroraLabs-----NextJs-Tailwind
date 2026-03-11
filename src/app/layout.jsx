@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   if (MAINTENANCE_MODE) {
     return (
-      <html lang="es">
+      <html lang="es" suppressHydrationWarning>
         <body>
           <Providers>
             <InDevelopment constructionProgress={constructionProgress} />
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   }
 
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <body>
         <Providers>
           <div className="min-h-screen flex flex-col">

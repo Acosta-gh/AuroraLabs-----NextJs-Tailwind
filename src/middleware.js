@@ -5,7 +5,9 @@ export function middleware(request) {
 
     if (pathname.includes('//')) {
         const normalized = pathname.replace(/\/+/g, '/');
-        return NextResponse.redirect(new URL(normalized + search, request.url));
+        const url = request.nextUrl.clone();
+        url.pathname = normalized;
+        return NextResponse.redirect(url);
     }
 
     return NextResponse.next();

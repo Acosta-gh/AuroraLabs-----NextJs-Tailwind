@@ -278,7 +278,7 @@ export const translations = {
             },
             q2: {
                 question: '¿Mi web va a aparecer en los primeros resultados de Google?',
-                answer: 'Te entrego una base técnica impecable para que Google te quiera, pero el SEO es un camino largo.',
+                answer: 'Te entrego una base técnica impecable para que Google te   quiera, pero el SEO es un camino largo.',
             },
             q3: {
                 question: '¿Podré gestionar el contenido yo mismo?',
@@ -295,6 +295,10 @@ export const translations = {
             q6: {
                 question: '¿Por qué elegir código personalizado?',
                 answer: 'Porque es más rápido, seguro y no es una copia barata de una plantilla que usa todo el mundo.',
+            },
+            q7: {
+                question: '¿Cuál es la diferencia entre un ajuste de contenido y un ajuste de diseño?',
+                answer: 'Un ajuste de contenido es para cambios puntuales de información: actualizar un texto, cambiar el logo, o retocar un color específico sin alterar el resto. Un ajuste de diseño implica cambios más profundos, como modificar o eliminar una sección entera, cambiar animaciones o reestructurar cómo se navega la página.',
             },
         },
 
@@ -620,7 +624,7 @@ export const translations = {
                         'Domain Included (Annual management)',
                         'Direct WhatsApp button',
                         'Basic SEO (Initial optimization)',
-                        '3 Monthly content updates',
+                        '3 Monthly content adjustments',
                     ],
                     notIncluded: ['Professional Emails', 'Self-management Panel (CMS)', 'Email Contact Form'],
                     details: {
@@ -742,6 +746,10 @@ export const translations = {
             q6: {
                 question: 'Why choose custom-coded development?',
                 answer: 'Because it’s faster, more secure, and not a cheap template copy that everyone else is using.',
+            },
+            q7: {
+                question: 'What is the difference between a content adjustment and a design adjustment?',
+                answer: 'A content adjustment is for specific information updates: updating text, changing the logo, or tweaking a specific color without altering the rest. A design adjustment involves deeper changes, such as modifying or removing an entire section, changing animations, or restructuring the page layout.',
             },
         },
 

@@ -1,3 +1,5 @@
+"use client";
+
 import Hero from "@/components/home/Hero";
 import WhyYouNeedThis from "@/components/home/WhyYouNeedThis";
 import WhatMakesMeDifferent from "@/components/home/WhatMakesMeDifferent";

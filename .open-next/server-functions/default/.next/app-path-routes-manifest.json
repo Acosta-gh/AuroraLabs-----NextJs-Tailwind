@@ -1,8 +1,8 @@
 {
   "/_not-found/page": "/_not-found",
-  "/favicon.ico/route": "/favicon.ico",
   "/api/contact/route": "/api/contact",
-  "/more-tiers/page": "/more-tiers",
+  "/favicon.ico/route": "/favicon.ico",
   "/page": "/",
-  "/privacy/page": "/privacy"
+  "/privacy/page": "/privacy",
+  "/more-tiers/page": "/more-tiers"
 }

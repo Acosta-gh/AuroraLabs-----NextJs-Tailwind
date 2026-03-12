@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   if (MAINTENANCE_MODE) {
     return (
       <html lang="es" suppressHydrationWarning>
-        <body>
+        <body suppressHydrationWarning>
           <Providers>
             <InDevelopment constructionProgress={constructionProgress} />
           </Providers>
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="es" className="scroll-smooth" suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <Providers>
           <div className="min-h-screen flex flex-col">
             <Header />

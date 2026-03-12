@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const runtime = 'edge';
+
 
 function json(data, status = 200) {
     return NextResponse.json(data, { status });

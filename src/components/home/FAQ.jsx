@@ -16,6 +16,8 @@ function FAQ() {
         { question: t('faq.q4.question'), answer: t('faq.q4.answer') },
         { question: t('faq.q5.question'), answer: t('faq.q5.answer') },
         { question: t('faq.q6.question'), answer: t('faq.q6.answer') },
+        { question: t('faq.q7.question'), answer: t('faq.q7.answer') },
+
     ];
 
     return (

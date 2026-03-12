@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cf": "npx @opennextjs/cloudflare build && cp public/_routes.json .open-next/assets/_routes.json",
     "start": "next start",
     "lint": "eslint"
   },

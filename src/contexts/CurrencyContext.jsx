@@ -4,7 +4,12 @@ import { createContext, useState, useEffect } from "react";
 export const CurrencyContext = createContext(null);
 
 export const CurrencyProvider = ({ children, initialCurrency = "ARS" }) => {
-    const [currency, setCurrency] = useState(initialCurrency);
+
+    const safeCurrency = initialCurrency && initialCurrency.length === 3
+        ? initialCurrency
+        : "ARS";
+
+    const [currency, setCurrency] = useState(safeCurrency);
 
     useEffect(() => {
         try {

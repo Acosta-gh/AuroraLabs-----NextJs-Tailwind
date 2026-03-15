@@ -1,6 +1,12 @@
+// app/api/contact/route.js
+// En lugar de llamar a Resend directamente, guardamos el contacto en PocketBase.
+// PocketBase se encarga de enviar el email via su hook interno.
+
 export const runtime = 'edge';
 
 import { NextResponse } from "next/server";
+
+const POCKETBASE_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || "https://api.auroralabs.com.ar";
 
 function json(data, status = 200) {
     return NextResponse.json(data, { status });
@@ -12,11 +18,13 @@ export async function OPTIONS() {
 
 export async function POST(request) {
     try {
+        // ── Leer IP del cliente ──────────────────────────────────────────────
         const clientIp =
             request.headers.get("CF-Connecting-IP") ||
             request.headers.get("x-forwarded-for") ||
             "unknown";
 
+        // ── Validar campos ───────────────────────────────────────────────────
         const body = await request.json();
         const name = (body.name || "").trim();
         const email = (body.email || "").trim();
@@ -34,34 +42,41 @@ export async function POST(request) {
             return json({ error: "El mensaje es muy corto.", code: "MESSAGE_TOO_SHORT" }, 400);
         }
 
-        // Enviar email con Resend
-        const emailRes = await fetch("https://api.resend.com/emails", {
+        // ── Guardar en PocketBase (colección "contacts") ─────────────────────
+        // El hook de PocketBase se dispara automáticamente después de este POST.
+        const pbRes = await fetch(`${POCKETBASE_URL}/api/collections/contacts/records`, {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                from: "AuroraLabs <noreply@auroralabs.com.ar>",
-                to: "contact@auroralabs.com.ar",
-                reply_to: email,
-                subject: `Nueva consulta de ${name}`,
-                html: `
-                    <h2>Nueva consulta desde auroralabs.com.ar</h2>
-                    <p><strong>Nombre:</strong> ${name}</p>
-                    <p><strong>Email:</strong> ${email}</p>
-                    <p><strong>Mensaje:</strong></p>
-                    <p>${message.replace(/\n/g, "<br>")}</p>
-                    <hr>
-                    <small>Enviado el ${new Date().toLocaleString("es-AR")} desde IP ${clientIp}</small>
-                `,
+                name,
+                email,
+                message,
+                ip: clientIp,
+                sent_at: new Date().toISOString(),
+                lang: body.lang || "en",
             }),
         });
 
-        if (!emailRes.ok) {
-            const err = await emailRes.text();
-            console.error("Resend error:", err);
-            return json({ error: "Error al enviar el email.", code: "EMAIL_ERROR" }, 500);
+        if (!pbRes.ok) {
+            let errorMsg = "Error al guardar la consulta.";
+            let pbError = {};
+
+            try {
+                pbError = await pbRes.json();
+                errorMsg = pbError.message || errorMsg;
+                console.error("PocketBase error:", pbError);
+            } catch (e) {
+                const errText = await pbRes.text();
+                console.error("PocketBase raw error:", errText);
+            }
+
+            return json({
+                error: errorMsg,
+                code: "DB_ERROR",
+                details: pbError
+            }, pbRes.status === 400 || pbRes.status === 403 ? pbRes.status : 500);
         }
 
         return json({ success: true, message: "¡Mensaje enviado!" }, 200);

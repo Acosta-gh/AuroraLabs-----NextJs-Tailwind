@@ -6,10 +6,16 @@ import { Mail } from 'lucide-react';
 import { FaWhatsapp } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/hooks/useLanguage";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+
 
 function FinalCTA() {
     const { t } = useTranslation();
+    const { language } = useLanguage();
+    console.log('language', language);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
@@ -30,17 +36,17 @@ function FinalCTA() {
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, lang: language }),
             });
             const data = await response.json();
             if (response.ok) {
                 setSubmitted(true);
             } else {
                 const errorMap = {
-                    RATE_LIMIT:      { title: t('finalCta.modal.rateLimitTitle'),      text: t('finalCta.modal.rateLimitText') },
-                    MISSING_FIELDS:  { title: t('finalCta.modal.missingFieldsTitle'),  text: t('finalCta.modal.missingFieldsText') },
-                    INVALID_EMAIL:   { title: t('finalCta.modal.invalidEmailTitle'),   text: t('finalCta.modal.invalidEmailText') },
-                    MESSAGE_TOO_SHORT:{ title: t('finalCta.modal.messageTooShortTitle'),text: t('finalCta.modal.messageTooShortText') },
+                    RATE_LIMIT: { title: t('finalCta.modal.rateLimitTitle'), text: t('finalCta.modal.rateLimitText') },
+                    MISSING_FIELDS: { title: t('finalCta.modal.missingFieldsTitle'), text: t('finalCta.modal.missingFieldsText') },
+                    INVALID_EMAIL: { title: t('finalCta.modal.invalidEmailTitle'), text: t('finalCta.modal.invalidEmailText') },
+                    MESSAGE_TOO_SHORT: { title: t('finalCta.modal.messageTooShortTitle'), text: t('finalCta.modal.messageTooShortText') },
                 };
                 setError(errorMap[data.code] || { title: t('finalCta.modal.errorTitle'), text: t('finalCta.modal.errorText') });
             }

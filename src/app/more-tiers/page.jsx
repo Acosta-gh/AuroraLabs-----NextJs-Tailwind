@@ -1,6 +1,9 @@
 "use client"
 
-import { PLAN_PRICES } from '@/constants/plans';
+//import { PLAN_PRICES } from '@/constants/plans';
+
+import { useServices } from "@/contexts/PlansContext";
+import { PricingSkeletonGrid } from "@/components/ui/PricingSkeletonCard";
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -28,55 +31,7 @@ function MoreTiers() {
 
     const phone = "5492926501348";
 
-    const plans = Object.keys(PLAN_PRICES).map(key => {
-        const config = PLAN_PRICES[key];
-
-
-        const discountPercentage =
-            config.onSale &&
-                config.originalPrice?.[currency] &&
-                config.price?.[currency]
-                ? Math.round(
-                    ((config.originalPrice[currency] - config.price[currency]) /
-                        config.originalPrice[currency]) *
-                    100
-                )
-                : null;
-
-        return {
-            ...config,
-            discountPercentage,
-            id: key,
-            name: t(`pricing.plans.${key}.name`),
-            tagline: t(`pricing.plans.${key}.tagline`),
-            // Mapeamos las features asegurándonos de que i esté definido
-            features: [0, 1, 2, 3, 4, 5, 6]
-                .map(i => t(`pricing.plans.${key}.features.${i}`))
-                .filter(val => !val.includes(`features.`)), // Si no existe la traducción, no la muestra
-
-            notIncluded: [0, 1, 2, 3, 4, 5, 6]
-                .map(i => t(`pricing.plans.${key}.notIncluded.${i}`))
-                .filter(val => !val.includes(`notIncluded.`)),
-
-            details: {
-                description: t(`pricing.plans.${key}.details.description`),
-                deliveryTime: t(`pricing.plans.${key}.details.deliveryTime`),
-                idealFor: [0, 1, 2]
-                    .map(i => t(`pricing.plans.${key}.details.idealFor.${i}`))
-                    .filter(val => !val.includes(`idealFor.`)),
-                includes: [0, 1, 2, 3]
-                    .map(i => ({
-                        title: t(`pricing.plans.${key}.details.includes.${i}.title`),
-                        description: t(`pricing.plans.${key}.details.includes.${i}.description`)
-                    }))
-                    // Filtramos los que no tienen traducción real
-                    .filter(item => !item.title.includes(`includes.`))
-            },
-            cta: t(`pricing.plans.${key}.cta`),
-            whatsappMessage: t(`pricing.plans.${key}.whatsappMessage`),
-            variant: config.popular ? "default" : "outline"
-        };
-    });
+    const { plans, loading } = useServices();
 
     const handleOpenModal = (plan) => {
         setSelectedPlan(plan);
@@ -115,149 +70,154 @@ function MoreTiers() {
 
                     {/* Pricing Cards */}
                     <div className="grid md:grid-cols-3 gap-6 mb-12">
-                        {plans.map((plan, index) => (
-                            <div
-                                key={index}
-                                className={`relative bg-background rounded-xl border transition-all overflow-hidden ${plan.disabled
-                                    ? 'opacity-60 cursor-not-allowed border-border/30 grayscale-[50%]'
-                                    : plan.popular
-                                        ? 'border-primary shadow-md hover:shadow-lg'
-                                        : 'border-border/50 hover:border-border hover:shadow-lg'
-                                    }`}
-                            >
-                                {plan.disabled && (
-                                    <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px] rounded-xl z-10 flex items-start justify-end p-4">
-                                        <span className="bg-muted/90 text-muted-foreground text-xs font-semibold px-4 py-2 rounded-full border border-border shadow-sm">
-                                            {t('pricing.comingSoon')}
-                                        </span>
-                                    </div>
-                                )}
-
-                                {/* Popular Badge - Ahora dentro de la tarjeta */}
-                                {plan.popular && !plan.disabled && (
-                                    <div className="absolute top-0 left-0 right-0 flex justify-center pt-4 z-20">
-                                        <span className="bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
-                                            {t('pricing.mostPopular')}
-                                        </span>
-                                    </div>
-                                )}
-
-                                {/* Sale Ribbon */}
-                                {plan.onSale && !plan.disabled && (
-                                    <div className="absolute transform rotate-45 bg-green-600 text-center text-white font-semibold py-1 right-[-35px] top-[32px] w-[170px] shadow-lg z-10">
-                                        {plan.discountPercentage ? `${plan.discountPercentage}% OFF` : '20% OFF'}
-                                    </div>
-                                )}
-
-                                {/* Header - Con padding superior extra si es popular */}
-                                <div className={`text-center mb-6 pb-6 border-b border-border/50 ${plan.popular && !plan.disabled ? 'pt-16' : 'pt-8'} px-8`}>
-                                    <h3 className="font-bold text-2xl mb-2">{plan.name}</h3>
-                                    <p className="text-sm text-muted-foreground mb-4">{plan.tagline}</p>
-
-                                    {/* Pricing with Sale */}
-                                    <div className="mb-2">
-                                        {plan.onSale && plan.originalPrice ? (
-                                            <div className="space-y-2">
-                                                {/* Original Price - Crossed Out */}
-                                                <div className="text-xl text-muted-foreground line-through decoration-2 decoration-red-500">
-                                                    {currency === "ARS"
-                                                        ? `$${plan.originalPrice.ARS.toLocaleString("es-AR")}`
-                                                        : `$${plan.originalPrice.USD.toLocaleString("en-US")}`}
-                                                </div>
-                                                {/* Sale Price - Highlighted */}
-                                                <div>
-                                                    <span className="text-4xl font-bold text-green-700 dark:text-green-500">
-                                                        {currency === "ARS"
-                                                            ? `$${plan.price.ARS.toLocaleString("es-AR")}`
-                                                            : `$${plan.price.USD.toLocaleString("en-US")}`}
-                                                    </span>
-                                                    <div className="text-sm text-muted-foreground mt-1">
-                                                        {currency === "ARS"
-                                                            ? `+ $${plan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
-                                                            : `+ $${plan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
-                                                    </div>
-                                                </div>
+                        {
+                            loading ? (
+                                <PricingSkeletonGrid count={3} />
+                            ) : (
+                                plans.map((plan, index) => (
+                                    <div
+                                        key={index}
+                                        className={`relative bg-background rounded-xl border transition-all overflow-hidden ${plan.disabled
+                                            ? 'opacity-60 cursor-not-allowed border-border/30 grayscale-[50%]'
+                                            : plan.popular
+                                                ? 'border-primary shadow-md hover:shadow-lg'
+                                                : 'border-border/50 hover:border-border hover:shadow-lg'
+                                            }`}
+                                    >
+                                        {plan.disabled && (
+                                            <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px] rounded-xl z-10 flex items-start justify-end p-4">
+                                                <span className="bg-muted/90 text-muted-foreground text-xs font-semibold px-4 py-2 rounded-full border border-border shadow-sm">
+                                                    {t('pricing.comingSoon')}
+                                                </span>
                                             </div>
-                                        ) : (
-                                            <>
-                                                <span className="text-4xl font-bold text-foreground">
-                                                    {currency === "ARS"
-                                                        ? `$${plan.price.ARS.toLocaleString("es-AR")}`
-                                                        : `$${plan.price.USD.toLocaleString("en-US")}`}
-                                                </span>
-                                                <span className="text-muted-foreground ml-1">
-                                                    {currency === "ARS"
-                                                        ? `+ $${plan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
-                                                        : `+ $${plan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
-                                                </span>
-                                            </>
                                         )}
-                                    </div>
 
-                                    {/* Sale Badge Below Price */}
-                                    {plan.onSale && (
-                                        <div className="mt-3">
-                                            <span className="inline-flex items-center gap-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200 dark:border-green-800">
-                                                <Zap className="h-3 w-3 fill-current" />
-                                                {t('pricing.limitedOffer')}
-                                            </span>
+                                        {/* Popular Badge - Ahora dentro de la tarjeta */}
+                                        {plan.popular && !plan.disabled && (
+                                            <div className="absolute top-0 left-0 right-0 flex justify-center pt-4 z-20">
+                                                <span className="bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                                                    {t('pricing.mostPopular')}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {/* Sale Ribbon */}
+                                        {plan.onSale && !plan.disabled && (
+                                            <div className="absolute transform rotate-45 bg-green-600 text-center text-white font-semibold py-1 right-[-35px] top-[32px] w-[170px] shadow-lg z-10">
+                                                {plan.discountPercentage ? `${plan.discountPercentage}% OFF` : '20% OFF'}
+                                            </div>
+                                        )}
+
+                                        {/* Header - Con padding superior extra si es popular */}
+                                        <div className={`text-center mb-6 pb-6 border-b border-border/50 ${plan.popular && !plan.disabled ? 'pt-16' : 'pt-8'} px-8`}>
+                                            <h3 className="font-bold text-2xl mb-2">{plan.name}</h3>
+                                            <p className="text-sm text-muted-foreground mb-4">{plan.tagline}</p>
+
+                                            {/* Pricing with Sale */}
+                                            <div className="mb-2">
+                                                {plan.onSale && plan.originalPrice ? (
+                                                    <div className="space-y-2">
+                                                        {/* Original Price - Crossed Out */}
+                                                        <div className="text-xl text-muted-foreground line-through decoration-2 decoration-red-500">
+                                                            {currency === "ARS"
+                                                                ? `$${plan.originalPrice.ARS.toLocaleString("es-AR")}`
+                                                                : `$${plan.originalPrice.USD.toLocaleString("en-US")}`}
+                                                        </div>
+                                                        {/* Sale Price - Highlighted */}
+                                                        <div>
+                                                            <span className="text-4xl font-bold text-green-700 dark:text-green-500">
+                                                                {currency === "ARS"
+                                                                    ? `$${plan.price.ARS.toLocaleString("es-AR")}`
+                                                                    : `$${plan.price.USD.toLocaleString("en-US")}`}
+                                                            </span>
+                                                            <div className="text-sm text-muted-foreground mt-1">
+                                                                {currency === "ARS"
+                                                                    ? `+ $${plan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
+                                                                    : `+ $${plan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <span className="text-4xl font-bold text-foreground">
+                                                            {currency === "ARS"
+                                                                ? `$${plan.price.ARS.toLocaleString("es-AR")}`
+                                                                : `$${plan.price.USD.toLocaleString("en-US")}`}
+                                                        </span>
+                                                        <span className="text-muted-foreground ml-1">
+                                                            {currency === "ARS"
+                                                                ? `+ $${plan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
+                                                                : `+ $${plan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
+                                                        </span>
+                                                    </>
+                                                )}
+                                            </div>
+
+                                            {/* Sale Badge Below Price */}
+                                            {plan.onSale && (
+                                                <div className="mt-3">
+                                                    <span className="inline-flex items-center gap-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200 dark:border-green-800">
+                                                        <Zap className="h-3 w-3 fill-current" />
+                                                        {t('pricing.limitedOffer')}
+                                                    </span>
+                                                </div>
+                                            )}
                                         </div>
-                                    )}
-                                </div>
 
-                                {/* Features */}
-                                <div className="space-y-4 mb-8 px-8">
-                                    <ul className="space-y-3">
-                                        {plan.features.map((feature, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm">
-                                                <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                                                <span className="text-foreground">{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                        {/* Features */}
+                                        <div className="space-y-4 mb-8 px-8">
+                                            <ul className="space-y-3">
+                                                {plan.features.map((feature, i) => (
+                                                    <li key={i} className="flex items-start gap-3 text-sm">
+                                                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                                                        <span className="text-foreground">{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
 
-                                    {plan.notIncluded.length > 0 && (
-                                        <ul className="space-y-3 pt-4 border-t border-border/30">
-                                            {plan.notIncluded.map((item, i) => (
-                                                <li key={i} className="flex items-start gap-3 text-sm">
-                                                    <X className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-                                                    <span className="text-muted-foreground">{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </div>
+                                            {plan.notIncluded.length > 0 && (
+                                                <ul className="space-y-3 pt-4 border-t border-border/30">
+                                                    {plan.notIncluded.map((item, i) => (
+                                                        <li key={i} className="flex items-start gap-3 text-sm">
+                                                            <X className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
+                                                            <span className="text-muted-foreground">{item}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </div>
 
-                                {/* CTA */}
-                                <div className="px-8 pb-8">
-                                    <a
-                                        href={`https://wa.me/${phone}?text=${encodeURIComponent(plan.whatsappMessage)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Button
-                                            size="lg"
-                                            variant={plan.variant}
-                                            className="w-full group"
-                                            disabled={plan.disabled}
-                                        >
-                                            <FaWhatsapp className="h-4 w-4" />
-                                            {plan.cta}
-                                        </Button>
-                                    </a>
-                                    <Button
-                                        size="lg"
-                                        variant="ghost"
-                                        disabled={plan.disabled}
-                                        className="w-full group mt-3 flex justify-center"
-                                        onClick={() => handleOpenModal(plan)}
-                                    >
-                                        <Info className="mr-2 h-4 w-4" />
-                                        {t('pricing.viewDetails')}
-                                    </Button>
-                                </div>
-                            </div>
-                        ))}
+                                        {/* CTA */}
+                                        <div className="px-8 pb-8">
+                                            <a
+                                                href={`https://wa.me/${phone}?text=${encodeURIComponent(plan.whatsappMessage)}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <Button
+                                                    size="lg"
+                                                    variant={plan.variant}
+                                                    className="w-full group"
+                                                    disabled={plan.disabled}
+                                                >
+                                                    <FaWhatsapp className="h-4 w-4" />
+                                                    {plan.cta}
+                                                </Button>
+                                            </a>
+                                            <Button
+                                                size="lg"
+                                                variant="ghost"
+                                                disabled={plan.disabled}
+                                                className="w-full group mt-3 flex justify-center"
+                                                onClick={() => handleOpenModal(plan)}
+                                            >
+                                                <Info className="mr-2 h-4 w-4" />
+                                                {t('pricing.viewDetails')}
+                                            </Button>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                     </div>
                 </div>
             </div>

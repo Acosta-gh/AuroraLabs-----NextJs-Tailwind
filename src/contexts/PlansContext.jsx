@@ -153,6 +153,8 @@ export function ServicesProvider({ children }) {
     useEffect(() => {
         cacheRef.current = readCacheFromStorage();
 
+        console.log("cache:", cacheRef.current);
+
         // Cache hit → usamos lo guardado sin fetch
         if (cacheRef.current) {
             setRawPlans(cacheRef.current.items);
@@ -192,7 +194,6 @@ export function ServicesProvider({ children }) {
     // combinados. Como rawPlans son los datos puros sin texto, no hay que volver
     // a hacer fetch: solo re-transformamos lo que ya tenemos.
     const plans = rawPlans
-        .filter(p => p.visible)                          // ocultamos los no visibles
         .sort((a, b) => a.order - b.order)               // respetamos el orden del CMS
         .map(rawPlan => mergePlanWithTranslations(rawPlan, t));
 

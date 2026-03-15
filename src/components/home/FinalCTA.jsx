@@ -11,6 +11,9 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 
+import { createContact } from '@/lib/pocketbase';
+
+
 function FinalCTA() {
     const { t } = useTranslation();
     const { language } = useLanguage();
@@ -33,24 +36,16 @@ function FinalCTA() {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...formData, lang: language }),
+            await createContact({
+                name: formData.name,
+                email: formData.email,
+                message: formData.message,
+                sent_at: new Date().toISOString(),
+                lang: language,
             });
-            const data = await response.json();
-            if (response.ok) {
-                setSubmitted(true);
-            } else {
-                const errorMap = {
-                    RATE_LIMIT: { title: t('finalCta.modal.rateLimitTitle'), text: t('finalCta.modal.rateLimitText') },
-                    MISSING_FIELDS: { title: t('finalCta.modal.missingFieldsTitle'), text: t('finalCta.modal.missingFieldsText') },
-                    INVALID_EMAIL: { title: t('finalCta.modal.invalidEmailTitle'), text: t('finalCta.modal.invalidEmailText') },
-                    MESSAGE_TOO_SHORT: { title: t('finalCta.modal.messageTooShortTitle'), text: t('finalCta.modal.messageTooShortText') },
-                };
-                setError(errorMap[data.code] || { title: t('finalCta.modal.errorTitle'), text: t('finalCta.modal.errorText') });
-            }
-        } catch {
+            setSubmitted(true);
+        } catch (err) {
+            console.error(err);
             setError({ title: t('finalCta.modal.errorTitle'), text: t('finalCta.modal.errorText') });
         } finally {
             setLoading(false);

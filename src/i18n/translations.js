@@ -112,6 +112,7 @@ export const translations = {
             title: 'Soluciones que impulsan negocios',
             subtitle: 'Ejemplos de proyectos activos y arquitecturas diseñadas para resultados reales',
             cta: 'Consultar por mi proyecto',
+            watch: 'Ver proyecto',
             items: {
                 project0: {
                     title: 'The Flare Initiative',
@@ -142,7 +143,8 @@ export const translations = {
 
         pricing: {
             title: 'Planes y mantenimiento',
-            subtitle: 'Elegí cómo querés trabajar una vez que tu sitio esté online',
+            //subtitle: 'Elegí cómo querés trabajar una vez que tu sitio esté online',
+            subtitle: 'Aprovechá precios de lanzamiento por apertura de Aurora Labs (Solo 5 cupos disponibles)',
             mostPopular: 'Más elegido',
             comingSoon: 'No disponible',
             viewDetails: 'Ver detalles',
@@ -152,7 +154,7 @@ export const translations = {
             whatIncludes: '¿Qué incluye en detalle?',
             idealFor: 'Ideal para:',
             importantNote: 'Importante:',
-            noteText: 'Para que tu sitio esté actualizado, seguro y funcione sin problemas, el hosting lo gestionamos nosotros. Esto nos permite resolver arreglos, actualizaciones y mejoras rápidamente, sin que tengas que lidiar con complicaciones técnicas. El dominio puede estar a tu nombre o lo puedo manejamos nosotros. Si en algún momento decidís cancelar el plan mensual, se te entrega la titularidad del dominio y un respaldo completo de la base de datos para que conserves toda tu información.',
+            noteText: 'Para que tu sitio esté actualizado, seguro y funcione sin problemas, el hosting lo gestionamos nosotros. Esto nos permite resolver arreglos, actualizaciones y mejoras rápidamente, sin que tengas que lidiar con complicaciones técnicas. El dominio puede estar a tu nombre o lo manejamos nosotros. Si en algún momento decidís cancelar el plan mensual, se te entrega la titularidad del dominio y un respaldo completo de la base de datos para que conserves toda tu información.',
             notFound: '¿No encontraste lo que buscabas?',
             notFoundText: 'Charlemos sobre tu proyecto y armamos una solución a medida.',
             contactNow: 'Contactar ahora',
@@ -161,20 +163,19 @@ export const translations = {
             // Pricing
             plans: {
                 presencia: {
-                    name: 'Landing',
+                    name: 'Presencia',
                     tagline: 'Ideal para: Profesionales y servicios de cercanía.',
                     cta: 'Empezar ahora',
-                    whatsappMessage: "¡Hola! Me interesa el plan Landing. ¿Podrías darme más información?",
+                    whatsappMessage: "¡Hola! Me interesa el plan Presencia. ¿Podrías darme más información?",
                     features: [
-                        'Diseño One-Page (Todo en una sección)',
+                        'Diseño One-Page moderno',
                         'Hosting y SSL (Sitio seguro)',
-                        'Dominio incluido (Gestión anual)',
+                        'Dominio incluido (.com.ar)',
                         'Botón de WhatsApp directo',
-                        'SEO Básico (Optimización inicial)',
+                        'SEO inicial para Google',
                         '3 Ajustes de contenido mensuales',
                     ],
-                    // Agregamos "Autogestión" para que no queden dudas
-                    notIncluded: ['Correos corporativos', 'Panel de autogestión (CMS)', 'Formulario de contacto por email'],
+                    notIncluded: ['Correos corporativos', 'Panel de autogestión (CMS)', 'Formulario de contacto por email', 'Multisección (Hasta 5 páginas)'],
                     details: {
                         description: 'La opción ideal para tener presencia en Google rápido y sin vueltas. Una landing page efectiva para que te encuentren y te contacten.',
                         deliveryTime: '5-7 días hábiles',
@@ -193,25 +194,24 @@ export const translations = {
                     cta: 'Elegir Plan Empresa',
                     whatsappMessage: "¡Hola! Me interesa el plan Empresa. Quisiera más detalles por favor.",
                     features: [
-                        'Todo lo del Plan Landing +',
-                        'Panel de autogestión (Blog/Noticias)',
+                        'Todo lo del Plan Presencia +',
                         'Web multisección (Hasta 5 páginas)',
-                        'Correo Corporativo profesional',
-                        'Formulario de contacto por email',
-                        '8 Ajustes de diseño mensuales',
-                        'Optimización SEO avanzada',
-                        'Capacitación de uso del panel'
+                        'Panel de Autogestión',
+                        'Carga de Cursos, Servicios o Noticias',
+                        'Correos corporativos profesionales',
+                        'Capacitación (Manuales PDF + Personal)',
+                        '5 Ajustes de diseño mensuales',
                     ],
-                    notIncluded: ['Catálogo de productos', 'Carrito de compras'],
+                    notIncluded: ['Carrito de compras', 'Pasarela de pagos'],
                     details: {
                         description: 'Diseñado para empresas que proyectan profesionalismo y quieren comunicar novedades o servicios de forma dinámica.',
                         deliveryTime: '12-15 días hábiles',
                         includes: [
-                            { title: 'Panel de Autogestión', description: 'Cargá tus propios blogs, servicios o novedades de forma autónoma con PocketBase.' },
-                            { title: 'Soporte Estructural Pro', description: 'Incluye 8 cambios mensuales para lo que el panel no permite (nuevas secciones o retoques visuales).' },
-                            { title: 'Capacitación Personalizada', description: 'Te enseño a usar tu panel para que gestiones tu información diaria sin depender de nadie.' }
+                            { title: 'Panel de Gestión', description: 'Cargá tus propios contenidos de forma autónoma.' },
+                            { title: 'Soporte de Diseño', description: '5 cambios mensuales para retocar la estructura, colores o secciones que el panel no maneja.' },
+                            { title: 'Capacitación Dual', description: 'Guías paso a paso en PDF y asesoramiento personal para que domines tu panel.' }
                         ],
-                        idealFor: ['Estudios jurídicos y contables', 'Consultoras', 'Clínicas y centros de salud']
+                        idealFor: ['Escuelas y academias', 'Estudios profesionales', 'Clínicas']
                     }
                 },
                 eCatalog: {
@@ -221,22 +221,22 @@ export const translations = {
                     whatsappMessage: "¡Hola! Me interesa el plan Catálogo. Tengo productos para mostrar.",
                     features: [
                         'Todo lo del Plan Empresa +',
-                        'Catálogo autogestionable (Productos/Precios)',
-                        'Carrito de pedidos directo a WhatsApp',
+                        'Catálogo con carga ilimitada',
+                        'Carrito de pedidos detallado',
                         'Buscador y filtros por categoría',
-                        'Botón de consulta rápida por artículo',
-                        'Capacitación para carga de stock'
+                        'Recibís el pedido listo al WhatsApp',
+                        'Te ayudamos a cargar hasta 20 productos'
                     ],
                     notIncluded: ['Pasarela de pagos (Mercado Pago)'],
                     details: {
                         description: 'La vidriera digital perfecta. Mostrá tus productos con fotos y precios, permitiendo que tus clientes armen su pedido y te lo envíen por WhatsApp.',
                         deliveryTime: '12-15 días hábiles',
                         includes: [
-                            { title: 'Gestión de Productos', description: 'Subí, editá y eliminá productos o servicios con un par de clics desde tu panel.' },
-                            { title: 'Carrito de Pedidos', description: 'Tus clientes eligen qué quieren y te llega el detalle listo para cerrar la venta por chat.' },
-                            { title: 'Filtros y Categorías', description: 'Organizá tu oferta para que encuentren todo al toque.' }
+                            { title: 'Panel de Gestión', description: 'Subí fotos y precios de tus productos con total independencia.' },
+                            { title: 'Carrito de Pedidos', description: 'El sistema organiza la compra y te la envía detallada a tu WhatsApp.' },
+                            { title: 'Soporte de Diseño', description: '5 cambios mensuales para retocar la estructura, colores o secciones que el panel no maneja.' },
                         ],
-                        idealFor: ['Gastronómicos (Heladerías/Rotiserías)', 'Showrooms', 'Repuesteras y Corralones']
+                        idealFor: ['Showrooms y comercios', 'Gastronómicos', 'Corralones y repuesteras']
                     }
                 },
                 ecommerce: {
@@ -265,6 +265,28 @@ export const translations = {
                         idealFor: ['Tiendas de ropa', 'Mueblerías', 'Tiendas de electrónica']
                     }
                 },
+                custom: {
+                    name: 'A Medida',
+                    tagline: 'Sistemas complejos y desarrollos específicos.',
+                    cta: 'Consultar presupuesto',
+                    whatsappMessage: "¡Hola! Tengo un proyecto especial que requiere un desarrollo a medida.",
+                    features: [
+                        'Sistemas de gestión internos',
+                        'Integraciones con APIs externas',
+                        'Funcionalidades personalizadas',
+                        'Escalabilidad garantizada',
+                        'Soporte técnico dedicado',
+                    ],
+                    details: {
+                        description: 'Si tu proyecto requiere una plataforma educativa de gran escala o funciones únicas, lo diseñamos desde cero.',
+                        deliveryTime: 'A convenir',
+                        includes: [
+                            { title: 'Análisis Técnico', description: 'Definimos la mejor arquitectura para tu sistema.' },
+                            { title: 'Desarrollo Exclusivo', description: 'Código único para resolver tus necesidades puntuales.' }
+                        ],
+                        idealFor: ['Startups', 'Plataformas grandes']
+                    }
+                },
             },
         },
 
@@ -286,7 +308,7 @@ export const translations = {
             },
             q4: {
                 question: '¿Qué incluye el servicio de mantenimiento?',
-                answer: 'Hosting, SSL, backups y soporte técnico. Es tener un departamento de sistemas a disposición.',
+                answer: 'Hosting profesional, certificado SSL (el candadito verde), copias de seguridad y soporte técnico. Es como tener tu propio desarrollador a disposición para que tu web nunca se quede atrás.',
             },
             q5: {
                 question: '¿Y si el diseño final no me gusta?',
@@ -298,7 +320,11 @@ export const translations = {
             },
             q7: {
                 question: '¿Cuál es la diferencia entre un ajuste de contenido y un ajuste de diseño?',
-                answer: 'Un ajuste de contenido es para cambios puntuales de información: actualizar un texto, cambiar el logo, o retocar un color específico sin alterar el resto. Un ajuste de diseño implica cambios más profundos, como modificar o eliminar una sección entera, cambiar animaciones o reestructurar cómo se navega la página.',
+                answer: 'Un ajuste de contenido es cambiar información puntual: actualizar un texto o reemplazar una imagen. Un ajuste de diseño implica retocar la estructura: mover una sección de lugar, cambiar el estilo de un menú o agregar un elemento nuevo que no estaba originalmente. En los planes con panel, vos gestionás el contenido y yo me encargo de los ajustes de diseño.',
+            },
+            q8: {
+                question: '¿Por qué hay un descuento del 50%?',
+                answer: 'Estamos celebrando el lanzamiento de Aurora Labs. Por eso, ofrecemos una bonificación especial del 50% en el setup para los primeros 5 clientes que se sumen al equipo.',
             },
         },
 
@@ -564,6 +590,7 @@ export const translations = {
             title: 'Business-Driven Solutions',
             subtitle: 'Examples of live projects and architectures designed for real-world results',
             cta: 'Inquire about my project',
+            watch: 'Watch project',
             items: {
                 project0: {
                     title: 'The Flare Initiative',
@@ -614,56 +641,55 @@ export const translations = {
 
             plans: {
                 presencia: {
-                    name: 'Landing',
-                    tagline: 'Ideal for: Professionals and local services.',
-                    cta: 'Get started',
-                    whatsappMessage: "Hi! I'm interested in the Landing plan. Could you provide more information?",
+                    name: 'Presence',
+                    tagline: 'Ideal for: Professionals and local service providers.',
+                    cta: 'Get Started',
+                    whatsappMessage: "Hi! I'm interested in the Presence plan. Could you give me more information?",
                     features: [
-                        'One-Page Design (Everything in one section)',
+                        'Modern One-Page Design',
                         'Hosting & SSL (Secure Site)',
-                        'Domain Included (Annual management)',
-                        'Direct WhatsApp button',
-                        'Basic SEO (Initial optimization)',
-                        '3 Monthly content adjustments',
+                        'Domain included (.com)',
+                        'Direct WhatsApp Button',
+                        'Basic SEO for Google',
+                        '3 Monthly Content Adjustments',
                     ],
-                    notIncluded: ['Professional Emails', 'Self-management Panel (CMS)', 'Email Contact Form'],
+                    notIncluded: ['Corporate email accounts', 'Self-management Panel (CMS)', 'Email contact form', 'Multi-section (Up to 5 pages)'],
                     details: {
-                        description: 'The ideal option to establish a fast Google presence without the hassle. An effective landing page designed to get you found and contacted.',
-                        deliveryTime: '5-7 business days',
+                        description: 'The ideal option to get on Google fast and hassle-free. An effective landing page so people can find you and get in touch.',
+                        deliveryTime: '5–7 business days',
                         includes: [
-                            { title: 'Professional Hosting & SSL', description: 'Optimized server and security certificate to ensure your site is trustworthy.' },
-                            { title: 'One-Page Design', description: 'A modern, responsive single page with clear sections built to convert visitors into customers.' },
-                            { title: 'Native Performance', description: 'Developed with pure code for instant loading. I make sure your website flies.' },
-                            { title: 'Domain Management', description: 'Annual management of your brand name (.com).' }
+                            { title: 'Professional Hosting & SSL', description: 'Optimized server and security certificate so your website is trustworthy.' },
+                            { title: 'One-Page Design', description: 'A single modern, responsive page with clear sections to turn visitors into clients.' },
+                            { title: 'Native Performance', description: 'Built with clean code for instant load times. I make sure your site flies.' },
+                            { title: 'Domain included', description: 'Annual management of your brand name (.com).' }
                         ],
-                        idealFor: ['Local trades and services', 'Product launches', 'Lead generation pages']
+                        idealFor: ['Trades & local services', 'Product launches', 'Capture pages']
                     }
                 },
                 empresa: {
                     name: 'Business',
-                    tagline: 'Ideal for: Businesses needing authority and content.',
+                    tagline: 'Ideal for: Businesses that need authority and dynamic content.',
                     cta: 'Choose Business Plan',
-                    whatsappMessage: "Hi! I'm interested in the Business plan. I would like more details, please.",
+                    whatsappMessage: "Hi! I'm interested in the Business plan. I'd love more details.",
                     features: [
-                        'Everything in the Landing Plan +',
-                        'Self-management Panel (Blog/News)',
-                        'Multi-section Website (Up to 5 pages)',
-                        'Professional Corporate Email',
-                        'Email Contact Form',
-                        '8 Monthly design adjustments',
-                        'Advanced SEO Optimization',
-                        'Panel usage training'
+                        'All from the Presence Plan +',
+                        'Multi-section website (Up to 5 pages)',
+                        'Self-Management Panel',
+                        'Upload Courses, Services, or News',
+                        'Professional corporate email accounts',
+                        'Training (PDF Manuals + Personal)',
+                        '5 Monthly Design Adjustments',
                     ],
-                    notIncluded: ['Product Catalog', 'Shopping Cart'],
+                    notIncluded: ['Shopping cart', 'Payment gateway'],
                     details: {
-                        description: 'Designed for companies that project professionalism and want to communicate news or services dynamically.',
-                        deliveryTime: '12-15 business days',
+                        description: 'Designed for businesses that project professionalism and want to dynamically communicate news or services.',
+                        deliveryTime: '12–15 business days',
                         includes: [
-                            { title: 'Self-management Panel', description: 'Upload your own blogs, services, or news autonomously using PocketBase.' },
-                            { title: 'Pro Structural Support', description: 'Includes 8 monthly changes for elements outside the panel (new sections or visual tweaks).' },
-                            { title: 'Personalized Training', description: "I'll teach you how to use your panel so you can manage your daily info independently." }
+                            { title: 'Management Panel', description: 'Upload your own content independently.' },
+                            { title: 'Design Support', description: '5 monthly changes to tweak layout, colors, or sections not handled by the panel.' },
+                            { title: 'Dual Training', description: 'Step-by-step PDF guides and personal guidance so you master your panel.' }
                         ],
-                        idealFor: ['Law and accounting firms', 'Consultancies', 'Clinics and health centers']
+                        idealFor: ['Schools & academies', 'Professional firms', 'Clinics']
                     }
                 },
                 eCatalog: {
@@ -673,48 +699,70 @@ export const translations = {
                     whatsappMessage: "Hi! I'm interested in the Catalog plan. I have products to showcase.",
                     features: [
                         'Everything in the Business Plan +',
-                        'Self-managed Catalog (Products/Prices)',
-                        'WhatsApp Order Cart',
-                        'Category Search & Filters',
-                        'Quick Item Inquiry Button',
-                        'Stock upload training'
+                        'Catalog with unlimited uploads',
+                        'Detailed order cart',
+                        'Search and category filters',
+                        'Receive orders ready-to-go on WhatsApp',
+                        'We help you upload up to 20 products'
                     ],
-                    notIncluded: ['Payment Gateway (PayPal/Stripe)'],
+                    notIncluded: ['Payment gateway (Mercado Pago)'],
                     details: {
-                        description: 'The perfect digital storefront. Showcase your products with photos and prices, allowing customers to build their order and send it to you via WhatsApp.',
-                        deliveryTime: '12-15 business days',
+                        description: 'The perfect digital storefront. Show your products with photos and prices, letting customers build their order and send it to you via WhatsApp.',
+                        deliveryTime: '12–15 business days',
                         includes: [
-                            { title: 'Product Management', description: 'Add, edit, and delete products or services with just a few clicks from your panel.' },
-                            { title: 'Order Cart', description: 'Your customers choose what they want, and you receive the details ready to close the sale via chat.' },
-                            { title: 'Filters & Categories', description: 'Organize your offer so customers find exactly what they need instantly.' }
+                            { title: 'Management Panel', description: 'Upload product photos and prices with full independence.' },
+                            { title: 'Order Cart', description: 'The system organizes the purchase and sends it in detail to your WhatsApp.' },
+                            { title: 'Design Support', description: '5 monthly changes to tweak layout, colors, or sections not handled by the panel.' },
                         ],
-                        idealFor: ['Food services (Takeout/Delivery)', 'Showrooms', 'Parts and hardware stores']
+                        idealFor: ['Showrooms & retail stores', 'Food & beverage', 'Hardware & auto parts stores']
                     }
                 },
                 ecommerce: {
                     name: 'E-commerce',
-                    tagline: 'Ideal for: Businesses selling 24/7.',
+                    tagline: 'Ideal for: Businesses that sell 24/7.',
                     cta: 'Launch my Store',
                     whatsappMessage: "Hi! I'm interested in the E-commerce plan. Can we talk?",
                     features: [
                         'Everything in the Business Plan +',
                         'Shopping cart with online payment',
-                        'Payment Gateway Integration',
-                        'Automatic Stock & Inventory management',
-                        'Order & Sales Control Panel',
-                        'Customer Accounts (Register/Login)',
-                        '15 Monthly design adjustments',
-                        'Priority support and training'
+                        'Payment gateway (Mercado Pago)',
+                        'Automatic stock & inventory management',
+                        'Orders & sales control panel',
+                        'Customer accounts (Register/Login)',
+                        '15 Monthly Design Adjustments',
+                        'Priority support & training'
                     ],
                     details: {
-                        description: 'The ultimate solution for selling online with integrated payments, full stock control, and a complete customer database.',
-                        deliveryTime: 'To be discussed',
+                        description: 'The ultimate solution for selling online with integrated payments, full stock control, and a customer database.',
+                        deliveryTime: 'To be agreed',
                         includes: [
-                            { title: 'Payment Gateway', description: 'Full integration to accept all credit cards and payment methods automatically.' },
-                            { title: 'User System', description: 'Customers can register, view previous orders, and save favorites.' },
-                            { title: 'Full Control', description: 'Complete administrative panel to manage sales, shipping, and real-time stock levels.' }
+                            { title: 'Payment Gateway', description: 'Mercado Pago integration to accept any payment method automatically.' },
+                            { title: 'User System', description: 'Customers can register, view past orders, and save favorites.' },
+                            { title: 'Full Control', description: 'Complete admin panel to manage sales, shipping, and stock levels.' }
                         ],
-                        idealFor: ['Clothing stores', 'Furniture stores', 'Electronics and tech stores']
+                        idealFor: ['Clothing stores', 'Furniture stores', 'Electronics stores']
+                    }
+                },
+                custom: {
+                    name: 'Custom',
+                    tagline: 'Complex systems and specific developments.',
+                    cta: 'Request a Quote',
+                    whatsappMessage: "Hi! I have a special project that requires a custom development.",
+                    features: [
+                        'Internal management systems',
+                        'Third-party API integrations',
+                        'Custom functionalities',
+                        'Guaranteed scalability',
+                        'Dedicated technical support',
+                    ],
+                    details: {
+                        description: 'If your project requires a large-scale educational platform or unique features, we design it from scratch.',
+                        deliveryTime: 'To be agreed',
+                        includes: [
+                            { title: 'Technical Analysis', description: 'We define the best architecture for your system.' },
+                            { title: 'Exclusive Development', description: 'Unique code built to solve your specific needs.' }
+                        ],
+                        idealFor: ['Startups', 'Large platforms']
                     }
                 },
             },

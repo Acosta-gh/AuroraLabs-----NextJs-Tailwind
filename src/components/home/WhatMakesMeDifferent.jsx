@@ -42,11 +42,11 @@ function WhatMakesMeDifferent() {
                                                         <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                                                             <Icon className="h-6 w-6 text-primary" />
                                                         </div>
-                                                        {/*
+
                                                         <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">
                                                             {item.number}
                                                         </div>
-                                                         */}
+
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2 pt-2">

@@ -29,7 +29,7 @@ function Projects() {
                 <Fade triggerOnce cascade damping={0.15} delay={200}>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                         {projects.map((project, index) => (
-                            <Link key={index} className="group relative" href={project.link} target="_blank">
+                            <div key={index} className="group relative" >
                                 <div className="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
                                 <div className="relative bg-background rounded-xl overflow-hidden border border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg">
                                     <div className="relative h-48 overflow-hidden bg-muted">
@@ -44,11 +44,17 @@ function Projects() {
                                         <h3 className="font-semibold text-lg text-foreground">{project.title}</h3>
                                         <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
                                         <div className="pt-3 border-t border-border/50">
-                                            <p className="text-sm font-medium text-primary">{project.metrics}</p>
+                                            {/* <p className="text-sm font-medium text-primary">{project.metrics}</p> */}
+                                            <Link href={project.link} target="_blank">
+                                                <Button size="lg" variant="default" className="group w-full">
+                                                    {t('projects.watch')}
+                                                    <ExternalLink className="ml-2 h-4 w-4 " />
+                                                </Button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 </Fade>

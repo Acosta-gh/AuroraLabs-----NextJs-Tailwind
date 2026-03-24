@@ -4,6 +4,7 @@
 
 import { useServices } from "@/contexts/PlansContext";
 import { PricingSkeletonGrid } from "@/components/ui/PricingSkeletonCard";
+import { formatPrice, calculateDiscount } from '@/lib/priceHelper';
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -74,7 +75,7 @@ function MoreTiers() {
                             loading ? (
                                 <PricingSkeletonGrid count={3} />
                             ) : (
-                                plans.map((plan, index) => (
+                                (plans || []).map((plan, index) => (
                                     <div
                                         key={index}
                                         className={`relative bg-background rounded-xl border transition-all overflow-hidden ${plan.disabled
@@ -104,7 +105,7 @@ function MoreTiers() {
                                         {/* Sale Ribbon */}
                                         {plan.onSale && !plan.disabled && (
                                             <div className="absolute transform rotate-45 bg-green-600 text-center text-white font-semibold py-1 right-[-35px] top-[32px] w-[170px] shadow-lg z-10">
-                                                {plan.discountPercentage ? `${plan.discountPercentage}% OFF` : '20% OFF'}
+                                                {calculateDiscount(plan.originalPrice, plan.price, currency) || plan.discountPercentage ? `${calculateDiscount(plan.originalPrice, plan.price, currency) || plan.discountPercentage}% OFF` : '20% OFF'}
                                             </div>
                                         )}
 
@@ -115,39 +116,29 @@ function MoreTiers() {
 
                                             {/* Pricing with Sale */}
                                             <div className="mb-2">
-                                                {plan.onSale && plan.originalPrice ? (
+                                                {plan.onSale && plan.originalPrice && plan.price && plan.originalPrice[currency] && plan.price[currency] ? (
                                                     <div className="space-y-2">
                                                         {/* Original Price - Crossed Out */}
                                                         <div className="text-xl text-muted-foreground line-through decoration-2 decoration-red-500">
-                                                            {currency === "ARS"
-                                                                ? `$${plan.originalPrice.ARS.toLocaleString("es-AR")}`
-                                                                : `$${plan.originalPrice.USD.toLocaleString("en-US")}`}
+                                                            {formatPrice(plan.originalPrice, currency)}
                                                         </div>
                                                         {/* Sale Price - Highlighted */}
                                                         <div>
                                                             <span className="text-4xl font-bold text-green-700 dark:text-green-500">
-                                                                {currency === "ARS"
-                                                                    ? `$${plan.price.ARS.toLocaleString("es-AR")}`
-                                                                    : `$${plan.price.USD.toLocaleString("en-US")}`}
+                                                                {formatPrice(plan.price, currency)}
                                                             </span>
                                                             <div className="text-sm text-muted-foreground mt-1">
-                                                                {currency === "ARS"
-                                                                    ? `+ $${plan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
-                                                                    : `+ $${plan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
+                                                                + {formatPrice(plan.monthly, currency)}{t('pricing.perMonth')}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 ) : (
                                                     <>
                                                         <span className="text-4xl font-bold text-foreground">
-                                                            {currency === "ARS"
-                                                                ? `$${plan.price.ARS.toLocaleString("es-AR")}`
-                                                                : `$${plan.price.USD.toLocaleString("en-US")}`}
+                                                            {formatPrice(plan.price, currency)}
                                                         </span>
                                                         <span className="text-muted-foreground ml-1">
-                                                            {currency === "ARS"
-                                                                ? `+ $${plan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
-                                                                : `+ $${plan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
+                                                            + {formatPrice(plan.monthly, currency)}{t('pricing.perMonth')}
                                                         </span>
                                                     </>
                                                 )}
@@ -238,7 +229,7 @@ function MoreTiers() {
                                     {selectedPlan.onSale && (
                                         <span className="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
                                             <Zap className="h-3 w-3 fill-current" />
-                                            {selectedPlan.discountPercentage ? `${selectedPlan.discountPercentage}% OFF` : 'OFERTA'}
+                                            {calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency) ? `${calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency)}% OFF` : 'OFERTA'}
                                         </span>
                                     )}
                                 </DialogTitle>
@@ -250,46 +241,37 @@ function MoreTiers() {
                             <div className="space-y-6 mt-4">
                                 {/* Precio */}
                                 <div className={`rounded-lg p-4 text-center border ${selectedPlan.onSale ? 'bg-gradient-to-br from-green-50 to-green-50 dark:from-green-950/20 dark:to-green-950/20 border-green-200 dark:border-green-800' : 'bg-muted/50 border-border/50'}`}>
-                                    {selectedPlan.onSale && selectedPlan.originalPrice ? (
+                                    {selectedPlan.onSale && selectedPlan.originalPrice && selectedPlan.price && selectedPlan.originalPrice[currency] && selectedPlan.price[currency] ? (
                                         <div className="space-y-2">
                                             {/* Original Price */}
                                             <div className="text-lg text-muted-foreground line-through decoration-2 decoration-red-500">
-                                                {currency === "ARS"
-                                                    ? `$${selectedPlan.originalPrice.ARS.toLocaleString("es-AR")}`
-                                                    : `$${selectedPlan.originalPrice.USD.toLocaleString("en-US")}`}
+                                                {formatPrice(selectedPlan.originalPrice, currency)}
                                             </div>
                                             {/* Sale Price */}
                                             <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
-                                                {currency === "ARS"
-                                                    ? `$${selectedPlan.price.ARS.toLocaleString("es-AR")}`
-                                                    : `$${selectedPlan.price.USD.toLocaleString("en-US")}`}
+                                                {formatPrice(selectedPlan.price, currency)}
                                             </div>
                                             <div className="text-sm text-muted-foreground">
-                                                {currency === "ARS"
-                                                    ? `+ $${selectedPlan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
-                                                    : `+ $${selectedPlan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
+                                                + {formatPrice(selectedPlan.monthly, currency)}{t('pricing.perMonth')}
                                             </div>
                                             {/* Sale Badge */}
                                             <div className="pt-2">
                                                 <span className="inline-flex items-center gap-1.5 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200 dark:border-green-700">
                                                     <Zap className="h-3 w-3 fill-current" />
-                                                    {t('pricing.saved')} {currency === "ARS"
-                                                        ? `$${(selectedPlan.originalPrice.ARS - selectedPlan.price.ARS).toLocaleString("es-AR")}`
-                                                        : `$${(selectedPlan.originalPrice.USD - selectedPlan.price.USD).toLocaleString("en-US")}`}!
+                                                    {t('pricing.saved')} {formatPrice({
+                                                        ARS: selectedPlan.originalPrice.ARS - selectedPlan.price.ARS,
+                                                        USD: selectedPlan.originalPrice.USD - selectedPlan.price.USD
+                                                    }, currency)}!
                                                 </span>
                                             </div>
                                         </div>
                                     ) : (
                                         <>
                                             <div className="text-3xl font-bold text-foreground mb-1">
-                                                {currency === "ARS"
-                                                    ? `$${selectedPlan.price.ARS.toLocaleString("es-AR")}`
-                                                    : `$${selectedPlan.price.USD.toLocaleString("en-US")}`}
+                                                {formatPrice(selectedPlan.price, currency)}
                                             </div>
                                             <div className="text-sm text-muted-foreground">
-                                                {currency === "ARS"
-                                                    ? `+ $${selectedPlan.monthly.ARS.toLocaleString("es-AR")}${t('pricing.perMonth')}`
-                                                    : `+ $${selectedPlan.monthly.USD.toLocaleString("en-US")}${t('pricing.perMonth')}`}
+                                                + {formatPrice(selectedPlan.monthly, currency)}{t('pricing.perMonth')}
                                             </div>
                                         </>
                                     )}

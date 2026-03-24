@@ -16,6 +16,8 @@ import { useServices } from "@/contexts/PlansContext";
 // Skeleton que imita la forma de las cards
 import { PricingSkeletonGrid } from "@/components/ui/PricingSkeletonCard";
 
+import { formatPrice, calculateDiscount } from '@/lib/priceHelper';
+
 
 // ─── Constante ────────────────────────────────────────────────────────────────
 
@@ -32,29 +34,14 @@ function whatsappLink(message) {
     return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message ?? '')}`;
 }
 
-/** Calcula el porcentaje de descuento entre precio original y precio actual */
-function calcDiscount(original, current) {
-    if (!original || !current) return null;
-    return Math.round(((original - current) / original) * 100);
-}
-
 
 // ─── Subcomponente: precio con o sin oferta ───────────────────────────────────
 
 function PriceDisplay({ plan, currency }) {
     const isOnSale = plan.onSale;
 
-    // Formatea un objeto de precio { ARS, USD } según la moneda activa
-    const fmt = (priceObj) =>
-        currency === "ARS"
-            ? `$${priceObj?.ARS?.toLocaleString("es-AR")}`
-            : `$${priceObj?.USD?.toLocaleString("en-US")}`;
-
-    // Precio mensual formateado
-    const monthlyText =
-        currency === "ARS"
-            ? `$${plan.monthly?.ARS?.toLocaleString("es-AR")}`
-            : `$${plan.monthly?.USD?.toLocaleString("en-US")}`;
+    const fmt = (priceObj) => formatPrice(priceObj, currency, "Consultar");
+    const monthlyText = formatPrice(plan.monthly, currency, null);
 
     if (isOnSale) {
         return (
@@ -68,27 +55,26 @@ function PriceDisplay({ plan, currency }) {
                     <span className="text-4xl font-bold text-green-700">
                         {fmt(plan.price)}
                     </span>
-                    <div className="text-sm text-muted-foreground mt-1">
-                        + {monthlyText}/mes
-                    </div>
+                    {monthlyText && (
+                        <div className="text-sm text-muted-foreground mt-1">
+                            + {monthlyText}/mes
+                        </div>
+                    )}
                 </div>
             </div>
         );
     }
 
-    const hasOriginalPrice = plan.originalPrice != null;
-    const displayPrice =
-        !isOnSale && hasOriginalPrice && plan.originalPrice < plan.price
-            ? plan.originalPrice
-            : plan.price;
     return (
         <>
             <span className="text-4xl font-bold text-foreground">
-                {displayPrice}
+                {fmt(plan.price)}
             </span>
-            <span className="text-muted-foreground ml-1">
-                + {monthlyText}/mes
-            </span>
+            {monthlyText && (
+                <span className="text-muted-foreground ml-1">
+                    + {monthlyText}/mes
+                </span>
+            )}
         </>
     );
 }
@@ -101,15 +87,12 @@ function Pricing() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Datos dinámicos desde PocketBase (con cache)
-    const { plans, loading } = useServices();
+    const { plans, loading, error } = useServices();
     const { currency } = useCurrency();
     const { t } = useTranslation();
 
-    console.log("plans:", plans);
-    console.log("loading:", loading);
-
     // En la home solo mostramos los primeros N planes
-    const visiblePlans = plans.slice(0, VISIBLE_COUNT);
+    const visiblePlans = (plans || []).slice(0, VISIBLE_COUNT);
 
     function handleOpenModal(plan) {
         setSelectedPlan(plan);
@@ -142,10 +125,12 @@ function Pricing() {
                                 <PricingSkeletonGrid count={VISIBLE_COUNT} />
                             ) : (
                                 visiblePlans.map((plan, index) => {
-                                    const discountPercentage = calcDiscount(
-                                        plan.originalPrice?.[currency],
-                                        plan.price?.[currency]
+                                    const discount = calculateDiscount(
+                                        plan.originalPrice,
+                                        plan.price,
+                                        currency
                                     );
+                                    const discountPercentage = discount || plan.discountPercentage;
 
                                     return (
                                         <div
@@ -283,8 +268,8 @@ function Pricing() {
                                     {selectedPlan.onSale && (
                                         <span className="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
                                             <Zap className="h-3 w-3 fill-current" />
-                                            {calcDiscount(selectedPlan.originalPrice?.[currency], selectedPlan.price?.[currency])
-                                                ? `${calcDiscount(selectedPlan.originalPrice?.[currency], selectedPlan.price?.[currency])}% OFF`
+                                            {calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency)
+                                                ? `${calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency)}% OFF`
                                                 : 'OFERTA'
                                             }
                                         </span>
@@ -302,7 +287,7 @@ function Pricing() {
                                     <PriceDisplay plan={selectedPlan} currency={currency} />
 
                                     {/* Cuánto ahorrás */}
-                                    {selectedPlan.onSale && selectedPlan.originalPrice && (
+                                    {selectedPlan.onSale && selectedPlan.originalPrice && selectedPlan.price && selectedPlan.originalPrice[currency] && selectedPlan.price[currency] && (
                                         <div className="pt-2 mt-2">
                                             <span className="inline-flex items-center gap-1.5 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200">
                                                 <Zap className="h-3 w-3 fill-current" />

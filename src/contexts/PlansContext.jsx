@@ -9,6 +9,7 @@ import { useCurrency } from '@/hooks/useCurrency';
 // ─── Configuración del cache ──────────────────────────────────────────────────
 
 const CACHE_KEY = 'plans_cache';
+const CACHE_VERSION = 'v1.1'; // Incrementar cuando cambie la lógica
 const CACHE_TTL = 1000 * 60 * 60; // 1 hora
 
 
@@ -20,9 +21,21 @@ function readCacheFromStorage() {
         if (!raw) return null;
 
         const entry = JSON.parse(raw);
-        const isExpired = Date.now() - entry.timestamp >= CACHE_TTL;
 
-        return isExpired ? null : entry;
+        // Validación de versión 
+        if (entry.version !== CACHE_VERSION) return null;
+
+        const isExpired = Date.now() - entry.timestamp >= CACHE_TTL;
+        if (isExpired) return null;
+
+        // Validación de estructura de items básica
+        if (!Array.isArray(entry.items)) return null;
+
+        const isValidStructure = entry.items.every(item =>
+            item && typeof item === 'object' && 'price_ars' in item && 'price_usd' in item
+        );
+
+        return isValidStructure ? entry : null;
     } catch {
         return null;
     }
@@ -30,6 +43,7 @@ function readCacheFromStorage() {
 
 function writeCacheToStorage(entry) {
     try {
+        entry.version = CACHE_VERSION;
         sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
     } catch { }
 }
@@ -144,7 +158,8 @@ export function ServicesProvider({ children }) {
 
     // rawPlans: datos crudos de PocketBase (sin textos)
     const [rawPlans, setRawPlans] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true); // Loading true on mount
+    const [error, setError] = useState(null);
 
     const { t } = useTranslation();
     const { currency } = useCurrency();
@@ -168,8 +183,14 @@ export function ServicesProvider({ children }) {
         async function fetchPlans() {
             try {
                 setLoading(true);
+                setError(null);
                 const res = await getPlans();
-                if (cancelled || !res) return;
+
+                if (cancelled) return;
+
+                if (!res || !Array.isArray(res)) {
+                    throw new Error("Datos incompletos desde PocketBase");
+                }
 
                 const newEntry = { items: res, timestamp: Date.now() };
                 cacheRef.current = newEntry;
@@ -177,7 +198,10 @@ export function ServicesProvider({ children }) {
 
                 setRawPlans(res);
             } catch (error) {
-                if (!cancelled) console.error('Error al obtener planes:', error);
+                if (!cancelled) {
+                    console.error('Error al obtener planes:', error);
+                    setError(error);
+                }
             } finally {
                 if (!cancelled) setLoading(false);
             }
@@ -193,12 +217,13 @@ export function ServicesProvider({ children }) {
     // Cada vez que cambia el idioma (o llegan los datos), recalculamos los planes
     // combinados. Como rawPlans son los datos puros sin texto, no hay que volver
     // a hacer fetch: solo re-transformamos lo que ya tenemos.
-    const plans = rawPlans
-        .sort((a, b) => a.order - b.order)               // respetamos el orden del CMS
+    // Combinar datos crudos + traducciones del idioma activo
+    const plans = (rawPlans || [])
+        .sort((a, b) => (a.order || 0) - (b.order || 0))
         .map(rawPlan => mergePlanWithTranslations(rawPlan, t));
 
     return (
-        <PlansContext.Provider value={{ plans, loading, currency }}>
+        <PlansContext.Provider value={{ plans, loading, error, currency }}>
             {children}
         </PlansContext.Provider>
     );

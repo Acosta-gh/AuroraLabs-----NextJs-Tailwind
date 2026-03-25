@@ -252,9 +252,22 @@ function Pricing() {
 
             {/* Modal de detalle del plan seleccionado */}
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                <DialogContent className="max-w-2xl w-[95vw] max-h-[85vh] overflow-y-auto mx-auto">
                     {selectedPlan && (
                         <>
+
+                            {/* Botón volver */}
+                            <div className="flex justify-left">
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    className="text-muted-foreground hover:text-foreground"
+                                    onClick={() => setIsModalOpen(false)}
+                                >
+                                    ← {t('backToHome') ?? 'Volver'}
+                                </Button>
+                            </div>
+
                             <DialogHeader>
                                 <DialogTitle className="text-2xl font-bold flex items-center gap-2 flex-wrap">
                                     {selectedPlan.name}
@@ -354,6 +367,7 @@ function Pricing() {
                                         <strong className="text-foreground">{t('pricing.importantNote')}</strong> {t('pricing.noteText')}
                                     </p>
                                 </div>
+
                             </div>
                         </>
                     )}

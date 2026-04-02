@@ -200,7 +200,7 @@ export const translations = {
                         'Carga de Cursos, Servicios o Noticias',
                         'Correos corporativos profesionales',
                         'Capacitación (Manuales PDF + Personal)',
-                        '5 Ajustes de diseño mensuales',
+                        '3 Ajustes de diseño mensuales',
                     ],
                     notIncluded: ['Carrito de compras', 'Pasarela de pagos'],
                     details: {
@@ -251,7 +251,7 @@ export const translations = {
                         'Gestión de stock e inventario automático',
                         'Panel de control de pedidos y ventas',
                         'Cuentas de clientes (Registro/Login)',
-                        '15 Ajustes de diseño mensuales',
+                        '10 Ajustes de diseño mensuales',
                         'Soporte y capacitación prioritaria'
                     ],
                     details: {
@@ -678,7 +678,7 @@ export const translations = {
                         'Upload Courses, Services, or News',
                         'Professional corporate email accounts',
                         'Training (PDF Manuals + Personal)',
-                        '5 Monthly Design Adjustments',
+                        '3 Monthly Design Adjustments',
                     ],
                     notIncluded: ['Shopping cart', 'Payment gateway'],
                     details: {
@@ -729,7 +729,7 @@ export const translations = {
                         'Automatic stock & inventory management',
                         'Orders & sales control panel',
                         'Customer accounts (Register/Login)',
-                        '15 Monthly Design Adjustments',
+                        '10 Monthly Design Adjustments',
                         'Priority support & training'
                     ],
                     details: {

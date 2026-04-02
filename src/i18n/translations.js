@@ -143,8 +143,8 @@ export const translations = {
 
         pricing: {
             title: 'Planes y mantenimiento',
-            //subtitle: 'Elegí cómo querés trabajar una vez que tu sitio esté online',
-            subtitle: 'Aprovechá precios de lanzamiento por apertura de Aurora Labs (Solo 5 cupos disponibles)',
+            subtitle: 'Elegí cómo querés trabajar una vez que tu sitio esté online',
+            //subtitle: 'Aprovechá precios de lanzamiento por apertura de Aurora Labs (Solo 5 cupos disponibles)',
             mostPopular: 'Más elegido',
             comingSoon: 'No disponible',
             viewDetails: 'Ver detalles',
@@ -168,14 +168,14 @@ export const translations = {
                     cta: 'Empezar ahora',
                     whatsappMessage: "¡Hola! Me interesa el plan Presencia. ¿Podrías darme más información?",
                     features: [
-                        'Diseño One-Page moderno',
+                        'Diseño One-Page moderno (Hasta 5 secciones)',
                         'Hosting y SSL (Sitio seguro)',
                         'Dominio incluido (.com.ar)',
                         'Botón de WhatsApp directo',
                         'SEO inicial para Google',
                         '3 Ajustes de contenido mensuales',
                     ],
-                    notIncluded: ['Correos corporativos', 'Panel de autogestión (CMS)', 'Formulario de contacto por email', 'Multisección (Hasta 5 páginas)'],
+                    notIncluded: ['Correo corporativo', 'Panel de autogestión (CMS)', 'Formulario de contacto por email', 'Multi-página (Hasta 5 páginas)'],
                     details: {
                         description: 'La opción ideal para tener presencia en Google rápido y sin vueltas. Una landing page efectiva para que te encuentren y te contacten.',
                         deliveryTime: '5-7 días hábiles',
@@ -195,10 +195,10 @@ export const translations = {
                     whatsappMessage: "¡Hola! Me interesa el plan Empresa. Quisiera más detalles por favor.",
                     features: [
                         'Todo lo del Plan Presencia +',
-                        'Web multisección (Hasta 5 páginas)',
+                        'Web multi-página (Hasta 5 páginas)',
                         'Panel de Autogestión',
                         'Carga de Cursos, Servicios o Noticias',
-                        'Correos corporativos profesionales',
+                        'Correo corporativo profesional',
                         'Capacitación (Manuales PDF + Personal)',
                         '3 Ajustes de diseño mensuales',
                     ],
@@ -295,32 +295,32 @@ export const translations = {
             title: 'Preguntas frecuentes',
             subtitle: 'Respuestas claras, sin vueltas ni tecnicismos innecesarios.',
             q1: {
-                question: '¿En cuánto tiempo tendré mi web lista?',
-                answer: 'Landing Pages en 1 semana, Webs Institucionales en 2-3 y E-commerce en 4 semanas.',
+                question: '¿En cuánto tiempo va a estar lista mi web?',
+                answer: 'Depende del plan, pero los tiempos son concretos: una landing page en 5 a 7 días hábiles, una web institucional en 12 a 15, y un e-commerce en un plazo a convenir según la complejidad. Siempre arrancamos con una propuesta clara para que sepas exactamente qué esperar.',
             },
             q2: {
-                question: '¿Mi web va a aparecer en los primeros resultados de Google?',
-                answer: 'Te entrego una base técnica impecable para que Google te quiera, pero el SEO es un camino largo.',
+                question: '¿Mi web va a aparecer en Google?',
+                answer: 'Todos los proyectos salen con una base técnica de SEO impecable: velocidad de carga, estructura semántica correcta y metadatos configurados. Eso le dice a Google que tu web es seria. El posicionamiento orgánico lleva tiempo, pero arrancás con ventaja real frente a webs lentas o mal construidas.',
             },
             q3: {
-                question: '¿Podré gestionar el contenido yo mismo?',
-                answer: '¡Obvio! Según el plan, tenés autonomía para manejar lo tuyo. Por ejemplo: en webs corporativas podés subir tus propios blogs; en catálogos, gestionás productos; y en E-commerce, tenés control total de clientes, ventas y productos. Vos te encargás del contenido y yo de que el código siga siendo puro y vuele.',
+                question: '¿Voy a poder gestionar el contenido yo mismo?',
+                answer: 'Sí, y eso es parte del valor central de los planes con panel. En webs corporativas podés subir noticias, servicios o entradas de blog cuando quieras. En catálogos, gestionás productos, fotos y precios de forma independiente. En e-commerce, tenés control total sobre clientes, stock y ventas. Vos manejás el contenido; yo me encargo de que el código siga siendo rápido y seguro.',
             },
             q4: {
-                question: '¿Qué incluye el servicio de mantenimiento?',
-                answer: 'Hosting profesional, certificado SSL (el candadito verde), copias de seguridad y soporte técnico. Es como tener tu propio desarrollador a disposición para que tu web nunca se quede atrás.',
+                question: '¿Qué incluye el mantenimiento mensual?',
+                answer: 'Hosting profesional, certificado SSL activo (el candadito verde en el navegador), copias de seguridad periódicas y soporte técnico directo conmigo. Cualquier problema técnico lo resuelvo sin que tengas que buscar a nadie más. Es como tener un desarrollador de guardia para que tu sitio nunca quede caído.',
             },
             q5: {
-                question: '¿Y si el diseño final no me gusta?',
-                answer: 'Validamos todo antes de programar, así que no hay sorpresas desagradables.',
+                question: '¿Qué pasa si el diseño final no me gusta?',
+                answer: 'Antes de escribir una sola línea de código, validamos el diseño con vos. Presentamos una propuesta visual y ajustamos hasta que estés conforme. Solo arrancamos el desarrollo cuando hay un acuerdo claro. Sin sorpresas, sin letra chica.',
             },
             q6: {
-                question: '¿Cuál es la diferencia entre un ajuste de contenido y un ajuste de diseño?',
-                answer: 'Un ajuste de contenido es cambiar información puntual: actualizar un texto o reemplazar una imagen. Un ajuste de diseño implica retocar la estructura: mover una sección de lugar, cambiar el estilo de un menú o agregar un elemento nuevo que no estaba originalmente. En los planes con panel, vos gestionás el contenido y yo me encargo de los ajustes de diseño.',
+                question: '¿Cuál es la diferencia entre un ajuste de contenido y uno de diseño?',
+                answer: 'Un ajuste de contenido es cambiar información: reemplazar un texto, actualizar una foto o modificar un dato de contacto. Lo podés hacer vos mismo desde el panel en los planes que lo incluyen. Un ajuste de diseño es una intervención estructural: mover una sección de lugar, cambiar la tipografía global, agregar un bloque nuevo o modificar cómo se ve algo. Eso lo hago yo como parte del soporte mensual.',
             },
             q7: {
-                question: '¿Qué sucede si necesito realizar más cambios de los que incluye mi plan?',
-                answer: 'No hay problema, la web siempre puede seguir evolucionando. Si superás el cupo mensual, los ajustes adicionales se presupuestan como horas de desarrollo extra. Siempre te voy a informar el costo antes de empezar para que tengas total previsibilidad y no haya sorpresas en la factura.',
+                question: '¿Qué pasa si necesito más cambios de los que incluye mi plan?',
+                answer: 'No hay problema. Si superás el cupo mensual, los cambios adicionales se presupuestan por separado como horas de desarrollo. Siempre te informo el costo antes de arrancar, para que puedas decidir con toda la información. Sin sorpresas en la factura, nunca.',
             },
         },
 
@@ -642,7 +642,7 @@ export const translations = {
                     cta: 'Get Started',
                     whatsappMessage: "Hi! I'm interested in the Presence plan. Could you give me more information?",
                     features: [
-                        'Modern One-Page Design',
+                        'Modern One-Page Design (Up to 5 sections)',
                         'Hosting & SSL (Secure Site)',
                         'Domain included (.com)',
                         'Direct WhatsApp Button',
@@ -669,7 +669,7 @@ export const translations = {
                     whatsappMessage: "Hi! I'm interested in the Business plan. I'd love more details.",
                     features: [
                         'All from the Presence Plan +',
-                        'Multi-section website (Up to 5 pages)',
+                        'Multi-page website (Up to 5 pages)',
                         'Self-Management Panel',
                         'Upload Courses, Services, or News',
                         'Professional corporate email accounts',

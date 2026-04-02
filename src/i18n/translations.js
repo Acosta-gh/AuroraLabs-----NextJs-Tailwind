@@ -300,7 +300,7 @@ export const translations = {
             },
             q2: {
                 question: '¿Mi web va a aparecer en los primeros resultados de Google?',
-                answer: 'Te entrego una base técnica impecable para que Google te   quiera, pero el SEO es un camino largo.',
+                answer: 'Te entrego una base técnica impecable para que Google te quiera, pero el SEO es un camino largo.',
             },
             q3: {
                 question: '¿Podré gestionar el contenido yo mismo?',
@@ -315,16 +315,12 @@ export const translations = {
                 answer: 'Validamos todo antes de programar, así que no hay sorpresas desagradables.',
             },
             q6: {
-                question: '¿Por qué elegir código personalizado?',
-                answer: 'Porque es más rápido, seguro y no es una copia barata de una plantilla que usa todo el mundo.',
-            },
-            q7: {
                 question: '¿Cuál es la diferencia entre un ajuste de contenido y un ajuste de diseño?',
                 answer: 'Un ajuste de contenido es cambiar información puntual: actualizar un texto o reemplazar una imagen. Un ajuste de diseño implica retocar la estructura: mover una sección de lugar, cambiar el estilo de un menú o agregar un elemento nuevo que no estaba originalmente. En los planes con panel, vos gestionás el contenido y yo me encargo de los ajustes de diseño.',
             },
-            q8: {
-                question: '¿Por qué hay un descuento del 50%?',
-                answer: 'Estamos celebrando el lanzamiento de Aurora Labs. Por eso, ofrecemos una bonificación especial del 50% en el setup para los primeros 5 clientes que se sumen al equipo.',
+            q7: {
+                question: '¿Qué sucede si necesito realizar más cambios de los que incluye mi plan?',
+                answer: 'No hay problema, la web siempre puede seguir evolucionando. Si superás el cupo mensual, los ajustes adicionales se presupuestan como horas de desarrollo extra. Siempre te voy a informar el costo antes de empezar para que tengas total previsibilidad y no haya sorpresas en la factura.',
             },
         },
 
@@ -792,12 +788,12 @@ export const translations = {
                 answer: 'We validate everything before development begins, so there are no unpleasant surprises.',
             },
             q6: {
-                question: 'Why choose custom-coded development?',
-                answer: 'Because it’s faster, more secure, and not a cheap template copy that everyone else is using.',
-            },
-            q7: {
                 question: 'What is the difference between a content adjustment and a design adjustment?',
                 answer: 'A content adjustment is for specific information updates: updating text, changing the logo, or tweaking a specific color without altering the rest. A design adjustment involves deeper changes, such as modifying or removing an entire section, changing animations, or restructuring the page layout.',
+            },
+            q7: {
+                question: 'What happens if I need more changes than what’s included in my monthly plan?',
+                answer: 'No problem at all—your website should keep evolving. If you exceed your monthly allowance, any additional adjustments are billed as extra development hours. I will always provide a quote before starting, ensuring you have full predictability with no surprises on your invoice.',
             },
         },
 

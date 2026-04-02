@@ -39,6 +39,7 @@ function whatsappLink(message) {
 
 function PriceDisplay({ plan, currency }) {
     const isOnSale = plan.onSale;
+    const { t } = useTranslation();
 
     const fmt = (priceObj) => formatPrice(priceObj, currency, "Consultar");
     const monthlyText = formatPrice(plan.monthly, currency, null);
@@ -57,7 +58,7 @@ function PriceDisplay({ plan, currency }) {
                     </span>
                     {monthlyText && (
                         <div className="text-sm text-muted-foreground mt-1">
-                            + {monthlyText}/mes
+                            + {monthlyText}{t('pricing.perMonth')}
                         </div>
                     )}
                 </div>
@@ -72,7 +73,7 @@ function PriceDisplay({ plan, currency }) {
             </span>
             {monthlyText && (
                 <span className="text-muted-foreground ml-1">
-                    + {monthlyText}/mes
+                    + {monthlyText}{t('pricing.perMonth')}
                 </span>
             )}
         </>

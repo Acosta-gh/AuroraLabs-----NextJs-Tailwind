@@ -20,6 +20,7 @@ export const translations = {
             whatsapp: 'Consultar por WhatsApp',
             viewProjects: 'Ver proyectos',
             whatsappMessage: "Hola! Me gustaría recibir más información sobre sus servicios de desarrollo web.",
+            trustedBy: "Confían en nosotros",
         },
 
         // Why You Need This
@@ -495,6 +496,7 @@ export const translations = {
             whatsapp: 'Contact via WhatsApp',
             viewProjects: 'View projects',
             whatsappMessage: "Hi! I’d like more information about your web development services.",
+            trustedBy: "Trusted by",
         },
 
         whyYouNeed: {

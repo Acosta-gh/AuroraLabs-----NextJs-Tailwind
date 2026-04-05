@@ -7,6 +7,7 @@ import hero from "@/assets/hero.png";
 import { Fade } from "react-awesome-reveal";
 import { keyframes } from "@emotion/react";
 import { useTranslation } from "@/hooks/useTranslation";
+import TrustedBy from "./TrustedBy";
 
 const fadeToSubtleSlideDown = keyframes`
   0% { opacity: 0; transform: translateY(-30px); }
@@ -61,6 +62,8 @@ function Hero() {
                             </Button>
                         </a>
                     </div>
+
+                    <TrustedBy />
                 </div>
 
                 {/* Mobile image */}

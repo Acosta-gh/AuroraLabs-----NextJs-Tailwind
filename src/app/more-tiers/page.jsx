@@ -218,6 +218,16 @@ function MoreTiers() {
                 <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                     {selectedPlan && (
                         <>
+                            <div className="flex justify-left">
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    className="text-muted-foreground hover:text-foreground"
+                                    onClick={() => setIsModalOpen(false)}
+                                >
+                                    <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" /> {t('back') ?? 'Volver'}
+                                </Button>
+                            </div>
                             <DialogHeader>
                                 <DialogTitle className="text-2xl font-bold flex items-center gap-2 flex-wrap">
                                     {selectedPlan.name}

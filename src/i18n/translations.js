@@ -9,6 +9,8 @@ export const translations = {
         products: 'Productos',
         getStarted: 'Comenzar',
         backToHome: 'Volver al inicio',
+        back: 'Volver',
+        close: 'Cerrar',
 
         // Hero
         hero: {
@@ -485,6 +487,8 @@ export const translations = {
         examples: 'Examples',
         getStarted: 'Get Started',
         backToHome: 'Back to home',
+        back: 'Go Back',
+        close: 'Close',
 
         // Hero
         hero: {

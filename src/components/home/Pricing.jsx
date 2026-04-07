@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from "next/link";
 import { Button } from '@/components/ui/button';
-import { Check, X, Info, Zap } from 'lucide-react';
+import { Check, X, Info, Zap, ArrowLeft } from 'lucide-react';
 import { FaWhatsapp } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -265,7 +265,7 @@ function Pricing() {
                                     className="text-muted-foreground hover:text-foreground"
                                     onClick={() => setIsModalOpen(false)}
                                 >
-                                    ← {t('backToHome') ?? 'Volver'}
+                                    <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" /> {t('backToHome') ?? 'Volver'}
                                 </Button>
                             </div>
 

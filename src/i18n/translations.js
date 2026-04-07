@@ -173,7 +173,7 @@ export const translations = {
                     features: [
                         'Diseño One-Page moderno (Hasta 5 secciones)',
                         'Hosting y SSL (Sitio seguro)',
-                        'Dominio incluido (.com.ar)',
+                        'Dominio incluido',
                         'Botón de WhatsApp directo',
                         'SEO inicial para Google',
                         '3 Ajustes de contenido mensuales',
@@ -186,7 +186,7 @@ export const translations = {
                             { title: 'Hosting y SSL Profesional', description: 'Servidor optimizado y certificado de seguridad para que tu web sea confiable.' },
                             { title: 'Diseño One-Page', description: 'Una sola página moderna, responsive y con secciones claras para convertir visitas en clientes.' },
                             { title: 'Rendimiento Nativo', description: 'Desarrollo en código puro para una carga instantánea. Yo me encargo de que tu web vuele.' },
-                            { title: 'Dominio incluido', description: 'Gestión anual del nombre de tu marca (.com.ar).' }
+                            { title: 'Dominio incluido', description: 'Gestión anual del nombre de tu marca.' }
                         ],
                         idealFor: ['Oficios y servicios locales', 'Lanzamiento de productos', 'Páginas de captura']
                     }
@@ -650,7 +650,7 @@ export const translations = {
                     features: [
                         'Modern One-Page Design (Up to 5 sections)',
                         'Hosting & SSL (Secure Site)',
-                        'Domain included (.com)',
+                        'Domain included',
                         'Direct WhatsApp Button',
                         'Basic SEO for Google',
                         '3 Monthly Content Adjustments',
@@ -663,7 +663,7 @@ export const translations = {
                             { title: 'Professional Hosting & SSL', description: 'Optimized server and security certificate so your website is trustworthy.' },
                             { title: 'One-Page Design', description: 'A single modern, responsive page with clear sections to turn visitors into clients.' },
                             { title: 'Native Performance', description: 'Built with clean code for instant load times. I make sure your site flies.' },
-                            { title: 'Domain included', description: 'Annual management of your brand name (.com).' }
+                            { title: 'Domain included', description: 'Annual management of your brand name.' }
                         ],
                         idealFor: ['Trades & local services', 'Product launches', 'Capture pages']
                     }

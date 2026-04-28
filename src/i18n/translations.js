@@ -178,7 +178,7 @@ export const translations = {
                         'SEO inicial para Google',
                         '3 Ajustes de contenido mensuales',
                     ],
-                    notIncluded: ['Correo corporativo', 'Panel de autogestión (CMS)', 'Formulario de contacto por email', 'Multi-página (Hasta 5 páginas)'],
+                    notIncluded: ['Correo corporativo', 'Panel de autogestión (CMS)', 'Formulario de contacto por email', 'Multi-página (Hasta 5 páginas)', '3 Ajustes de diseño mensuales'],
                     details: {
                         description: 'La opción ideal para tener presencia en Google rápido y sin vueltas. Una landing page efectiva para que te encuentren y te contacten.',
                         deliveryTime: '5-7 días hábiles',
@@ -223,12 +223,13 @@ export const translations = {
                     cta: 'Armar mi Catálogo',
                     whatsappMessage: "¡Hola! Me interesa el plan Catálogo. Tengo productos para mostrar.",
                     features: [
-                        'Todo lo del Plan Empresa +',
-                        'Catálogo con carga ilimitada',
+                        'Dominio Incluido',
+                        'Hosting y SSL (Sitio Seguro)',
+                        'Panel de Autogestión',
+                        'Carga de productos ilimitada',
                         'Carrito de pedidos detallado',
                         'Buscador y filtros por categoría',
-                        'Recibís el pedido listo al WhatsApp',
-                        'Te ayudamos a cargar hasta 20 productos'
+                        'Recibís el pedido listo al WhatsApp'
                     ],
                     notIncluded: ['Pasarela de pagos (Mercado Pago)'],
                     details: {
@@ -700,12 +701,13 @@ export const translations = {
                     cta: 'Build my Catalog',
                     whatsappMessage: "Hi! I'm interested in the Catalog plan. I have products to showcase.",
                     features: [
-                        'Everything in the Business Plan +',
+                        'Domain included',
+                        'Hosting & SSL (Secure Site)',
+                        'Management Panel',
                         'Catalog with unlimited uploads',
                         'Detailed order cart',
                         'Search and category filters',
-                        'Receive orders ready-to-go on WhatsApp',
-                        'We help you upload up to 20 products'
+                        'Receive orders ready-to-go on WhatsApp'
                     ],
                     notIncluded: ['Payment gateway (Mercado Pago)'],
                     details: {

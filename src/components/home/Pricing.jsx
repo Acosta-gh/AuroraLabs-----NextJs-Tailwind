@@ -38,6 +38,7 @@ function whatsappLink(message) {
 // ─── Subcomponente: precio con o sin oferta ───────────────────────────────────
 
 function PriceDisplay({ plan, currency }) {
+    console.log(plan);
     const isOnSale = plan.onSale;
     const { t } = useTranslation();
 
@@ -69,7 +70,7 @@ function PriceDisplay({ plan, currency }) {
     return (
         <>
             <span className="text-4xl font-bold text-foreground">
-                {fmt(plan.price)}
+                {fmt(plan.originalPrice)}
             </span>
             {monthlyText && (
                 <span className="text-muted-foreground ml-1">

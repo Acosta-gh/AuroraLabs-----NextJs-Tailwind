@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from 'react';
 import Link from "next/link";
 import { Button } from '@/components/ui/button';
-import { Check, X, Info, Zap, ArrowLeft } from 'lucide-react';
+import { Check, X, Zap, Info } from 'lucide-react';
 import { FaWhatsapp } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useCurrency } from "@/hooks/useCurrency";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -85,21 +83,13 @@ function PriceDisplay({ plan, currency }) {
 // ─── Componente principal ─────────────────────────────────────────────────────
 
 function Pricing() {
-    const [selectedPlan, setSelectedPlan] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     // Datos dinámicos desde PocketBase (con cache)
-    const { plans, loading, error } = useServices();
+    const { plans, loading } = useServices();
     const { currency } = useCurrency();
     const { t } = useTranslation();
 
     // En la home solo mostramos los primeros N planes
     const visiblePlans = (plans || []).slice(0, VISIBLE_COUNT);
-
-    function handleOpenModal(plan) {
-        setSelectedPlan(plan);
-        setIsModalOpen(true);
-    }
 
     return (
         <section id="services" className="py-20 lg:py-28 relative overflow-hidden">
@@ -231,16 +221,20 @@ function Pricing() {
                                                         {plan.cta}
                                                     </Button>
                                                 </a>
-                                                <Button
-                                                    size="lg"
-                                                    variant="ghost"
-                                                    disabled={plan.disabled}
-                                                    className="w-full group mt-3 flex justify-center"
-                                                    onClick={() => handleOpenModal(plan)}
+                                                <Link
+                                                    href={`/more-details/${plan.slug}`}
+                                                    className="w-full mt-3 flex justify-center"
                                                 >
-                                                    <Info className="mr-2 h-4 w-4" />
-                                                    {t('pricing.viewDetails')}
-                                                </Button>
+                                                    <Button
+                                                        size="lg"
+                                                        variant="ghost"
+                                                        disabled={plan.disabled}
+                                                        className="w-full group"
+                                                    >
+                                                        <Info className="mr-2 h-4 w-4" />
+                                                        {t('pricing.viewDetails')}
+                                                    </Button>
+                                                </Link>
                                             </div>
                                         </div>
                                     );
@@ -252,131 +246,9 @@ function Pricing() {
                 </div>
             </div>
 
-            {/* Modal de detalle del plan seleccionado */}
-            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-                <DialogContent className="max-w-2xl w-[95vw] max-h-[85vh] overflow-y-auto mx-auto">
-                    {selectedPlan && (
-                        <>
 
-                            {/* Botón volver */}
-                            <div className="flex justify-left">
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="text-muted-foreground hover:text-foreground"
-                                    onClick={() => setIsModalOpen(false)}
-                                >
-                                    <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" /> {t('backToHome') ?? 'Volver'}
-                                </Button>
-                            </div>
+                {/* ─── Link para ver todos los planes ─── */}
 
-                            <DialogHeader>
-                                <DialogTitle className="text-2xl font-bold flex items-center gap-2 flex-wrap">
-                                    {selectedPlan.name}
-
-                                    {selectedPlan.popular && (
-                                        <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-                                            {t('pricing.mostPopular')}
-                                        </span>
-                                    )}
-
-                                    {selectedPlan.onSale && (
-                                        <span className="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                                            <Zap className="h-3 w-3 fill-current" />
-                                            {calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency)
-                                                ? `${calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency)}% OFF`
-                                                : 'OFERTA'
-                                            }
-                                        </span>
-                                    )}
-                                </DialogTitle>
-                                <DialogDescription className="text-base">
-                                    {selectedPlan.details?.description}
-                                </DialogDescription>
-                            </DialogHeader>
-
-                            <div className="space-y-6 mt-4">
-
-                                {/* Precio en el modal */}
-                                <div className={`rounded-lg p-4 text-center border ${selectedPlan.onSale ? 'bg-gradient-to-br from-green-50 to-green-50 border-green-200' : 'bg-muted/50 border-border/50'}`}>
-                                    <PriceDisplay plan={selectedPlan} currency={currency} />
-
-                                    {/* Cuánto ahorrás */}
-                                    {selectedPlan.onSale && selectedPlan.originalPrice && selectedPlan.price && selectedPlan.originalPrice[currency] && selectedPlan.price[currency] && (
-                                        <div className="pt-2 mt-2">
-                                            <span className="inline-flex items-center gap-1.5 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200">
-                                                <Zap className="h-3 w-3 fill-current" />
-                                                {t('pricing.saved')} {currency === "ARS"
-                                                    ? `$${(selectedPlan.originalPrice.ARS - selectedPlan.price.ARS).toLocaleString("es-AR")}`
-                                                    : `$${(selectedPlan.originalPrice.USD - selectedPlan.price.USD).toLocaleString("en-US")}`
-                                                }!
-                                            </span>
-                                        </div>
-                                    )}
-
-                                    <div className="text-xs text-muted-foreground mt-2">
-                                        {t('pricing.deliveryTime')}: <span className="font-semibold text-foreground">{selectedPlan.details?.deliveryTime}</span>
-                                    </div>
-                                </div>
-
-                                {/* Qué incluye en detalle */}
-                                {selectedPlan.details?.includes?.length > 0 && (
-                                    <div>
-                                        <h4 className="font-semibold text-lg mb-3">{t('pricing.whatIncludes')}</h4>
-                                        <div className="space-y-4">
-                                            {selectedPlan.details.includes.map((item, i) => (
-                                                <div key={i} className="border-l-2 border-primary pl-4">
-                                                    <h5 className="font-semibold text-sm mb-1">{item.title}</h5>
-                                                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Ideal para */}
-                                {selectedPlan.details?.idealFor?.length > 0 && (
-                                    <div>
-                                        <h4 className="font-semibold text-lg mb-3">{t('pricing.idealFor')}</h4>
-                                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                            {selectedPlan.details.idealFor.map((item, i) => (
-                                                <li key={i} className="flex items-center gap-2 text-sm">
-                                                    <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                {/* CTA en el modal */}
-                                <div className="pt-4 border-t">
-                                    <a
-                                        href={whatsappLink(selectedPlan.whatsappMessage)}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Button size="lg" className="w-full group" disabled={selectedPlan.disabled}>
-                                            <FaWhatsapp className="h-4 w-4" />
-                                            {selectedPlan.cta}
-                                        </Button>
-                                    </a>
-                                </div>
-
-                                {/* Nota al pie */}
-                                <div className="bg-background rounded-xl p-6 border border-border/50 text-center max-w-3xl mx-auto">
-                                    <p className="text-sm text-muted-foreground leading-relaxed">
-                                        <strong className="text-foreground">{t('pricing.importantNote')}</strong> {t('pricing.noteText')}
-                                    </p>
-                                </div>
-
-                            </div>
-                        </>
-                    )}
-                </DialogContent>
-            </Dialog>
-
-            {/* Link para ver todos los planes */}
             <div className="flex justify-center mt-10">
                 <Link href="/more-tiers">
                     <Button variant="outline" className="p-4">

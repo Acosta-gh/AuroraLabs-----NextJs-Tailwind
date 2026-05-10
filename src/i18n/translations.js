@@ -163,6 +163,9 @@ export const translations = {
             contactNow: 'Contactar ahora',
             saved: 'Ahorrás',
             limitedOffer: "¡Oferta por tiempo limitado!",
+            planNotFound: 'Plan no encontrado',
+            notIncluded: 'No incluye',
+            backToPlans: 'Volver a planes',
             // Pricing
             plans: {
                 presencia: {
@@ -641,6 +644,9 @@ export const translations = {
             contactNow: 'Contact now',
             saved: 'Save',
             limitedOffer: "Limited-time offer!",
+            planNotFound: 'Plan not found',
+            notIncluded: 'Not included',
+            backToPlans: 'Back to plans',
 
             plans: {
                 presencia: {

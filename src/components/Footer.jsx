@@ -33,7 +33,7 @@ function Footer() {
                     {/* Divider */}
                     <div className="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
 
-                    {/* Info */}
+                    {/* Info
                     <div className="space-y-2 text-sm text-gray-600">
                         <p className="flex items-center justify-center gap-2">
                             {t('footer.operatedBy')}{" "}
@@ -44,7 +44,7 @@ function Footer() {
                             </span>
                         </p>
                     </div>
-
+ */}
                     {/* Copyright */}
                     <div className="pt-4">
                         <p className="text-xs text-gray-500 flex items-center justify-center gap-1.5">

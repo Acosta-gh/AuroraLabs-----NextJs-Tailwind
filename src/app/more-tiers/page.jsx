@@ -6,38 +6,23 @@ import { useServices } from "@/contexts/PlansContext";
 import { PricingSkeletonGrid } from "@/components/ui/PricingSkeletonCard";
 import { formatPrice, calculateDiscount } from '@/lib/priceHelper';
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Check, X, ArrowRight, Info, Zap, ArrowLeft } from 'lucide-react';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Check, X, Zap, ArrowLeft, Info } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-
-import Link from 'next/link';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-} from "@/components/ui/dialog";
-
+import { useServices } from "@/contexts/PlansContext";
+import { PricingSkeletonGrid } from "@/components/ui/PricingSkeletonCard";
+import { formatPrice, calculateDiscount } from "@/lib/priceHelper";
 import { useCurrency } from "@/hooks/useCurrency";
 import { useTranslation } from "@/hooks/useTranslation";
 
-function MoreTiers() {
-    const [selectedPlan, setSelectedPlan] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
+export default function MoreTiers() {
     const { currency } = useCurrency();
     const { t } = useTranslation();
 
     const phone = "5492926501348";
 
     const { plans, loading } = useServices();
-
-    const handleOpenModal = (plan) => {
-        setSelectedPlan(plan);
-        setIsModalOpen(true);
-    };
 
     return (
         <section id='services' className="py-20 lg:py-28 relative overflow-hidden">
@@ -195,16 +180,20 @@ function MoreTiers() {
                                                     {plan.cta}
                                                 </Button>
                                             </a>
-                                            <Button
-                                                size="lg"
-                                                variant="ghost"
-                                                disabled={plan.disabled}
-                                                className="w-full group mt-3 flex justify-center"
-                                                onClick={() => handleOpenModal(plan)}
+                                            <Link
+                                                href={`/more-details/${plan.slug}`}
+                                                className="w-full mt-3 flex justify-center"
                                             >
-                                                <Info className="mr-2 h-4 w-4" />
-                                                {t('pricing.viewDetails')}
-                                            </Button>
+                                                <Button
+                                                    size="lg"
+                                                    variant="ghost"
+                                                    disabled={plan.disabled}
+                                                    className="w-full group"
+                                                >
+                                                    <Info className="mr-2 h-4 w-4" />
+                                                    {t("pricing.viewDetails")}
+                                                </Button>
+                                            </Link>
                                         </div>
                                     </div>
                                 ))
@@ -213,7 +202,8 @@ function MoreTiers() {
                 </div>
             </div>
 
-            {/* Modal de Detalles */}
+/* ─── Modal de Detalles (comentado — se migró a página dedicada /more-details/[slug]) ─── */
+/*
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                     {selectedPlan && (
@@ -249,22 +239,18 @@ function MoreTiers() {
                             </DialogHeader>
 
                             <div className="space-y-6 mt-4">
-                                {/* Precio */}
                                 <div className={`rounded-lg p-4 text-center border ${selectedPlan.onSale ? 'bg-gradient-to-br from-green-50 to-green-50 dark:from-green-950/20 dark:to-green-950/20 border-green-200 dark:border-green-800' : 'bg-muted/50 border-border/50'}`}>
                                     {selectedPlan.onSale && selectedPlan.originalPrice && selectedPlan.price && selectedPlan.originalPrice[currency] && selectedPlan.price[currency] ? (
                                         <div className="space-y-2">
-                                            {/* Original Price */}
                                             <div className="text-lg text-muted-foreground line-through decoration-2 decoration-red-500">
                                                 {formatPrice(selectedPlan.originalPrice, currency)}
                                             </div>
-                                            {/* Sale Price */}
                                             <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
                                                 {formatPrice(selectedPlan.price, currency)}
                                             </div>
                                             <div className="text-sm text-muted-foreground">
                                                 + {formatPrice(selectedPlan.monthly, currency)}{t('pricing.perMonth')}
                                             </div>
-                                            {/* Sale Badge */}
                                             <div className="pt-2">
                                                 <span className="inline-flex items-center gap-1.5 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200 dark:border-green-700">
                                                     <Zap className="h-3 w-3 fill-current" />
@@ -290,7 +276,6 @@ function MoreTiers() {
                                     </div>
                                 </div>
 
-                                {/* Qué incluye en detalle */}
                                 <div>
                                     <h4 className="font-semibold text-lg mb-3">{t('pricing.whatIncludes')}</h4>
                                     <div className="space-y-4">
@@ -303,7 +288,6 @@ function MoreTiers() {
                                     </div>
                                 </div>
 
-                                {/* Ideal para */}
                                 <div>
                                     <h4 className="font-semibold text-lg mb-3">{t('pricing.idealFor')}</h4>
                                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -316,7 +300,6 @@ function MoreTiers() {
                                     </ul>
                                 </div>
 
-                                {/* CTA en el modal */}
                                 <div className="pt-4 border-t">
                                     <a
                                         href={`https://wa.me/${phone}?text=${encodeURIComponent(selectedPlan.whatsappMessage)}`}
@@ -333,7 +316,6 @@ function MoreTiers() {
                                         </Button>
                                     </a>
                                 </div>
-                                {/* Bottom note */}
                                 <div className="bg-background rounded-xl p-6 border border-border/50 text-center max-w-3xl mx-auto">
                                     <p className="text-sm text-muted-foreground leading-relaxed">
                                         <strong className="text-foreground">{t('pricing.importantNote')}</strong> {t('pricing.noteText')}
@@ -344,9 +326,8 @@ function MoreTiers() {
                     )}
                 </DialogContent>
             </Dialog>
+            */
 
         </section>
     );
 }
-
-export default MoreTiers;

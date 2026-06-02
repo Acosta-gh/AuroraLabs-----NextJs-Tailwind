@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail } from 'lucide-react';
 import { FaWhatsapp } from "react-icons/fa";
-import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useInView } from "@/hooks/useInView";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
@@ -14,7 +14,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 function FinalCTA() {
     const { t } = useTranslation();
     const { language } = useLanguage();
-    console.log('language', language);
+    const [sectionRef, sectionInView] = useInView();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -76,34 +76,32 @@ function FinalCTA() {
             <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/50 to-muted/30 pointer-events-none"></div>
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-purple-500/5 pointer-events-none"></div>
 
-            <div className="container mx-auto px-6 relative">
-                <Fade triggerOnce direction="up" duration={800} cascade damping={0.1}>
-                    <div className="max-w-3xl mx-auto text-center space-y-8">
-                        <div className="space-y-4">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">{t('finalCta.title')}</h2>
-                            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">{t('finalCta.subtitle')}</p>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-                            <a href={url} target="_blank" rel="noopener noreferrer">
-                                <Button size="lg" className="group">
-                                    <FaWhatsapp className="h-5 w-5 mr-2" />
-                                    {t("hero.whatsapp")}
-                                </Button>
-                            </a>
-                            <Button size="lg" variant="outline" className="group" onClick={handleOpenModal}>
-                                <Mail className="mr-2 h-5 w-5" />
-                                {t('finalCta.email')}
-                            </Button>
-                        </div>
-                        <p className="text-sm text-muted-foreground mt-3">
-                            {t('finalCta.emailFallback')}{" "}
-                            <a href="mailto:acosta@auroralabs.com.ar" className="underline hover:text-foreground transition-colors">acosta@auroralabs.com.ar</a>
-                        </p>
-                        <div className="pt-8">
-                            <p className="text-sm text-muted-foreground">{t('finalCta.response')}</p>
-                        </div>
+            <div className="container mx-auto px-6 relative" ref={sectionRef}>
+                <div className={`max-w-3xl mx-auto text-center space-y-8 transition-all duration-700 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+                    <div className="space-y-4">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">{t('finalCta.title')}</h2>
+                        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">{t('finalCta.subtitle')}</p>
                     </div>
-                </Fade>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                        <a href={url} target="_blank" rel="noopener noreferrer">
+                            <Button size="lg" className="group">
+                                <FaWhatsapp className="h-5 w-5 mr-2" />
+                                {t("hero.whatsapp")}
+                            </Button>
+                        </a>
+                        <Button size="lg" variant="outline" className="group" onClick={handleOpenModal}>
+                            <Mail className="mr-2 h-5 w-5" />
+                            {t('finalCta.email')}
+                        </Button>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-3">
+                        {t('finalCta.emailFallback')}{" "}
+                        <a href="mailto:acosta@auroralabs.com.ar" className="underline hover:text-foreground transition-colors">acosta@auroralabs.com.ar</a>
+                    </p>
+                    <div className="pt-8">
+                        <p className="text-sm text-muted-foreground">{t('finalCta.response')}</p>
+                    </div>
+                </div>
             </div>
 
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>

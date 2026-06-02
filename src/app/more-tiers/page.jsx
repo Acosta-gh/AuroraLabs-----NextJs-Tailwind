@@ -52,7 +52,7 @@ export default function MoreTiers() {
 
 
                     {/* Pricing Cards */}
-                    <div className="grid md:grid-cols-3 gap-6 mb-12">
+                    <div className="grid md:grid-cols-3 gap-8 md:gap-6 mb-12">
                         {
                             loading ? (
                                 <PricingSkeletonGrid count={3} />

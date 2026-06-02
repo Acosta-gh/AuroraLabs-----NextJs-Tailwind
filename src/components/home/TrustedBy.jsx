@@ -1,9 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const businesses = [
@@ -41,17 +39,7 @@ export default function TrustedBy() {
                 <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-8 bg-gradient-to-l from-background to-transparent" />
 
                 <div className="flex w-fit">
-                    <motion.div
-                        className="flex gap-8 pr-8"
-                        animate={{
-                            x: ["0%", "-50%"],
-                        }}
-                        transition={{
-                            duration: 25,
-                            ease: "linear",
-                            repeat: Infinity,
-                        }}
-                    >
+                    <div className="flex gap-8 pr-8 animate-marquee">
                         {marqueeItems.map((business, idx) => (
                             <Link
                                 key={`${business.name}-${idx}`}
@@ -76,7 +64,7 @@ export default function TrustedBy() {
                                 )}
                             </Link>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -48,7 +48,7 @@ export async function POST(request) {
 
         if (error) {
             console.error("Resend error:", error);
-            return json({ error: "Error al enviar el mensaje.", code: "EMAIL_ERROR", details: error }, 500);
+            return json({ error: "Error al enviar el mensaje.", code: "EMAIL_ERROR" }, 500);
         }
 
         return json({ success: true, message: "¡Mensaje enviado!" }, 200);

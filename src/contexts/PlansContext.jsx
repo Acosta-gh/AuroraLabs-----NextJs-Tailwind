@@ -8,11 +8,11 @@ import { PLAN_PRICES } from '@/constants/plans';
 
 const CACHE_KEY = 'plans_cache';
 const CACHE_VERSION = 'v1.1';
-const CACHE_TTL = 1000 * 60 * 60;
+const CACHE_TTL = 1000 * 60 * 60 * 24;
 
 function readCacheFromStorage() {
     try {
-        const raw = sessionStorage.getItem(CACHE_KEY);
+        const raw = localStorage.getItem(CACHE_KEY);
         if (!raw) return null;
 
         const entry = JSON.parse(raw);
@@ -37,7 +37,7 @@ function readCacheFromStorage() {
 function writeCacheToStorage(entry) {
     try {
         entry.version = CACHE_VERSION;
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
+        localStorage.setItem(CACHE_KEY, JSON.stringify(entry));
     } catch { }
 }
 

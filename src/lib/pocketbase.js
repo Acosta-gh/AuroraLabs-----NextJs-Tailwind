@@ -32,9 +32,10 @@ export async function getPost(slug) {
 
 // ── Plans ──────────────────────────────────────────────
 export async function getPlans() {
-  return pb.collection("plans").getFullList({
+  const result = await pb.collection("plans").getList(1, 50, {
     sort: "order"
   });
+  return result.items;
 }
 
 // ── Team ──────────────────────────────────────────────

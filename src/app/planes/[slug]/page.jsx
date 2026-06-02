@@ -6,7 +6,6 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Check, Zap, ArrowLeft, Minus } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { Fade } from "react-awesome-reveal";
 import { useServices } from "@/contexts/PlansContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import { useTranslation } from "@/hooks/useTranslation";

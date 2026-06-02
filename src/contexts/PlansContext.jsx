@@ -1,19 +1,14 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, useRef } from 'react';
+import { createContext, useContext, useState, useEffect, useRef, useMemo } from 'react';
 import { getPlans } from '@/lib/pocketbase';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useCurrency } from '@/hooks/useCurrency';
-
-
-// ─── Configuración del cache ──────────────────────────────────────────────────
+import { PLAN_PRICES } from '@/constants/plans';
 
 const CACHE_KEY = 'plans_cache';
-const CACHE_VERSION = 'v1.1'; // Incrementar cuando cambie la lógica
-const CACHE_TTL = 1000 * 60 * 60; // 1 hora
-
-
-// ─── Helpers de cache ─────────────────────────────────────────────────────────
+const CACHE_VERSION = 'v1.1';
+const CACHE_TTL = 1000 * 60 * 60;
 
 function readCacheFromStorage() {
     try {
@@ -22,13 +17,11 @@ function readCacheFromStorage() {
 
         const entry = JSON.parse(raw);
 
-        // Validación de versión 
         if (entry.version !== CACHE_VERSION) return null;
 
         const isExpired = Date.now() - entry.timestamp >= CACHE_TTL;
         if (isExpired) return null;
 
-        // Validación de estructura de items básica
         if (!Array.isArray(entry.items)) return null;
 
         const isValidStructure = entry.items.every(item =>
@@ -48,40 +41,46 @@ function writeCacheToStorage(entry) {
     } catch { }
 }
 
+const FALLBACK_SLUGS = ['presencia', 'empresa', 'eCatalog', 'ecommerce', 'custom'];
 
-// ─── Transformación de un plan crudo → plan listo para usar ──────────────────
+function getFallbackRawPlans() {
+    return FALLBACK_SLUGS.map((slug, i) => {
+        const p = PLAN_PRICES[slug] || {};
+        return {
+            id: slug,
+            slug,
+            price_ars: p.price?.ARS ?? 0,
+            price_usd: p.price?.USD ?? 0,
+            monthly_ars: p.monthly?.ARS ?? 0,
+            monthly_usd: p.monthly?.USD ?? 0,
+            original_price_ars: p.originalPrice?.ARS ?? null,
+            original_price_usd: p.originalPrice?.USD ?? null,
+            on_sale: p.onSale ?? false,
+            disabled: p.disabled ?? false,
+            popular: p.popular ?? false,
+            visible: true,
+            order: i,
+            discount_percent: null,
+        };
+    });
+}
 
-/**
- * Toma un plan de PocketBase (números y flags) y le agrega
- * los textos del idioma activo (nombre, features, CTA, etc.)
- * usando el `slug` como clave en las traducciones.
- *
- * Ejemplo de entrada (PocketBase):
- *   { slug: "presencia", price_ars: 80000, price_usd: 80, on_sale: false, ... }
- *
- * Ejemplo de salida:
- *   { slug, id, name, tagline, price: { ARS, USD }, features: [...], ... }
- */
 function mergePlanWithTranslations(rawPlan, t) {
-    const key = rawPlan.slug; // ej: "presencia", "empresa", "eCatalog"
+    const key = rawPlan.slug;
 
-    // Textos del idioma activo para este plan
     const name = t(`pricing.plans.${key}.name`);
     const tagline = t(`pricing.plans.${key}.tagline`);
     const cta = t(`pricing.plans.${key}.cta`);
     const whatsappMessage = t(`pricing.plans.${key}.whatsappMessage`);
 
-    // Features: probamos hasta el índice 6 y descartamos las que no tienen traducción
     const features = [0, 1, 2, 3, 4, 5, 6]
         .map(i => t(`pricing.plans.${key}.features.${i}`))
         .filter(val => !val.includes('features.'));
 
-    // Cosas no incluidas
     const notIncluded = [0, 1, 2, 3, 4, 5, 6]
         .map(i => t(`pricing.plans.${key}.notIncluded.${i}`))
         .filter(val => !val.includes('notIncluded.'));
 
-    // Detalle del modal
     const details = {
         description: t(`pricing.plans.${key}.details.description`),
         deliveryTime: t(`pricing.plans.${key}.details.deliveryTime`),
@@ -98,86 +97,50 @@ function mergePlanWithTranslations(rawPlan, t) {
             .filter(item => !item.title.includes('includes.')),
     };
 
-    // Precios estructurados igual que antes para no romper nada
-    const price = {
-        ARS: rawPlan.price_ars,
-        USD: rawPlan.price_usd,
-    };
-
-    const monthly = {
-        ARS: rawPlan.monthly_ars,
-        USD: rawPlan.monthly_usd,
-    };
-
-    // Solo existe si hay precio original (plan en oferta)
+    const price = { ARS: rawPlan.price_ars, USD: rawPlan.price_usd };
+    const monthly = { ARS: rawPlan.monthly_ars, USD: rawPlan.monthly_usd };
     const originalPrice = (rawPlan.original_price_ars || rawPlan.original_price_usd)
         ? { ARS: rawPlan.original_price_ars, USD: rawPlan.original_price_usd }
         : null;
 
     return {
-        // Identificadores
         id: rawPlan.id,
         slug: rawPlan.slug,
-
-        // Textos del idioma activo
-        name,
-        tagline,
-        cta,
-        whatsappMessage,
-        features,
-        notIncluded,
+        name, tagline, cta, whatsappMessage,
+        features, notIncluded,
         details,
-
-        // Precios desde PocketBase
-        price,
-        monthly,
-        originalPrice,
-
-        // Flags desde PocketBase
+        price, monthly, originalPrice,
         onSale: rawPlan.on_sale,
         disabled: rawPlan.disabled,
         popular: rawPlan.popular,
         visible: rawPlan.visible,
         order: rawPlan.order,
-
-        // Descuento ya calculado por el backend
         discountPercentage: rawPlan.discount_percent ?? null,
-
-        // Variant para el botón (shadcn)
         variant: rawPlan.popular ? 'default' : 'outline',
     };
 }
-
-
-// ─── Contexto ─────────────────────────────────────────────────────────────────
 
 const PlansContext = createContext(null);
 
 export function ServicesProvider({ children }) {
     const cacheRef = useRef(null);
 
-    // rawPlans: datos crudos de PocketBase (sin textos)
     const [rawPlans, setRawPlans] = useState([]);
-    const [loading, setLoading] = useState(true); // Loading true on mount
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const { t } = useTranslation();
     const { currency } = useCurrency();
 
-    // ── Fetch de PocketBase (solo una vez, con cache) ──────────────────────────
     useEffect(() => {
         cacheRef.current = readCacheFromStorage();
 
-        console.log("cache:", cacheRef.current);
-
-        // Cache hit → usamos lo guardado sin fetch
         if (cacheRef.current) {
             setRawPlans(cacheRef.current.items);
             setLoading(false);
             return;
         }
 
-        // Cache miss → pedimos a PocketBase
         let cancelled = false;
 
         async function fetchPlans() {
@@ -201,6 +164,7 @@ export function ServicesProvider({ children }) {
                 if (!cancelled) {
                     console.error('Error al obtener planes:', error);
                     setError(error);
+                    setRawPlans(getFallbackRawPlans());
                 }
             } finally {
                 if (!cancelled) setLoading(false);
@@ -210,17 +174,14 @@ export function ServicesProvider({ children }) {
         fetchPlans();
         return () => { cancelled = true; };
 
-    }, []); // Solo al montar — los textos se re-calculan abajo
+    }, []);
 
-    // ── Combinar datos crudos + traducciones del idioma activo ─────────────────
-    //
-    // Cada vez que cambia el idioma (o llegan los datos), recalculamos los planes
-    // combinados. Como rawPlans son los datos puros sin texto, no hay que volver
-    // a hacer fetch: solo re-transformamos lo que ya tenemos.
-    // Combinar datos crudos + traducciones del idioma activo
-    const plans = (rawPlans || [])
-        .sort((a, b) => (a.order || 0) - (b.order || 0))
-        .map(rawPlan => mergePlanWithTranslations(rawPlan, t));
+    const plans = useMemo(() =>
+        (rawPlans || [])
+            .sort((a, b) => (a.order || 0) - (b.order || 0))
+            .map(rawPlan => mergePlanWithTranslations(rawPlan, t)),
+        [rawPlans, t]
+    );
 
     return (
         <PlansContext.Provider value={{ plans, loading, error, currency }}>

@@ -178,6 +178,13 @@ function Pricing() {
                                                         </span>
                                                     </div>
                                                 )}
+                                                {!plan.disabled && (
+                                                    <div className="mt-2">
+                                                        <span className="inline-flex items-center gap-1.5 bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-blue-200">
+                                                            {t('pricing.firstMonthFree')}
+                                                        </span>
+                                                    </div>
+                                                )}
                                             </div>
 
                                             {/* Features incluidas */}
@@ -222,7 +229,7 @@ function Pricing() {
                                                     </Button>
                                                 </a>
                                                 <Link
-                                                    href={`/more-details/${plan.slug}`}
+                                                    href={`/planes/${plan.slug}`}
                                                     className="w-full mt-3 flex justify-center"
                                                 >
                                                     <Button

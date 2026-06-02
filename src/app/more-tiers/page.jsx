@@ -10,9 +10,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, X, Zap, ArrowLeft, Info } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { useServices } from "@/contexts/PlansContext";
-import { PricingSkeletonGrid } from "@/components/ui/PricingSkeletonCard";
-import { formatPrice, calculateDiscount } from "@/lib/priceHelper";
 import { useCurrency } from "@/hooks/useCurrency";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -138,6 +135,13 @@ export default function MoreTiers() {
                                                     </span>
                                                 </div>
                                             )}
+                                            {!plan.disabled && (
+                                                <div className="mt-2">
+                                                    <span className="inline-flex items-center gap-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-blue-200 dark:border-blue-800">
+                                                        {t('pricing.firstMonthFree')}
+                                                    </span>
+                                                </div>
+                                            )}
                                         </div>
 
                                         {/* Features */}
@@ -181,7 +185,7 @@ export default function MoreTiers() {
                                                 </Button>
                                             </a>
                                             <Link
-                                                href={`/more-details/${plan.slug}`}
+                                                href={`/planes/${plan.slug}`}
                                                 className="w-full mt-3 flex justify-center"
                                             >
                                                 <Button
@@ -202,131 +206,6 @@ export default function MoreTiers() {
                 </div>
             </div>
 
-/* ─── Modal de Detalles (comentado — se migró a página dedicada /more-details/[slug]) ─── */
-/*
-            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-                    {selectedPlan && (
-                        <>
-                            <div className="flex justify-left">
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="text-muted-foreground hover:text-foreground"
-                                    onClick={() => setIsModalOpen(false)}
-                                >
-                                    <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" /> {t('back') ?? 'Volver'}
-                                </Button>
-                            </div>
-                            <DialogHeader>
-                                <DialogTitle className="text-2xl font-bold flex items-center gap-2 flex-wrap">
-                                    {selectedPlan.name}
-                                    {selectedPlan.popular && (
-                                        <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-                                            {t('pricing.mostPopular')}
-                                        </span>
-                                    )}
-                                    {selectedPlan.onSale && (
-                                        <span className="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                                            <Zap className="h-3 w-3 fill-current" />
-                                            {calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency) ? `${calculateDiscount(selectedPlan.originalPrice, selectedPlan.price, currency)}% OFF` : 'OFERTA'}
-                                        </span>
-                                    )}
-                                </DialogTitle>
-                                <DialogDescription className="text-base">
-                                    {selectedPlan.details.description}
-                                </DialogDescription>
-                            </DialogHeader>
-
-                            <div className="space-y-6 mt-4">
-                                <div className={`rounded-lg p-4 text-center border ${selectedPlan.onSale ? 'bg-gradient-to-br from-green-50 to-green-50 dark:from-green-950/20 dark:to-green-950/20 border-green-200 dark:border-green-800' : 'bg-muted/50 border-border/50'}`}>
-                                    {selectedPlan.onSale && selectedPlan.originalPrice && selectedPlan.price && selectedPlan.originalPrice[currency] && selectedPlan.price[currency] ? (
-                                        <div className="space-y-2">
-                                            <div className="text-lg text-muted-foreground line-through decoration-2 decoration-red-500">
-                                                {formatPrice(selectedPlan.originalPrice, currency)}
-                                            </div>
-                                            <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
-                                                {formatPrice(selectedPlan.price, currency)}
-                                            </div>
-                                            <div className="text-sm text-muted-foreground">
-                                                + {formatPrice(selectedPlan.monthly, currency)}{t('pricing.perMonth')}
-                                            </div>
-                                            <div className="pt-2">
-                                                <span className="inline-flex items-center gap-1.5 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200 dark:border-green-700">
-                                                    <Zap className="h-3 w-3 fill-current" />
-                                                    {t('pricing.saved')} {formatPrice({
-                                                        ARS: selectedPlan.originalPrice.ARS - selectedPlan.price.ARS,
-                                                        USD: selectedPlan.originalPrice.USD - selectedPlan.price.USD
-                                                    }, currency)}!
-                                                </span>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <div className="text-3xl font-bold text-foreground mb-1">
-                                                {formatPrice(selectedPlan.price, currency)}
-                                            </div>
-                                            <div className="text-sm text-muted-foreground">
-                                                + {formatPrice(selectedPlan.monthly, currency)}{t('pricing.perMonth')}
-                                            </div>
-                                        </>
-                                    )}
-                                    <div className="text-xs text-muted-foreground mt-2">
-                                        {t('pricing.deliveryTime')}: <span className="font-semibold text-foreground">{selectedPlan.details.deliveryTime}</span>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-semibold text-lg mb-3">{t('pricing.whatIncludes')}</h4>
-                                    <div className="space-y-4">
-                                        {selectedPlan.details.includes.map((item, i) => (
-                                            <div key={i} className="border-l-2 border-primary pl-4">
-                                                <h5 className="font-semibold text-sm mb-1">{item.title}</h5>
-                                                <p className="text-sm text-muted-foreground">{item.description}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-semibold text-lg mb-3">{t('pricing.idealFor')}</h4>
-                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                        {selectedPlan.details.idealFor.map((item, i) => (
-                                            <li key={i} className="flex items-center gap-2 text-sm">
-                                                <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div className="pt-4 border-t">
-                                    <a
-                                        href={`https://wa.me/${phone}?text=${encodeURIComponent(selectedPlan.whatsappMessage)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Button
-                                            size="lg"
-                                            className="w-full group"
-                                            disabled={selectedPlan.disabled}
-                                        >
-                                            <FaWhatsapp className="h-4 w-4" />
-                                            {selectedPlan.cta}
-                                        </Button>
-                                    </a>
-                                </div>
-                                <div className="bg-background rounded-xl p-6 border border-border/50 text-center max-w-3xl mx-auto">
-                                    <p className="text-sm text-muted-foreground leading-relaxed">
-                                        <strong className="text-foreground">{t('pricing.importantNote')}</strong> {t('pricing.noteText')}
-                                    </p>
-                                </div>
-                            </div>
-                        </>
-                    )}
-                </DialogContent>
-            </Dialog>
-            */
 
         </section>
     );

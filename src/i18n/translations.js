@@ -74,38 +74,38 @@ export const translations = {
             title: 'Por qué no soy como otras agencias',
             subtitle: 'Sin equipos enormes, sin procesos burocráticos, sin promesas marketineras.',
             item1: {
-                title: 'Orientado a conversión, no solo a diseño',
-                description: 'Cada elemento de tu web está pensado para que la gente te contacte. Formularios optimizados, llamados a la acción claros, carga rápida.',
+                title: 'Tu web trabaja para traerte clientes',
+                description: 'Cada parte de tu web está pensada para que la gente te contacte. Botones, formularios y textos diseñados para convertir visitas en consultas, no solo para verse lindo.',
             },
             item2: {
-                title: 'Trabajo directo, sin intermediarios',
-                description: 'Hablás directamente con el que escribe el código y diseña la solución. Sin ejecutivos de cuenta que no saben de técnica ni desarrolladores que no saben de negocios.',
+                title: 'El que lo hace es el que te responde',
+                description: 'Me escribís por WhatsApp y te contesto yo. El que diseña, programa y publica tu web es el mismo que te atiende. Sin bots, sin ejecutivos de cuenta, sin vueltas.',
             },
             item3: {
-                title: 'Entrega en semanas, no meses',
-                description: 'Landing pages en 1 semana. Webs institucionales en 2-3 semanas. E-commerce en ~4 semanas.',
+                title: 'Mockup gratis antes de pagar',
+                description: 'Sin cobrarte nada, armo una maqueta funcional de tu web para que veas cómo queda, pidas cambios y solo cuando estés conforme arrancamos. Sin riesgo.',
             },
         },
 
         // How It Works
         howItWorks: {
             title: 'Cómo trabajamos juntos',
-            subtitle: 'Un proceso simple, sin vueltas',
+            subtitle: 'Hablamos, te muestro un mockup gratis, y solo pagás cuando te gusta',
             step1: {
-                title: 'Consulta inicial',
-                description: 'Hablamos de tu negocio y qué necesitás. Sin compromiso.',
+                title: 'Hablamos',
+                description: 'Charlamos por chat, llamada o como prefieras para entender tu proyecto.',
             },
             step2: {
-                title: 'Propuesta y presupuesto',
-                description: 'Te paso un plan claro con tiempos y costos reales.',
+                title: 'Mockup gratis',
+                description: 'Sin cobrarte nada, armo una maqueta funcional de tu página para que veas cómo quedará y me digas si vamos bien.',
             },
             step3: {
-                title: 'Desarrollo',
-                description: 'Trabajo en tu proyecto con revisiones en el camino.',
+                title: 'Seña del 25%',
+                description: 'Cuando me das el visto bueno, te pido el 25% como anticipo y arranco con el desarrollo.',
             },
             step4: {
-                title: 'Entrega y ajustes',
-                description: 'Publicamos tu web y hacemos los ajustes finales.',
+                title: 'Entrega final',
+                description: 'Termino el proyecto, lo publicamos y me pagás el resto.',
             },
             cta: 'Arrancar ahora',
         },
@@ -163,9 +163,13 @@ export const translations = {
             contactNow: 'Contactar ahora',
             saved: 'Ahorrás',
             limitedOffer: "¡Oferta por tiempo limitado!",
+            firstMonthFree: 'Primer mes bonificado',
+            firstMonthFreeNote: 'La primera mensualidad del plan está bonificada. Si pagás con Mercado Pago, los primeros 28 días desde que se publica tu web son gratis. Si es por transferencia bancaria, te cobro recién el 5 del mes siguiente a la publicación, sea el día que sea.',
             planNotFound: 'Plan no encontrado',
             notIncluded: 'No incluye',
             backToPlans: 'Volver a planes',
+            changePolicyTitle: '¿Cómo funcionan los cambios?',
+            changePolicyText: 'Cada cambio (contenido o diseño) equivale a 3 horas de trabajo. Si un cambio lleva más tiempo, consume varios cambios del cupo mensual. Si te quedás sin cambios, se facturan horas extra a USD 7/hora. El tipo de cambio que uso es el oficial.',
             // Pricing
             plans: {
                 presencia: {
@@ -174,24 +178,24 @@ export const translations = {
                     cta: 'Empezar ahora',
                     whatsappMessage: "¡Hola! Me interesa el plan Presencia. ¿Podrías darme más información?",
                     features: [
-                        'Diseño One-Page moderno (Hasta 5 secciones)',
-                        'Hosting y SSL (Sitio seguro)',
-                        'Dominio incluido',
-                        'Botón de WhatsApp directo',
-                        'SEO inicial para Google',
-                        '3 Ajustes de contenido mensuales',
+                        'Una página web moderna (hasta 5 secciones)',
+                        'Sitio seguro con candado verde (SSL)',
+                        'Tu propio dominio .com.ar (ej: tu-negocio.com.ar)',
+                        'Botón de WhatsApp para que te contacten al toque',
+                        'Tu web preparada para aparecer en Google',
+                        '3 cambios de texto o fotos por mes',
                     ],
-                    notIncluded: ['Correo corporativo', 'Panel de autogestión (CMS)', 'Formulario de contacto por email', 'Multi-página (Hasta 5 páginas)', '3 Ajustes de diseño mensuales'],
+                    notIncluded: ['Correo electrónico profesional con tu dominio (ej: info@tu-negocio.com)', 'Software para cambiar el contenido vos mismo', 'Formulario de contacto por email', 'Varias páginas internas (hasta 5)', 'Cambios de diseño'],
                     details: {
-                        description: 'La opción ideal para tener presencia en Google rápido y sin vueltas. Una landing page efectiva para que te encuentren y te contacten.',
-                        deliveryTime: '5-7 días hábiles',
+                        description: 'Tu carta de presentación en internet. Una página lista en menos de una semana para que tus clientes te encuentren en Google y te contacten sin complicaciones.',
+                        deliveryTime: '~5-7 días hábiles',
                         includes: [
-                            { title: 'Hosting y SSL Profesional', description: 'Servidor optimizado y certificado de seguridad para que tu web sea confiable.' },
-                            { title: 'Diseño One-Page', description: 'Una sola página moderna, responsive y con secciones claras para convertir visitas en clientes.' },
-                            { title: 'Rendimiento Nativo', description: 'Desarrollo en código puro para una carga instantánea. Yo me encargo de que tu web vuele.' },
-                            { title: 'Dominio incluido', description: 'Gestión anual del nombre de tu marca.' }
+                            { title: 'Sitio seguro y siempre online', description: 'Tu web funciona 24/7 con el candado verde de seguridad. Yo me encargo de que nunca se caiga.' },
+                            { title: 'Diseño moderno en una sola página', description: 'Todo lo que ofrecés en un solo lugar, bien organizado y que se ve perfecto en celulares, tablets y computadoras.' },
+                            { title: 'Carga ultrarrápida', description: 'Tu web abre al instante. La velocidad hace que tus clientes no se vayan a la competencia.' },
+                            { title: 'Dominio .com.ar incluido', description: 'Elegís el nombre (ej: tunegocio.com.ar). Si no está disponible, no compro uno que no sea .com.ar — buscamos otra opción juntos.' }
                         ],
-                        idealFor: ['Oficios y servicios locales', 'Lanzamiento de productos', 'Páginas de captura']
+                        idealFor: ['Profesionales independientes (médicos, abogados, plomeros)', 'Emprendimientos que arrancan', 'Negocios de cercanía que quieren clientes locales']
                     }
                 },
                 empresa: {
@@ -200,24 +204,24 @@ export const translations = {
                     cta: 'Elegir Plan Empresa',
                     whatsappMessage: "¡Hola! Me interesa el plan Empresa. Quisiera más detalles por favor.",
                     features: [
-                        'Todo lo del Plan Presencia +',
-                        'Web multi-página (Hasta 5 páginas)',
-                        'Panel de Autogestión',
-                        'Carga de Cursos, Servicios o Noticias',
-                        'Correo corporativo profesional',
-                        'Capacitación (Manuales PDF + Personal)',
-                        '3 Ajustes de diseño mensuales',
+                        'Todo lo del plan Presencia +',
+                        'Hasta 5 páginas internas (inicio, servicios, etc.)',
+                        'Panel para que vos mismo actualices tu web',
+                        'Agregá cursos, servicios o noticias cuando quieras',
+                        'Correo profesional con tu dominio',
+                        'Capacitación personalizada (guías paso a paso + acompañamiento)',
+                        '3 cambios de diseño por mes',
                     ],
-                    notIncluded: ['Carrito de compras', 'Pasarela de pagos'],
+                    notIncluded: ['Tienda online con carrito de compras', 'Cobro online integrado'],
                     details: {
-                        description: 'Diseñado para empresas que proyectan profesionalismo y quieren comunicar novedades o servicios de forma dinámica.',
-                        deliveryTime: '12-15 días hábiles',
+                        description: 'La opción completa para negocios que quieren verse profesionales, tener varias páginas y mantener su contenido actualizado sin depender de nadie.',
+                        deliveryTime: '~12-15 días hábiles',
                         includes: [
-                            { title: 'Panel de Gestión', description: 'Cargá tus propios contenidos de forma autónoma.' },
-                            { title: 'Soporte de Diseño', description: '5 cambios mensuales para retocar la estructura, colores o secciones que el panel no maneja.' },
-                            { title: 'Capacitación Dual', description: 'Guías paso a paso en PDF y asesoramiento personal para que domines tu panel.' }
+                            { title: 'Actualizás tu web vos mismo', description: 'Entrás a un panel sencillo y cambiás textos, fotos o noticias cuando quieras, sin saber de programación.' },
+                            { title: '5 cambios de diseño por mes', description: '¿Necesitás mover una sección o cambiar colores? Yo lo hago por vos hasta 5 veces al mes.' },
+                            { title: 'Capacitación incluida', description: 'Te enseño a usar tu panel con guías y soporte directo por WhatsApp para que no te quedes trabado.' }
                         ],
-                        idealFor: ['Escuelas y academias', 'Estudios profesionales', 'Clínicas']
+                        idealFor: ['Escuelas y academias que quieren mostrar cursos', 'Estudios profesionales (abogados, contadores, arquitectos)', 'Clínicas y centros de salud']
                     }
                 },
                 eCatalog: {
@@ -226,21 +230,21 @@ export const translations = {
                     cta: 'Armar mi Catálogo',
                     whatsappMessage: "¡Hola! Me interesa el plan Catálogo. Tengo productos para mostrar.",
                     features: [
-                        'Dominio Incluido',
-                        'Hosting y SSL (Sitio Seguro)',
-                        'Panel de Autogestión',
-                        'Carga de productos ilimitada',
-                        'Carrito de pedidos detallado',
-                        'Buscador y filtros por categoría',
-                        'Recibís el pedido listo al WhatsApp'
+                        'Tu propio dominio .com.ar',
+                        'Sitio seguro (SSL)',
+                        'Panel para cargar productos con fotos y precios',
+                        'Productos sin límite',
+                        'Carrito de pedidos: tus clientes arman su compra',
+                        'Buscador y filtros para que encuentren rápido',
+                        'Los pedidos te llegan por WhatsApp detallados'
                     ],
-                    notIncluded: ['Pasarela de pagos (Mercado Pago)'],
+                    notIncluded: ['Cobro online integrado (Mercado Pago)'],
                     details: {
-                        description: 'La vidriera digital perfecta. Mostrá tus productos con fotos y precios, permitiendo que tus clientes armen su pedido y te lo envíen por WhatsApp.',
-                        deliveryTime: '12-15 días hábiles',
+                        description: 'Mostrá todos tus productos con fotos y precios, y recibí los pedidos listos por WhatsApp sin tener que preguntar nada.',
+                        deliveryTime: '~12-15 días hábiles',
                         includes: [
-                            { title: 'Panel de Gestión', description: 'Subí fotos y precios de tus productos con total independencia.' },
-                            { title: 'Carrito de Pedidos', description: 'El sistema organiza la compra y te la envía detallada a tu WhatsApp.' },
+                            { title: 'Cargá productos vos mismo', description: 'Entrás a un panel y subís productos con foto y precio en segundos. Sin límites, sin ayuda de nadie.' },
+                            { title: 'Carrito que te arma la compra', description: 'Tus clientes arman su pedido y te llega todo detallado a WhatsApp: producto, cantidad, precio. Solo tenés que confirmar.' },
                             { title: 'Soporte de Diseño', description: '5 cambios mensuales para retocar la estructura, colores o secciones que el panel no maneja.' },
                         ],
                         idealFor: ['Showrooms y comercios', 'Gastronómicos', 'Corralones y repuesteras']
@@ -252,22 +256,21 @@ export const translations = {
                     cta: 'Lanzar mi Tienda',
                     whatsappMessage: "¡Hola! Me interesa el plan Ecommerce. ¿Podemos hablar?",
                     features: [
-                        'Todo lo del Plan Empresa +',
-                        'Carrito de compras con pago online',
-                        'Pasarela de pagos (Mercado Pago)',
-                        'Gestión de stock e inventario automático',
-                        'Panel de control de pedidos y ventas',
-                        'Cuentas de clientes (Registro/Login)',
-                        '10 Ajustes de diseño mensuales',
-                        'Soporte y capacitación prioritaria'
+                        'Todo lo del plan Empresa +',
+                        'Carrito de compras con cobro online',
+                        'Cobros automáticos con Mercado Pago',
+                        'Control de stock automático',
+                        'Panel para gestionar pedidos y ventas',
+                        'Tus clientes pueden registrarse y ver sus pedidos',
+                        'Soporte prioritario'
                     ],
                     details: {
-                        description: 'La solución definitiva para vender online con pagos integrados, control total de stock y base de datos de clientes.',
-                        deliveryTime: 'A convenir',
+                        description: 'Vendé online con pagos automáticos, control de stock y registro de clientes. Todo lo que necesitás para tener una tienda que trabaja sola.',
+                        deliveryTime: '~A convenir',
                         includes: [
-                            { title: 'Pasarela de Pagos', description: 'Integración con Mercado Pago para cobrar con cualquier medio de pago de forma automática.' },
-                            { title: 'Sistema de Usuarios', description: 'Tus clientes pueden registrarse, ver sus pedidos anteriores y guardar favoritos.' },
-                            { title: 'Control Total', description: 'Panel administrativo completo para gestionar ventas, envíos y niveles de stock.' }
+                            { title: 'Cobros automáticos', description: 'Tus clientes pagan con tarjeta, débito o transferencia al instante. El cobro se acredita automáticamente.' },
+                            { title: 'Clientes registrados', description: 'Tus clientes crean su cuenta, ven sus pedidos anteriores y guardan productos favoritos.' },
+                            { title: 'Gestión completa', description: 'Desde un solo lugar manejás ventas, stock, envíos y todo lo que pasa en tu tienda.' }
                         ],
                         idealFor: ['Tiendas de ropa', 'Mueblerías', 'Tiendas de electrónica']
                     }
@@ -285,11 +288,11 @@ export const translations = {
                         'Soporte técnico dedicado',
                     ],
                     details: {
-                        description: 'Si tu proyecto requiere una plataforma educativa de gran escala o funciones únicas, lo diseñamos desde cero.',
-                        deliveryTime: 'A convenir',
+                        description: '¿Tu proyecto es especial o muy grande? Lo diseñamos desde cero para resolver exactamente lo que necesitás, sin limitaciones de planes.',
+                        deliveryTime: '~A convenir',
                         includes: [
-                            { title: 'Análisis Técnico', description: 'Definimos la mejor arquitectura para tu sistema.' },
-                            { title: 'Desarrollo Exclusivo', description: 'Código único para resolver tus necesidades puntuales.' }
+                            { title: 'Diseñamos la solución', description: 'Nos sentamos a entender tu proyecto y armamos la mejor estrategia técnica para llevarlo adelante.' },
+                            { title: 'Hecho a tu medida', description: 'Todo se construye desde cero para vos. Sin plantillas, sin limitaciones, sin cosas que no usás.' }
                         ],
                         idealFor: ['Startups', 'Plataformas grandes']
                     }
@@ -327,7 +330,7 @@ export const translations = {
             },
             q7: {
                 question: '¿Qué pasa si necesito más cambios de los que incluye mi plan?',
-                answer: 'No hay problema. Si superás el cupo mensual, los cambios adicionales se presupuestan por separado como horas de desarrollo. Siempre te informo el costo antes de arrancar, para que puedas decidir con toda la información. Sin sorpresas en la factura, nunca.',
+                answer: 'No hay problema. Cada cambio (sea de contenido o de diseño) cubre el equivalente a 3 horas de trabajo. Si pedís un cambio que me lleva 6 horas, consume 2 de esos cambios. Si te quedás sin cambios mensuales, las horas adicionales se facturan a USD 7/hora. El tipo de cambio que uso es el oficial. Siempre te aviso el costo antes de arrancar, así decidís con toda la información.',
             },
         },
 
@@ -556,37 +559,37 @@ export const translations = {
             title: 'Why I\'m not like other agencies',
             subtitle: 'No huge teams, no bureaucratic processes, no marketing hype.',
             item1: {
-                title: 'Conversion-oriented, not just design',
-                description: 'Every element of your site is designed to get people to contact you. Optimized forms, clear calls to action, fast loading.',
+                title: 'Your site works to bring you clients',
+                description: 'Every part of your site is designed to get people to contact you. Buttons, forms and text built to turn visits into inquiries, not just to look pretty.',
             },
             item2: {
-                title: 'Direct work, no intermediaries',
-                description: 'You talk directly with the person writing the code and designing the solution. No account executives who don\'t know tech or developers who don\'t know business.',
+                title: 'The one who builds it is the one who answers',
+                description: 'You text me on WhatsApp and I reply. The person who designs, codes and publishes your site is the same one who helps you. No bots, no account executives, no runaround.',
             },
             item3: {
-                title: 'Delivery in weeks, not months',
-                description: 'Landing pages in 1 week. Corporate websites in 2-3 weeks. E-commerce in ~4 weeks. No delays or excuses.',
+                title: 'Free mockup before you pay',
+                description: 'At no cost, I build a working mockup of your site so you can see how it looks, request changes, and only when you\'re happy we start. No risk.',
             },
         },
 
         howItWorks: {
             title: 'How we work together',
-            subtitle: 'A simple process, no complications',
+            subtitle: 'We talk, I show you a free mockup, and you only pay when you like it',
             step1: {
-                title: 'Initial consultation',
-                description: 'We talk about your business and what you need. No commitment.',
+                title: 'Let\'s talk',
+                description: 'We chat by message, call, or however you prefer to understand your project.',
             },
             step2: {
-                title: 'Proposal and quote',
-                description: 'I give you a clear plan with real timelines and costs.',
+                title: 'Free mockup',
+                description: 'At no cost, I build a working mockup of your site so you can see how it will look and guide me.',
             },
             step3: {
-                title: 'Development',
-                description: 'I work on your project with reviews along the way.',
+                title: '25% deposit',
+                description: 'Once you give the green light, I ask for 25% as a deposit and start development.',
             },
             step4: {
-                title: 'Delivery and adjustments',
-                description: 'We publish your website and make final adjustments.',
+                title: 'Final delivery',
+                description: 'I finish the project, we publish it, and you pay the rest.',
             },
             cta: 'Start now',
         },
@@ -644,9 +647,13 @@ export const translations = {
             contactNow: 'Contact now',
             saved: 'Save',
             limitedOffer: "Limited-time offer!",
+            firstMonthFree: 'First month free',
+            firstMonthFreeNote: 'The first monthly subscription is free. If you pay with Mercado Pago, the first 28 days from launch are free. If paid by bank transfer, I charge you on the 5th of the month after launch, no matter the day.',
             planNotFound: 'Plan not found',
             notIncluded: 'Not included',
             backToPlans: 'Back to plans',
+            changePolicyTitle: 'How do changes work?',
+            changePolicyText: 'Each change (content or design) equals 3 hours of work. If a change takes longer, it consumes multiple changes from your monthly allowance. If you run out of changes, extra hours are billed at USD 7/hour. The exchange rate I use is the official one.',
 
             plans: {
                 presencia: {
@@ -655,24 +662,24 @@ export const translations = {
                     cta: 'Get Started',
                     whatsappMessage: "Hi! I'm interested in the Presence plan. Could you give me more information?",
                     features: [
-                        'Modern One-Page Design (Up to 5 sections)',
-                        'Hosting & SSL (Secure Site)',
-                        'Domain included',
-                        'Direct WhatsApp Button',
-                        'Basic SEO for Google',
-                        '3 Monthly Content Adjustments',
+                        'A modern one-page website (up to 5 sections)',
+                        'Secure site with green padlock (SSL)',
+                        'Your own .com.ar domain (e.g. your-business.com.ar)',
+                        'WhatsApp button so they can reach you instantly',
+                        'Your site optimized to appear on Google',
+                        '3 text or photo changes per month',
                     ],
-                    notIncluded: ['Corporate email accounts', 'Self-management Panel (CMS)', 'Email contact form', 'Multi-section (Up to 5 pages)'],
+                    notIncluded: ['Professional email with your domain (e.g. info@your-business.com)', 'Software to change the content yourself', 'Email contact form', 'Multiple internal pages (up to 5)', 'Design changes'],
                     details: {
-                        description: 'The ideal option to get on Google fast and hassle-free. An effective landing page so people can find you and get in touch.',
-                        deliveryTime: '5–7 business days',
+                        description: 'Your business card on the internet. A website ready in less than a week so your customers can find you on Google and contact you without complications.',
+                        deliveryTime: '~5–7 business days',
                         includes: [
-                            { title: 'Professional Hosting & SSL', description: 'Optimized server and security certificate so your website is trustworthy.' },
-                            { title: 'One-Page Design', description: 'A single modern, responsive page with clear sections to turn visitors into clients.' },
-                            { title: 'Native Performance', description: 'Built with clean code for instant load times. I make sure your site flies.' },
-                            { title: 'Domain included', description: 'Annual management of your brand name.' }
+                            { title: 'Secure site, always online', description: 'Your site runs 24/7 with the green security padlock. I make sure it never goes down.' },
+                            { title: 'Modern one-page design', description: 'Everything you offer in one place, well organized and looking perfect on phones, tablets and computers.' },
+                            { title: 'Lightning-fast loading', description: 'Your site opens instantly. Speed keeps your customers from leaving to competitors.' },
+                            { title: '.com.ar domain included', description: 'You choose the name (e.g. yourbusiness.com.ar). If it\'s not available, I won\'t buy one that isn\'t .com.ar — we\'ll look for another option together.' }
                         ],
-                        idealFor: ['Trades & local services', 'Product launches', 'Capture pages']
+                        idealFor: ['Independent professionals (doctors, lawyers, tradespeople)', 'New businesses starting out', 'Local businesses that want nearby clients']
                     }
                 },
                 empresa: {
@@ -681,24 +688,24 @@ export const translations = {
                     cta: 'Choose Business Plan',
                     whatsappMessage: "Hi! I'm interested in the Business plan. I'd love more details.",
                     features: [
-                        'All from the Presence Plan +',
-                        'Multi-page website (Up to 5 pages)',
-                        'Self-Management Panel',
-                        'Upload Courses, Services, or News',
-                        'Professional corporate email accounts',
-                        'Training (PDF Manuals + Personal)',
-                        '3 Monthly Design Adjustments',
+                        'Everything from the Presence plan +',
+                        'Up to 5 internal pages (home, services, etc.)',
+                        'Panel to update your website yourself',
+                        'Add courses, services, or news whenever you want',
+                        'Professional email with your domain',
+                        'Personalized training (step-by-step guides + support)',
+                        '3 design changes per month',
                     ],
-                    notIncluded: ['Shopping cart', 'Payment gateway'],
+                    notIncluded: ['Online store with shopping cart', 'Integrated online payments'],
                     details: {
-                        description: 'Designed for businesses that project professionalism and want to dynamically communicate news or services.',
-                        deliveryTime: '12–15 business days',
+                        description: 'The complete option for businesses that want to look professional, have multiple pages, and keep their content updated without depending on anyone.',
+                        deliveryTime: '~12–15 business days',
                         includes: [
-                            { title: 'Management Panel', description: 'Upload your own content independently.' },
-                            { title: 'Design Support', description: '5 monthly changes to tweak layout, colors, or sections not handled by the panel.' },
-                            { title: 'Dual Training', description: 'Step-by-step PDF guides and personal guidance so you master your panel.' }
+                            { title: 'Update your site yourself', description: 'Log into a simple panel and change text, photos or news whenever you want, no coding required.' },
+                            { title: '5 design changes per month', description: 'Need to move a section or change colors? I do it for you up to 5 times a month.' },
+                            { title: 'Training included', description: 'I teach you how to use your panel with guides and direct WhatsApp support so you never get stuck.' }
                         ],
-                        idealFor: ['Schools & academies', 'Professional firms', 'Clinics']
+                        idealFor: ['Schools and academies showcasing courses', 'Professional firms (lawyers, accountants, architects)', 'Clinics and health centers']
                     }
                 },
                 eCatalog: {
@@ -707,21 +714,21 @@ export const translations = {
                     cta: 'Build my Catalog',
                     whatsappMessage: "Hi! I'm interested in the Catalog plan. I have products to showcase.",
                     features: [
-                        'Domain included',
-                        'Hosting & SSL (Secure Site)',
-                        'Management Panel',
-                        'Catalog with unlimited uploads',
-                        'Detailed order cart',
-                        'Search and category filters',
-                        'Receive orders ready-to-go on WhatsApp'
+                        'Your own .com.ar domain',
+                        'Secure site (SSL)',
+                        'Panel to upload products with photos and prices',
+                        'Unlimited products',
+                        'Order cart: your customers build their purchase',
+                        'Search and filters so they find things fast',
+                        'Orders arrive to you on WhatsApp ready to go'
                     ],
-                    notIncluded: ['Payment gateway (Mercado Pago)'],
+                    notIncluded: ['Integrated online payments (Mercado Pago)'],
                     details: {
-                        description: 'The perfect digital storefront. Show your products with photos and prices, letting customers build their order and send it to you via WhatsApp.',
-                        deliveryTime: '12–15 business days',
+                        description: 'Show all your products with photos and prices, and receive ready-to-go orders on WhatsApp without having to ask anything.',
+                        deliveryTime: '~12–15 business days',
                         includes: [
-                            { title: 'Management Panel', description: 'Upload product photos and prices with full independence.' },
-                            { title: 'Order Cart', description: 'The system organizes the purchase and sends it in detail to your WhatsApp.' },
+                            { title: 'Upload products yourself', description: 'Log into a panel and upload products with photos and prices in seconds. No limits, no help needed.' },
+                            { title: 'Cart that builds the order', description: 'Your customers build their order and it arrives detailed on WhatsApp: product, quantity, price. You just confirm.' },
                             { title: 'Design Support', description: '5 monthly changes to tweak layout, colors, or sections not handled by the panel.' },
                         ],
                         idealFor: ['Showrooms & retail stores', 'Food & beverage', 'Hardware & auto parts stores']
@@ -733,22 +740,21 @@ export const translations = {
                     cta: 'Launch my Store',
                     whatsappMessage: "Hi! I'm interested in the E-commerce plan. Can we talk?",
                     features: [
-                        'Everything in the Business Plan +',
-                        'Shopping cart with online payment',
-                        'Payment gateway (Mercado Pago)',
-                        'Automatic stock & inventory management',
-                        'Orders & sales control panel',
-                        'Customer accounts (Register/Login)',
-                        '10 Monthly Design Adjustments',
-                        'Priority support & training'
+                        'Everything from the Business plan +',
+                        'Shopping cart with online payments',
+                        'Automatic payments with Mercado Pago',
+                        'Automatic stock control',
+                        'Panel to manage orders and sales',
+                        'Your customers can register and view their orders',
+                        'Priority support'
                     ],
                     details: {
-                        description: 'The ultimate solution for selling online with integrated payments, full stock control, and a customer database.',
-                        deliveryTime: 'To be agreed',
+                        description: 'Sell online with automatic payments, stock control and customer accounts. Everything you need for a store that runs itself.',
+                        deliveryTime: '~To be agreed',
                         includes: [
-                            { title: 'Payment Gateway', description: 'Mercado Pago integration to accept any payment method automatically.' },
-                            { title: 'User System', description: 'Customers can register, view past orders, and save favorites.' },
-                            { title: 'Full Control', description: 'Complete admin panel to manage sales, shipping, and stock levels.' }
+                            { title: 'Automatic payments', description: 'Your customers pay with card, debit or transfer instantly. The payment is credited automatically.' },
+                            { title: 'Registered customers', description: 'Your customers create accounts, view their order history and save favorite products.' },
+                            { title: 'Complete management', description: 'From one place you manage sales, stock, shipping and everything in your store.' }
                         ],
                         idealFor: ['Clothing stores', 'Furniture stores', 'Electronics stores']
                     }
@@ -766,11 +772,11 @@ export const translations = {
                         'Dedicated technical support',
                     ],
                     details: {
-                        description: 'If your project requires a large-scale educational platform or unique features, we design it from scratch.',
-                        deliveryTime: 'To be agreed',
+                        description: 'Is your project special or very large? We design it from scratch to solve exactly what you need, with no plan limitations.',
+                        deliveryTime: '~To be agreed',
                         includes: [
-                            { title: 'Technical Analysis', description: 'We define the best architecture for your system.' },
-                            { title: 'Exclusive Development', description: 'Unique code built to solve your specific needs.' }
+                            { title: 'We design the solution', description: 'We sit down to understand your project and build the best technical strategy to move forward.' },
+                            { title: 'Made for you', description: 'Everything is built from scratch for you. No templates, no limitations, no features you don\'t use.' }
                         ],
                         idealFor: ['Startups', 'Large platforms']
                     }
@@ -806,8 +812,8 @@ export const translations = {
                 answer: 'A content adjustment is for specific information updates: updating text, changing the logo, or tweaking a specific color without altering the rest. A design adjustment involves deeper changes, such as modifying or removing an entire section, changing animations, or restructuring the page layout.',
             },
             q7: {
-                question: 'What happens if I need more changes than what’s included in my monthly plan?',
-                answer: 'No problem at all—your website should keep evolving. If you exceed your monthly allowance, any additional adjustments are billed as extra development hours. I will always provide a quote before starting, ensuring you have full predictability with no surprises on your invoice.',
+                question: 'What happens if I need more changes than what\'s included in my monthly plan?',
+                answer: 'No problem at all. Each change (content or design) covers the equivalent of 3 hours of work. If you request a change that takes 6 hours, it consumes 2 of your monthly changes. If you run out of monthly changes, extra hours are billed at USD 7/hour. The exchange rate I use is the official one. I always let you know the cost before starting, so you can make an informed decision.',
             },
         },
 

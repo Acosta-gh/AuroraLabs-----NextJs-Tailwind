@@ -4,11 +4,6 @@ const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://127.
 
 export default pb;
 
-// ── Contacts ──────────────────────────────────────────────
-export async function createContact({ name, email, message, lang }) {
-  return pb.collection('contacts').create({ name, email, message, lang });
-}
-
 // ── Blog posts ────────────────────────────────────────────
 export async function getPosts({ page = 1, perPage = 9 } = {}) {
   return pb.collection('posts').getList(page, perPage, {

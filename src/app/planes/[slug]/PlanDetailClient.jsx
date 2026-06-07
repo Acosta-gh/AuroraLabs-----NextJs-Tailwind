@@ -66,7 +66,19 @@ export default function PlanDetailPage() {
     const { currency } = useCurrency();
     const { t } = useTranslation();
 
+    useEffect(() => {
+        console.log("[PlanDetailClient] Component mounted/updated. params:", params, "slug:", slug);
+    }, [params, slug]);
+
     const plan = plans.find((p) => p.slug === slug) ?? null;
+
+    console.log("[PlanDetailClient] Rendering. State:", {
+        loading,
+        plansCount: plans?.length,
+        slug,
+        foundPlan: plan ? { name: plan.name, slug: plan.slug } : null
+    });
+
 
     if (!loading && !plan) {
         return (

@@ -1,0 +1,4 @@
+# Configuration for Cloudflare Pages
+name = "auroralabs-nextjs-tailwind"
+compatibility_date = "2024-09-23"
+compatibility_flags = [ "nodejs_compat" ]

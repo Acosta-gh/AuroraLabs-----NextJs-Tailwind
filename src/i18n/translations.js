@@ -729,7 +729,7 @@ export const translations = {
                         includes: [
                             { title: 'Upload products yourself', description: 'Log into a panel and upload products with photos and prices in seconds. No limits, no help needed.' },
                             { title: 'Cart that builds the order', description: 'Your customers build their order and it arrives detailed on WhatsApp: product, quantity, price. You just confirm.' },
-                            { title: 'Design Support', description: '5 monthly changes to tweak layout, colors, or sections not handled by the panel.' },
+                            { title: 'Design Support', description: '3 monthly changes to tweak layout, colors, or sections not handled by the panel.' },
                         ],
                         idealFor: ['Showrooms & retail stores', 'Food & beverage', 'Hardware & auto parts stores']
                     }

@@ -218,7 +218,7 @@ export const translations = {
                         deliveryTime: '~12-15 días hábiles',
                         includes: [
                             { title: 'Actualizás tu web vos mismo', description: 'Entrás a un panel sencillo y cambiás textos, fotos o noticias cuando quieras, sin saber de programación.' },
-                            { title: '5 cambios de diseño por mes', description: '¿Necesitás mover una sección o cambiar colores? Yo lo hago por vos hasta 5 veces al mes.' },
+                            { title: '3 cambios de diseño por mes', description: '¿Necesitás mover una sección o cambiar colores? Yo lo hago por vos hasta 3 veces al mes.' },
                             { title: 'Capacitación incluida', description: 'Te enseño a usar tu panel con guías y soporte directo por WhatsApp para que no te quedes trabado.' }
                         ],
                         idealFor: ['Escuelas y academias que quieren mostrar cursos', 'Estudios profesionales (abogados, contadores, arquitectos)', 'Clínicas y centros de salud']
@@ -702,7 +702,7 @@ export const translations = {
                         deliveryTime: '~12–15 business days',
                         includes: [
                             { title: 'Update your site yourself', description: 'Log into a simple panel and change text, photos or news whenever you want, no coding required.' },
-                            { title: '5 design changes per month', description: 'Need to move a section or change colors? I do it for you up to 5 times a month.' },
+                            { title: '3 design changes per month', description: 'Need to move a section or change colors? I do it for you up to 3 times a month.' },
                             { title: 'Training included', description: 'I teach you how to use your panel with guides and direct WhatsApp support so you never get stuck.' }
                         ],
                         idealFor: ['Schools and academies showcasing courses', 'Professional firms (lawyers, accountants, architects)', 'Clinics and health centers']
